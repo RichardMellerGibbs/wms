@@ -1,0 +1,5 @@
+/node_modules/
+/db/data/
+launch_mongo.bat
+launch_server.bat
+config.js
