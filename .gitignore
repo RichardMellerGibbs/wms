@@ -1,4 +1,5 @@
 /node_modules/
+/resources/
 /db/data/
 launch_mongo.bat
 launch_server.bat

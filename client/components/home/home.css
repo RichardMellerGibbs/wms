@@ -1,0 +1,138 @@
+.homeView{
+    min-height: 720px;              /* Forces footer to the bottom of the page */ 
+    background-color: #060050;   
+}
+
+.sectionImage,
+/*.sectionDesc*/ {
+    padding-top: 20px;    
+}
+
+.sectionImage {
+    padding-bottom: 0px;
+}
+
+.sectionDesc {
+    padding-top: 0px;
+}
+
+.firstImgCol {
+    /*margin: 0 auto;*/
+    padding: 15px; /*makes the image hug the left margin */
+    padding-right: 10px;
+}
+
+.firstImgCol img {
+    width: 100%;
+    border: 2px solid #888;
+}
+
+.manageCol img {
+    width: 100%;
+    border: 2px solid #888;
+    margin: 0 auto;
+}
+
+.manageCol .description {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* -------  Small phones to small tablets 481px to 767px  -------*/
+@media only screen and (max-width: 767px) {
+
+    /* remove one of the 4 images which seemed too much for mobile */
+    .img4 img{ display: none;}
+
+    /* reduced the padding between images on mobile to better balance the vertical gap between images */
+    .firstImgCol {padding-top: 0;}
+
+    /* reduced the padding between last image and the main about us paragraph */
+    .img3 {padding-bottom: 0;}
+
+    /* Just separate the news vertically from the main about us column */
+    .newsCol {padding-top: 10px;}
+}
+
+.colDesc {
+    padding-left: 15px;
+    padding-top: 20px;
+}
+
+.manageCol.colDesc {
+    padding-top: 0px;
+}
+
+.colDesc h3 {
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+
+.colDesc p {
+    font-size: 90%;
+    vertical-align: top;
+    padding-right: 20px;
+}
+
+/*************************************************************************/
+/* News  */
+/*************************************************************************/
+/*.newsList {
+    max-height: 400px;
+    overflow-y:scroll; 
+}*/
+
+.newsItem {
+    padding-bottom: 20px;
+}
+
+.newsCol ul {
+    list-style: none; 
+    padding: 0;  
+    font-size: 80%;
+    font-weight: 400;
+}
+
+.newsDateCol,
+.newsSnippetCol,
+.readMoreCol,
+.newsTitleCol,
+.descCol {
+    padding-left: 0;
+}
+
+.newsTitleRow,
+.newsSnippetRow,
+.readMoreRow,
+.descRow {
+    margin: 0;
+}
+
+.articleDate {
+    font-size: 80%;
+    font-weight: 310;
+}
+
+.articleSnippet {
+    font-size: 90%;
+    font-weight: 310;
+}
+
+.articleTitle {
+    font-size: 130%;
+    font-weight: 300;
+}
+
+/* Adds pointer when user is admin */
+.readMoreLink a { 
+    cursor: pointer; 
+    cursor: hand; 
+}
+
+
+
+
+
+
+
+

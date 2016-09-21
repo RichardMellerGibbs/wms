@@ -1,0 +1,57 @@
+<div class="mainNews">
+    <section class="newsSection">
+
+        <div class="row">
+            <div class="newsPanel">
+                <div class="col">
+
+                    <div class="row newsHeadingRow">
+                        <div class="col-md-12 newsHeadingCol">
+                            <div class="newsPanelTitle">
+                                <h2>Latest News</h2>                        
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="searchPanel">
+                            <div class="col-md-12 searchCol">
+                                
+                                <form class="searchForm">
+                                    
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                                        <input type="text" class="form-control" placeholder="Search Articles" ng-model="searchName">
+                                    </div>      
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="mainNewsList" >
+                        <li ng-repeat="newItem in mainNews.newsData | filter:searchName" >
+
+                            <div class="row newsHeaderRow">
+                                <div class="col-md-12 newsHeaderCol">
+                                    <div class="newsDate">
+                                        {{ newItem.articleDate | amDateFormat: 'Do MMM YYYY' }}
+                                    </div>
+                                    <div class="newsTitle">
+                                        {{ newItem.title }}        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row newsDescRow">
+                                <div class="col-md-12 newsDescCol">
+                                    <div class="mainNewsDesc"> {{ newItem.description }}</div>
+                                </div>
+                            </div>
+
+                        </li>
+                    </ul>    
+                </div>    
+            </div>
+        </div>
+    </section>
+</div>

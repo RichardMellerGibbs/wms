@@ -15,11 +15,49 @@ app.use(bodyParser.urlencoded({ extended: true }));
 var port = config.port;
 console.log('env is ' + config.node_env);
 
-//Expose the client statuc files. This includes index.html landing page which gets everything going
+//Expose the client static files. This includes index.html landing page which gets everything going
 app.use(express.static(__dirname + '/client'));
+
+//Added to enable correct routing without hash when urls typed directly into the address bar
+app.all('/login', function(req, res, next) {
+  res.sendFile('client/index.html', { root: __dirname });
+});
+
+app.all('/home', function(req, res, next) {
+  res.sendFile('client/index.html', { root: __dirname });
+});
+
+app.all('/maintContent/:tab', function(req, res, next) {
+  res.sendFile('client/index.html', { root: __dirname });
+});
+
+app.all('/maintNews/:newsId', function(req, res, next) {
+  res.sendFile('client/index.html', { root: __dirname });
+});
+
+app.all('/news/:newsId', function(req, res, next) {
+  res.sendFile('client/index.html', { root: __dirname });
+});
+
+app.all('/success', function(req, res, next) {
+  res.sendFile('client/index.html', { root: __dirname });
+});
+
+app.all('/maintSuccess/:newsId', function(req, res, next) {
+  res.sendFile('client/index.html', { root: __dirname });
+});
+
+app.all('/testimonial', function(req, res, next) {
+  res.sendFile('client/index.html', { root: __dirname });
+});
+
+app.all('/maintTestimonial/:testimonialId', function(req, res, next) {
+  res.sendFile('client/index.html', { root: __dirname });
+});
 
 // =============================================================================
 // CONNECT TO MONGO
+mongoose.Promise = global.Promise;
 mongoose.connect(config.database);
 
 // =============================================================================
@@ -51,7 +89,7 @@ process.on('SIGINT', function() {
 
 //This statement sets up all server routing. 
 //REGISTER ROUTES
-//var router	   = require('./routes/index.js')(app);
+var router	   = require('./routes/index.js')(app);
 
 
 // START THE SERVER

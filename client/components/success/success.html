@@ -1,0 +1,69 @@
+<div class="mainSuccess">
+    <section class="successSection">
+
+        <div class="row">
+            <div class="successPanel">
+                <div class="col">
+
+                    <div class="row successHeadingRow">
+                        <div class="col-md-12 successHeadingCol">
+                            <div class="successPanelTitle">
+                                <h2>Success</h2>                        
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="searchPanel">
+                            <div class="col-md-12 searchCol">
+                                
+                                <form class="searchForm">          
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                                        <input type="text" class="form-control" placeholder="Search Articles" ng-model="searchName">
+                                    </div>      
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="mainSuccessList" >
+                        <li ng-repeat="successItem in success.successData | filter:searchName" >
+
+                            <div class="row successHeaderRow">
+                                <div class="col-md-12 successHeaderCol">
+                                    <!--div class="successDate">
+                                        {{ successItem.articleDate.value | amDateFormat: 'Do MMM YYYY' }}
+                                    </div-->
+                                    <div class="successTitle">
+                                        {{ successItem.title }}        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row successDescRow">
+                                <div class="col-md-12 successDescCol">
+                                    <div class="successDesc"> {{ successItem.description }} </div>
+                                    <div class="successDate">
+                                        {{ successItem.articleDate.value | amDateFormat: 'Do MMM YYYY' }}
+                                    </div>
+                                </div>
+                            </div>
+
+                             <div class="row successImageRow" ng-if="successItem.picturePresent">
+                                <div class="col-md-12 successImageCol">
+                                    <div class="successImage">
+                                        <img ng-src="{{successItem.picture | fpConvert: {filter:'sharpen'} }}">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>

@@ -1,9 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
         <head>
+            <meta charset="utf-8">
+		    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="description" content="SEO description for WMS">
+
+            <base href="/">
+
+            <title>Whatton Manor Stud</title>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+            <!-- load momentJS (required for angular-moment) -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.10.3/angular-moment.min.js"></script>
+
+            <!-- Filepicker for saving images to the cloud -->
+            <script type="text/javascript" src="//api.filepicker.io/v2/filepicker.js"></script>
+            <script src="../js/angular-filepicker.js"></script>
+            <!--script src="https://api.filestackapi.com/filestack_debug.js"></script-->
+
+            <!-- Main App and Controllers -->
+            <script src="../js/app.js"></script>
+            <script src="../components/main/mainController.js"></script>
+            <script src="../components/home/homeController.js"></script>
+            <script src="../components/reset/resetController.js"></script>
+            <script src="../components/success/successController.js"></script>
+            <script src="../components/testimonial/testimonialController.js"></script>
+            <script src="../components/maintSuccess/maintSuccessController.js"></script>
+            <script src="../components/maintContent/maintContentController.js"></script>
+            <script src="../components/maintNews/maintNewsController.js"></script>
+            <script src="../components/news/newsController.js"></script>
+            <script src="../components/maintTestimonial/maintTestController.js"></script>
+
+            <!-- Services -->
+            <script src="../components/login/authService.js"></script>
+            <script src="../components/login/localStorageService.js"></script>
+            <script src="../components/maintContent/contentService.js"></script>
+            <script src="../components/maintContent/newsService.js"></script>
+            <script src="../components/success/successService.js"></script>
+            <script src="../components/main/logService.js"></script>
+
+            <!-- CSS -->
+            <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+            <link href='https://fonts.googleapis.com/css?family=Lato:400,300italic,300,100' rel='stylesheet' type='text/css'>
+
+            <!--Custom CSS-->
+            <link rel="stylesheet" href="components/main/main.css">
+            <link rel="stylesheet" href="components/home/home.css">
+            <link rel="stylesheet" href="components/login/login.css">
+            <link rel="stylesheet" href="components/success/success.css">
+            <link rel="stylesheet" href="components/testimonial/testimonial.css">
+            <link rel="stylesheet" href="components/maintSuccess/maintSuccess.css">
+            <link rel="stylesheet" href="components/maintContent/maintContent.css">
+            <link rel="stylesheet" href="components/maintNews/maintNews.css">
+            <link rel="stylesheet" href="components/news/news.css">
+            <link rel="stylesheet" href="components/maintTestimonial/maintTest.css">
+
+            <!--h2>Header Section</h2-->
+            
+            <!--Faviocn-->
+            <link rel="apple-touch-icon" sizes="180x180" href="../images/favicons/apple-touch-icon.png">
+            <link rel="icon" type="image/png" href="../images/favicons/favicon-32x32.png" sizes="32x32">
+            <link rel="icon" type="image/png" href="../images/favicons/favicon-16x16.png" sizes="16x16">
+            <link rel="manifest" href="../images/favicons/manifest.json">
+            <link rel="mask-icon" href="../images/favicons/safari-pinned-tab.svg" color="#5bbad5">
+            <meta name="theme-color" content="#ffffff">
         </head>
-        <body>
-            <h1>It's working</h1>
+
+        <body ng-app="app" ng-controller="mainController as main">
+
+            <nav class="navbar">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">                
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mvNavbar" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                        <div class="logo">
+                            <!--div><a class="navbar-brand" href="#/home"><img src="images/logo.png"/></a></div-->
+                            <div class="image"><a href="home"><img src="images/logo.png"/></a></div>
+                            <div class="sitename">Whatton Manor Stud</div>
+                            <!--div class="established">Est 1933</div-->
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="collapse navbar-collapse" id="mvNavbar">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a href="/home">Home</a></li>
+                            <!--li><a href="/join">About Us</a></li-->
+                            <!--li><a href="/login">Services</a></li-->
+                            <li><a href="/news/x">News</a></li>
+                            <li><a href="/success">Success</a></li>              
+                            <li><a href="/testimonial">Testimonials</a></li>
+                            <li ng-if="!main.loggedIn"><a href="/login">Login</a></li>
+
+                            <li ng-if="main.loggedIn" class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administration <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/maintContent/x">Maintain Content</a></li>
+                                    <li ng-if="main.loggedIn"><a href="/" ng-click="main.doLogout()">Logout</a></li>
+                                </ul>
+                            </li>
+                            
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div> <!--Container fluid-->
+            </nav>
+
+            <!-- Loads in the first route. Defaults to the home page -->
+            <div ng-view></div>
+
         </body>
+
+        <footer>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4 box">
+                        <h3>Whatton Manor Stud</h3>
+                        <p>Edward Player</br>Mobile: 07733261757</br>Office: 01949 850221</br>Fax: 01949 850993</br></p>
+                        <p>email: player.edward@gmail.com</p>
+                    </div>
+                    <div class="col-md-4 box address">
+                        <h3>Address</h3>
+                        <p>Whatton Manor Stud</br>Whatton in the Vale</br>Nottinghamshire</br>NG13 9EX</p>
+                    </div>
+                    <div class="col-md-4 box">
+                        <!--ul class="footer-nav">
+                            <li><a href="#/home">Home</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">News</a></li>
+                            <li><a href="#">Success</a></li-->
+                        </ul>
+                    </div>    
+                </div>    
+            </div>            
+        </footer>
 
 </html>

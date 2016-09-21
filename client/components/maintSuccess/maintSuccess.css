@@ -1,0 +1,70 @@
+.maintSuccess {
+    min-height: 720px;              /* Forces footer to the bottom of the page */  
+    background-color: #060050;    
+}
+
+section.sectionMaintSuccess {
+    padding: 20px 0px;
+}
+
+section.sectionMaintSuccess h2 {
+    margin-bottom: 20px;
+}
+
+/* --------------------------------------------------------------*/
+/* The Panel */
+/* --------------------------------------------------------------*/
+
+.maintSuccessPanel {      
+    width: 80%;
+    margin: 0 auto;
+    min-width: 290px;
+}
+
+.maintSuccessForm {
+    background-color: #f4f4f4;
+    width: 50%;
+    margin: 20px auto;
+    padding: 20px;
+    border: solid 1px #a6a6aa;
+    min-width: 280px;
+}
+
+.maintSuccessForm .input-group {
+    width: 100%;
+    padding-bottom: 20px;
+    font-size: 80%;
+    color: #000;
+    font-weight: 400;
+}
+
+.maintSuccessForm .input-group .form-control {
+    font-size: 80%;
+    font-weight: 400;
+    color:#000;
+}
+
+.successDescription textarea {
+    height: 100px;
+}
+
+.successDescription {
+    padding-bottom: 0px;
+}
+
+.mainImage img {
+    margin-top: 20px;
+    max-height: 200px;
+}
+
+/* --------------------------------------------------------------*/
+/* WARNING PANEL */
+/* --------------------------------------------------------------*/
+
+/* -------  Small phones to small tablets 481px to 767px  -------*/
+@media only screen and (max-width: 767px) {
+
+    .maintSuccessPanel {width: 95%;}
+
+    .maintSuccessForm { width: 95%; }
+}

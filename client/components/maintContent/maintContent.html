@@ -1,0 +1,145 @@
+<div class="maintContentView">
+
+    <section class="sectionMaintHome">
+
+        <div class="row">
+            <h2>Maintain Content</h2>
+        </div>
+        
+        <div class="row">
+            <div class="maintHomePanel">
+                <div class="col">
+                    <form name="maintHomeForm" class="maintHomeForm">
+
+                        <!--div class="buttonSection control">
+                            <button type="submit" ng-click="content.displayHome()" class="btn btn-primary" >Home Page</button>
+                        </div>
+                        <div class="buttonSection control">
+                            <button type="submit" ng-click="content.displayNews()" class="btn btn-primary" >News</button>
+                        </div>
+                        <div class="buttonSection control">
+                            <button type="submit" ng-click="content.displayTestimonials()" class="btn btn-primary" >Testimonials</button>
+                        </div-->
+
+                        <!--nav nav-tabs -->
+                        <ul class="tabrow">
+                            <li ng-class="{'selected': content.homeForm}" ng-click="content.displayHome()">Home</li>
+                            <li ng-class="{'selected': content.newsForm}" ng-click="content.displayNews()">News</li>
+                            <li ng-class="{'selected': content.successForm}" ng-click="content.displaySuccess()">Success</li>
+                            <li ng-class="{'selected': content.testimonialForm}" ng-click="content.displayTestimonial()">Testimonials</li>
+                        </ul>
+
+                        <!-- Home Form -->
+                        <div class="input-group" ng-if="content.homeForm">
+                            <div class="field-title">Section</div>
+                            <select name="section" id="section" ng-model="content.sectionChosen" ng-click="content.loadItem()">
+                                    <option ng-repeat="sections in content.homeData">{{sections.subject}}</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group itemDescription" ng-if="content.homeForm">
+                            <div class="field-title">Description</div>
+                            <textarea name="homeIdentifier" ng-model="content.selectedItem.description" autofocus class="form-control bg-white">
+                            </textarea>
+                        </div>
+
+
+                        <!-- News Form display the list -->
+                        <button type="submit" ng-if="content.newsForm" ng-click="content.addNewsItem()" class="btn btn-block btn-primary add-btn newsButton">Add News Article</button>
+
+                        <div class="table-responsive showHover newsItems" ng-if="content.newsForm">
+                            <table class="table table-bordered" >
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Title</th>
+                                        <th class="newsDesc">Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    <tr ng-repeat="newsItem in content.newsData" ng-click="content.newsDetail(newsItem)">
+                                        <td>{{ newsItem.articleDate | amDateFormat: 'Do MMM YYYY' }}</td>
+                                        <td>{{ newsItem.title }}</td>
+                                        <td class="newsDesc">{{ newsItem.description }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                        <!-- Success Form display the list -->
+                        <button type="submit" ng-if="content.successForm" ng-click="content.addsuccessItem()" class="btn btn-block btn-primary add-btn successButton">Add Success Article</button>
+
+                        <div class="table-responsive showHover successItems" ng-if="content.successForm">
+                            <table class="table table-bordered" >
+                                <thead>
+                                    <tr>
+                                        <!--th>Type</th-->
+                                        <th>Date</th>
+                                        <th>Title</th>
+                                        <th class="newsDesc">Description</th>
+                                        <!--th class="byTitle">Testimonial By</th-->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    <tr ng-repeat="successItem in content.successData" ng-click="content.successDetail(successItem)">
+                                        <!--td>{{ successItem.type }}</td-->
+                                        <td>{{ successItem.articleDate.value | amDateFormat: 'Do MMM YYYY' }}</td>
+                                        <td>{{ successItem.title }}</td>
+                                        <td class="newsDesc">{{ successItem.description }}</td>
+                                        <!--td class="by">{{ successItem.by }}</td-->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                        <!-- Testimonial Form display the list -->
+                        <button type="submit" ng-if="content.testimonialForm" ng-click="content.addtestimonialItem()" class="btn btn-block btn-primary add-btn testimonialButton">Add Testimonial Article</button>
+
+                        <div class="table-responsive showHover testimonialItems" ng-if="content.testimonialForm">
+                            <table class="table table-bordered" >
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th class="newsDesc">Description</th>
+                                        <th class="byTitle">By</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    <tr ng-repeat="testItem in content.testData" ng-click="content.testimonialDetail(testItem)">
+                                        <td>{{ testItem.articleDate.value | amDateFormat: 'Do MMM YYYY' }}</td>
+                                        <td class="newsDesc">{{ testItem.description }}</td>
+                                        <td class="by">{{ testItem.by }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+
+                        <!-- Generic items -->
+                        <div class="alert alert-danger fade in validationPanel" ng-if="content.error">
+                            <strong>{{content.errorType}} </strong>{{ content.error }}
+                        </div>
+                        
+                        <div class="alert alert-success fade in warningPanel" ng-if="content.feedback">
+                            <a class="close" data-dismiss="alert">&times;</a> 
+                            <strong>Success! </strong>{{ content.feedback }}
+                        </div>
+                        
+                        <div class="buttonSection" ng-if="content.homeForm">
+                            <button type="submit" ng-click="content.updateHome()" class="btn btn-primary" ng-if="content.updateButton">Update</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</div>

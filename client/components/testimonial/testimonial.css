@@ -1,0 +1,114 @@
+.mainTest {
+    min-height: 720px;              /* Forces footer to the bottom of the page */ 
+    background-color: #f2f2f2;
+    color: #000;
+    font-weight: 350;
+}
+
+.testSection {
+    padding-top: 0;
+}
+
+/* --------------------------------------------------------------*/
+/* SEARCH PANEL */
+/* --------------------------------------------------------------*/
+
+/*.searchPanel { 
+    width: 30%;
+    margin: 0 auto;
+    min-width: 290px;
+}
+
+.searchForm {
+    margin-bottom: 30px;
+}*/
+
+/* --------------------------------------------------------------*/
+/* Testimonial Items */
+/* --------------------------------------------------------------*/
+
+.testPanel { 
+    width: 60%;
+    margin: 0 auto;
+    min-width: 290px;
+    background-color: #f2f2f2;
+}
+
+.testPanel ul {
+    padding-left: 0;
+}
+
+.testPanelTitle {
+    margin-top: 40px;
+}
+
+.mainTestList {
+    list-style: none;
+}
+
+.testHeaderRow:first-child {
+    padding-top: 0px;
+}
+
+.testHeaderRow {
+    padding-top: 20px;
+    /*but not for first child*/
+}
+
+.testDate {
+    font-size: 75%;
+    font-weight: 310;
+}
+
+.testTitle {
+    color: #060050;
+    font-size: 110%;
+    font-weight: 500;
+    padding-top: 5px;
+}
+
+.mainTestDesc {
+    font-size: 90%;
+    font-weight: 300;
+    padding-top: 10px;
+}
+
+.mainTestBy {
+    margin-top: 10px;
+    font-size: 80%;
+    font-weight: 500;
+}
+
+
+
+.mainTestBy:after {
+    display: block;
+    height: 1px;
+    background-color: #888;
+    content: " ";
+    width: 20%;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+/* -------  Big tablets to 1200px (widths smaller than the 1140px row)  -------*/
+@media only screen and (max-width: 1200px) {
+    .testPanel {width: 90%;}
+}
+
+/* -------  Small tablets to big tablets 768px to 1023px  -------*/
+@media only screen and (max-width: 1023px) {
+    .testPanel {width: 90%;}
+}
+
+/* -------  Small phones to small tablets 481px to 767px  -------*/
+@media only screen and (max-width: 767px) {
+
+    .body { font-size: 7px; }
+
+    h2 { font-size: 150%;  }
+
+    .testPanel {width: 95%;}
+
+    /*.maintSuccessForm { width: 95%; }*/
+}

@@ -1,0 +1,49 @@
+<div class="mainTest">
+    <section class="testSection">
+
+        <div class="row">
+            <div class="testPanel">
+                <div class="col">
+
+                    <div class="row testHeadingRow">
+                        <div class="col-md-12 testHeadingCol">
+                            <div class="testPanelTitle">
+                                <h2>Testimonials</h2>                        
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <ul class="mainTestList" >
+                        <li ng-repeat="testItem in testimonial.testData" >
+
+                            <div class="row testHeaderRow">
+                                <div class="col-md-12 testHeaderCol">
+                                    <div class="testDate">
+                                        {{ testItem.articleDate | amDateFormat: 'Do MMM YYYY' }}
+                                    </div>
+                                    <div class="testTitle">
+                                        {{ testItem.title }}        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row testDescRow">
+                                <div class="col-md-12 testDescCol">
+                                    <div class="mainTestDesc"> {{ testItem.description }}</div>
+                                </div>
+                            </div>
+
+                            <div class="row testByRow">
+                                <div class="col-md-12 testByCol">
+                                    <div class="mainTestBy"> {{ testItem.by }}</div>
+                                </div>
+                            </div>
+
+                        </li>
+                    </ul>    
+                </div>    
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,74 @@
+
+section h2 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+section h2:after {
+    display: block;
+    height: 2px;
+    background-color: #888;
+    content: " ";
+    width: 100px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.login {
+	background-color: #060050;
+    min-height: 760px;
+}
+
+.section-login {
+    padding-top: 0px;
+}
+
+.login-panel {
+    width: 40%;
+    margin: 0 auto;
+    min-width: 290px;
+}
+
+.login-form {
+    background-color: #fff;
+    margin: 20px 10px;
+    padding: 20px;
+    border: solid 1px #a6a6aa;
+}
+
+.login-form .input-group {
+    width: 100%;
+    padding-bottom: 20px;
+    
+}
+
+.login-form .input-group .field-title {
+    font-size: 80%;
+    font-weight: 400;
+}
+
+.login-form .input-group input {
+    font-size: 80%;
+    font-weight: 400;
+}
+
+.form-control:focus {
+    border-color: #c33636;
+    box-shadow: none;
+}
+
+.forgotPassword a {
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 80%;
+    font-weight: 400;
+}
+
+
+/* -------  Small phones to small tablets 481px to 767px  -------*/
+@media only screen and (max-width: 767px) {
+    
+    .login-panel {
+        width: 80%;
+    }
+}

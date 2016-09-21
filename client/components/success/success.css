@@ -1,0 +1,106 @@
+.mainSuccess {
+    min-height: 720px;              /* Forces footer to the bottom of the page */ 
+    background-color: #f2f2f2;
+    color: #000;
+    font-weight: 400;
+    font-size: 90%;
+}
+
+.successSection {
+    padding-top: 0;
+}
+
+/* --------------------------------------------------------------*/
+/* SEARCH PANEL */
+/* --------------------------------------------------------------*/
+
+.searchPanel { 
+    width: 30%;
+    margin: 0 auto;
+    min-width: 290px;
+}
+
+.searchForm {
+    margin-bottom: 30px;
+}
+
+/* --------------------------------------------------------------*/
+/* Success Items */
+/* --------------------------------------------------------------*/
+
+.successPanel { 
+    width: 50%;
+    margin: 0 auto;
+    min-width: 290px;
+    background-color: #f2f2f2;
+}
+
+.successPanel ul {
+    padding-left: 0;
+}
+
+.successPanelTitle {
+    margin-top: 40px;
+}
+
+.mainSuccessList {
+    list-style: none;
+}
+
+.successHeaderRow {
+    padding-top: 20px;
+}
+
+.successDate {
+    margin-top: 10px;
+    font-size: 80%;  
+    color: #060050;  
+}
+
+.successTitle {
+    color: #060050;
+    font-size: 110%;
+    font-weight: 500;
+    padding-top: 5px;
+}
+
+.successDesc {
+    font-size: 90%;
+    font-weight: 300;
+    padding-top: 10px;
+}
+
+.successImage img {
+    width: 100%;
+    margin-top: 20px;
+    border: 2px solid #6a6a6a;
+}
+
+.successImage:after {
+    display: block;
+    height: 1px;
+    background-color: #888;
+    content: " ";
+    width: 20%;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+/* -------  Big tablets to 1200px (widths smaller than the 1140px row)  -------*/
+@media only screen and (max-width: 1200px) {
+    .successPanel {width: 90%;}
+}
+
+/* -------  Small tablets to big tablets 768px to 1023px  -------*/
+@media only screen and (max-width: 1023px) {
+    .successPanel {width: 90%;}
+}
+
+/* -------  Small phones to small tablets 481px to 767px  -------*/
+@media only screen and (max-width: 767px) {
+
+    .body { font-size: 7px; }
+    h2 { font-size: 150%;  }
+    .successPanel {width: 95%;}
+}
+

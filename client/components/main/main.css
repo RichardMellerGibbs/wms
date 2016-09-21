@@ -1,0 +1,327 @@
+/* --------------------------------------------------------------*/
+/* BASIC SETUP */
+/* --------------------------------------------------------------*/
+body {
+    /*background-color: #111bae;*/
+    background-color: #e0dede;
+    color: #888;
+    font-family: 'Lato','Arial', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+    margin: 0;
+}
+
+/* Required to stop the scroll bars appearing */
+.row {
+    /*max-width: 1440px;*/
+    max-width: 1840px;
+    /* Keeping the row margin looking nicely proportioned */
+    margin: 0 30px;
+}
+
+section {
+    padding: 30px 0px;
+}
+
+/* -------  Headings -------*/
+h1, h2 , h3 {
+    margin: 0;
+    color: #888;
+    font-size: 240%;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    word-spacing: 4px;
+}
+
+h2 {
+    font-size: 200%;
+}
+
+h3 {
+    font-size: 110%;
+}
+
+
+/* --------------------------------------------------------------*/
+/* HEADER */
+/* --------------------------------------------------------------*/
+
+/* -------  Logo -------*/
+/* Container for the logo set */
+.logo {
+    width: 250px;
+    /*border: 1px solid red;*/
+}
+
+/* Center the 3 elements of the logo */
+.logo .image,
+.logo .sitename,
+.logo .established  {
+    margin: 0 auto;
+}
+
+/* Give size to each element of the logo */
+.logo .image {
+    width: 110px;
+}
+
+/* Give size to each element of the logo */
+.logo .sitename {
+    width: 230px;
+    font-size: 120%;
+    font-weight: 400;
+    /*color: #585858;*/
+    color: #888;
+    /*border: 1px solid #fff;*/
+}
+
+/* Give size to each element of the logo */
+.logo .established {
+    width: 90px;
+    font-weight: 400;
+}
+
+.logo img {
+    width: 110px;
+    min-width: 80px;
+}
+
+/* --------------------------------------------------------------*/
+/* NAVBAR */
+/* --------------------------------------------------------------*/
+.navbar {
+    list-style: none;
+    /*padding-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;*/
+    padding: 20px;
+    
+    /*Don't know where this border came from but now turned off */
+    border: 0px;
+
+    /* Nice linear gradient of dark blue to transparent for the nav header */
+    background: #060050; 
+
+    margin-bottom: 0; /*necessary for making the canvas a single colour */    
+    /* There was a single white pixel in the bottom left corner of the navbar. This made it dissapear */
+    border-radius: 0;
+}
+
+.navbar-brand {
+    padding: 0;
+}
+
+.navbar-brand img{
+    width: 20%;
+    max-width: 130px;
+    min-width: 100px;
+    position:absolute;
+    padding-left: 20px;
+}
+
+.icon-bar {
+    border: solid 1px #fff;
+}
+
+ul.navbar-nav a,
+.dropdown a.dropdown-toggle {
+    /*border: 1px solid #fff;*/
+    font-weight: 300;
+    color: #cacaca;
+}
+
+/* overriding some of the default styling to give the dropdown menu items consistency */
+.dropdown-menu {
+    font-size: 100%;
+}
+
+.dropdown a.dropdown-toggle:hover,
+.dropdown a.dropdown-toggle:active {
+    background-color: transparent;
+}
+
+/* The dropdown panel gets a slightly lighter blue */
+ul.dropdown-menu {
+    background-color: #090074;
+}
+
+.navbar li a:link,
+.navbar li a:visited,
+ul.dropdown-menu li a:link,
+ul.dropdown-menu li a:visited,
+.dropdown a.dropdown-toggle {
+    text-decoration: none;
+    color: #888;
+    background-color: transparent;
+}
+
+.navbar li a:hover,
+.navbar li a:active,
+ul.dropdown-menu li a:hover,
+ul.dropdown-menu li a:active {
+    color: #fff;
+}
+
+
+/* -------  Small tablets to big tablets 768px to 1023px  -------*/
+@media only screen and (max-width: 1023px) {
+
+    /* Keeping the row margin looking nicely proportioned */
+    .row {
+        margin: 0 15px;
+    }
+}
+
+/* -------  Small phones to small tablets 481px to 767px  -------*/
+@media only screen and (max-width: 767px) {
+
+    /* Keeping the row margin looking nicely proportioned */
+    .row {
+        margin: 0 10px;
+    }
+
+    /* Pushes the expanded mobile menu down a little. Otherwise it overlapped with the logo */ 
+    ul.navbar-nav {
+        margin-top: 40px;
+    }
+
+    ul.navbar-nav a {
+        color: #0b0b0b;
+    }
+
+    /* Needed dev tools inspect to find this one */
+    /* Gives the dropdown menu the look at the main menu */
+    .navbar-nav .open .dropdown-menu>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    /* Nice link background and text color */
+    .navbar li a:hover,
+    .navbar li a:active,
+    ul.dropdown-menu li a:hover,
+    ul.dropdown-menu li a:active,
+    .dropdown a.dropdown-toggle:hover,
+    .dropdown a.dropdown-toggle:active {
+        color: #fff;
+        background-color: #888;;
+    }
+
+    /* Removes the little horizontal line drawn by bootstrap. Went straight through the logo */
+    .navbar-collapse {
+        -webkit-box-shadow: none;
+	    -moz-box-shadow: none;
+	    box-shadow: none;
+    }
+
+    .navbar-brand img{
+        padding-left: 15px;    
+        width: 100px;
+    }
+
+    .logo .sitename {
+        color: #888;
+    }
+}
+
+/* --------------------------------------------------------------*/
+/* FOOTER SECTION */
+/* --------------------------------------------------------------*/
+
+/*footer:before {
+    display: block;
+    height: 1px;
+    background-color: #888;
+    content: " ";
+    width: 1000px;
+    margin: 0 auto;
+}*/
+
+footer {
+
+    background: #020018; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #060050 , #020018); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #05003c , #01000d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+ 
+    color: #888;
+    font-weight: 380;
+    font-size: 80%;
+}
+
+footer h3 {
+    font-size: 120%;
+}
+
+.box {
+    padding: 0;
+}
+
+/* Basic column positioning giving it some space */
+footer .box {
+    margin-top: 50px;
+    margin-bottom: 5px;
+    /*border: 1px solid #fff;*/
+}
+
+/* By defauly there was a 20px top margin which I didn't like */
+footer h2,
+footer h3 {
+    margin-top: 0;
+}
+
+/* Push the nav out to the right. Turns off default style */
+.footer-nav {
+    list-style: none;
+    float: right;
+    margin-right: 30px;
+}
+
+/* Turns it from a vertical list into a horizontal list with some margin to the right of each link */ 
+.footer-nav li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+/* No need for any margin on the last most right link */
+.footer-nav li:last-child {
+    margin-right: 0px;
+}
+
+/*.footer-nav a {
+    color: #888;
+}*/
+
+.footer-nav li a:link,
+.footer-nav li a:visited {
+    text-decoration: none;
+    color: #888;
+}
+
+.footer-nav li a:hover,
+.footer-nav li a:active {
+    color: #ddd;
+}
+
+
+/* -------  Small phones to small tablets 481px to 767px  -------*/
+@media only screen and (max-width: 1023px) {
+
+    /* Push the menu to the left to align with the other columnd. Remove the default left padding */
+    .footer-nav {
+        float: left;
+        padding-left: 0;
+    }    
+}
+
+/* -------  Small phones to small tablets 481px to 767px  -------*/
+@media only screen and (max-width: 767px) {
+
+    /* Turn off the nav for phones */
+    .footer-nav {
+        display: none;
+    }    
+}
+
+

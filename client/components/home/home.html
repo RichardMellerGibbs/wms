@@ -1,0 +1,96 @@
+<div class="homeView">
+    <section class="sectionImage">
+        <div class="row imageRow">
+            <div class="col-md-3 col-sm-6 firstImgCol img1">
+                <img src="../images/cand1.jpg" alt="First Slide">    
+            </div>
+            <div class="col-md-3 col-sm-6 firstImgCol img2">
+                <img src="../images/cand5.jpg" alt="First Slide">    
+            </div>
+            <div class="col-md-3 col-sm-6 firstImgCol img3">
+                <img src="../images/cand3.jpg" alt="First Slide">    
+            </div>
+            <div class="col-md-3 col-sm-6 firstImgCol img4">
+                <img src="../images/cand4.jpg" alt="First Slide">    
+            </div>    
+        </div>
+    </section>
+
+    <section class="sectionDesc">
+        <div class="row rowDesc">
+            <div class="col-md-6 col-sm-12 colDesc aboutUs">
+                <h3>The Stud</h3>
+                <p>{{ home.sec1Col1Par1 }}</p>
+                <p>{{ home.sec1Col1Par2 }}</p>
+                <p>{{ home.sec1Col1Par3 }}</p>
+                <p>{{ home.sec1Col1Par4 }}</p>
+            </div>
+
+            <div class="col-md-6 col-sm-12 colDesc newsCol">
+                <h3>Latest News</h3>
+                <ul class="newsList">
+                    <li ng-repeat="newsItem in home.newsData" class="newsItem">
+
+                        <div class="row newsTitleRow">
+                            <div class="col-sm-12 newsDateCol">
+                                <div class="articleDate"> {{ newsItem.articleDate | amDateFormat: 'Do MMM YYYY' }}</div>
+                                
+                            </div>
+                            <div class="col-sm-8 newsTitleCol">
+                                <div class="articleTitle">{{ newsItem.title }}</div>
+                            </div>
+                        </div>
+
+                        <div class="row newsSnippetRow">
+                            <div class="col-sm-12 newsSnippetCol">
+                                <div class="articleSnippet"> {{ newsItem.shortDescription }}</div>
+                            </div>
+                        </div>
+
+                        <div class="row readMoreRow">
+                            <div class="col-sm-12 readMoreCol">
+                                <div class="readMoreLink"><a ng-click="home.newsDetail(newsItem.id)">Full Story</a></div>
+                            </div>
+                        </div>
+
+                    </li>
+                </ul>
+
+            </div>               
+        </div>
+    </section>
+
+    <section class="sectionManage">
+        <div class="row">
+                <h2>Stabling</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-12 manageCol colDesc">
+                <img src="../images/edkatherine2.jpg" alt="Ed and Katherine Player">
+                <div class="description">
+                    <p>{{ home.sec2Col1Par1 }}</p>
+                    <p>{{ home.sec2Col1Par2 }}</p>
+                    <p>{{ home.sec2Col1Par3 }}</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12 manageCol colDesc">
+                <img src="../images/stables.jpg" alt="The Stables">
+                <div class="description">
+                    <p>{{ home.sec2Col2Par1 }}</p>
+                    <p>{{ home.sec2Col2Par2 }}</p>
+                    <p>{{ home.sec2Col2Par3 }}</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12 manageCol colDesc">
+                <img src="../images/house3.jpg" alt="The Grounds">
+                <div class="description">
+                    <p>{{ home.sec2Col3Par1 }}</p>
+                    <p>{{ home.sec2Col3Par2 }}</p>
+                    <p>{{ home.sec2Col3Par3 }}</p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+</div>

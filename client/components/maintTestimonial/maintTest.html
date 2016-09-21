@@ -1,0 +1,62 @@
+<!-- Maintain success -->
+<div class="maintSuccess">
+    
+    <div class="container-fluid">
+            
+        <section class="sectionMaintSuccess">
+            
+            <div class="row">
+                <h2>Testimonial Article</h2>
+            </div>
+            
+            <div class="row">
+                <div class="maintSuccessPanel">
+                    <div class="col">
+                        
+                        <form name="maintSuccessForm" class="maintSuccessForm">
+
+                            <div class="input-group">
+                                <div class="field-title">Article Date</div>
+                                <input type="date" name="articleDate" ng-model="maintTestimonial.articleDate.value" autofocus class="form-control bg-white">
+                            </div>
+                            
+                            <div class="input-group successDescription">
+                                <div class="field-title">Description</div>
+                                    <textarea type="text" name="successDescription" ng-model="maintTestimonial.article.description" autofocus class="form-control bg-white"></textarea>
+                            </div>
+
+                            <div class="input-group">
+                                <div class="field-title">By</div>
+                                <input type="text" name="successBy" ng-model="maintTestimonial.article.by" autofocus class="form-control bg-white">
+                            </div>
+                           
+                            <div class="alert alert-danger fade in validationPanel" ng-if="maintTestimonial.error">
+                                <strong>{{maintTestimonial.errorType}} </strong>{{ maintTestimonial.error }}
+                            </div>
+                            
+                            <div class="alert alert-success fade in warningPanel" ng-if="maintTestimonial.feedback">
+                                <a class="close" data-dismiss="alert">&times;</a> 
+                                <strong>Success!</strong>{{ maintTestimonial.feedback }}
+                            </div>
+                            
+                            
+                            
+                            
+                            <div class="buttonSection">
+                                <button type="submit" ng-click="maintTestimonial.addTestimonial()" class="btn btn-primary" ng-if="maintTestimonial.addButton">Add</button>
+                                <button type="submit" ng-click="maintTestimonial.updateTestimonial()" class="btn btn-primary" ng-if="maintTestimonial.updateButton">Update</button>
+                                <button type="submit" ng-click="maintTestimonial.confirmDelete()" class="btn btn-primary" ng-if="maintTestimonial.deleteButton">Delete</button>
+                                <button type="submit" ng-click="maintTestimonial.closeForm()" class="btn btn-primary" ng-if="maintTestimonial.closeButton">Close</button>
+                                
+                                <!--Are you sure buttons for deleting event -->
+                                <button type="" class="btn btn-danger btn-upd" ng-click="maintTestimonial.deleteTestimonial(maintTestimonial.testimonialId)" ng-if="maintTestimonial.showDeleteSection">Confirm Delete</button>
+                                <button type="" class="btn btn-primary btn-upd" ng-click="maintTestimonial.closeDeleteSection()" ng-if="maintTestimonial.showDeleteSection">Cancel Delete</button>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
