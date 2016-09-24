@@ -94,7 +94,7 @@ angular.module('homeCtrl', ['contentService', 'newsService', 'logService'])
 
             //Shorten the description to show just a small amount of the full text
             if (newsData[i].description.length > 50) { 
-                shortDescription = newsData[i].description.substring(0,50);
+                shortDescription = newsData[i].description.substring(0,150);
             } else {
                 shortDescription = newsData[i].description;
             }
