@@ -84,6 +84,7 @@ angular.module('homeCtrl', ['contentService', 'newsService', 'logService'])
         vm.newsData = [];
         var newsItem = {};
         var shortDescription;
+        var mobileDescription;
         var maxdisplaySize = 3; //Restrict home page news items to this number
 
         if (newsData.length < 3) {
@@ -94,7 +95,9 @@ angular.module('homeCtrl', ['contentService', 'newsService', 'logService'])
 
             //Shorten the description to show just a small amount of the full text
             if (newsData[i].description.length > 50) { 
-                shortDescription = newsData[i].description.substring(0,150);
+                shortDescription = cutString(newsData[i].description,120) + '...';
+                mobileDescription = cutString(newsData[i].description,80) + '...';
+                //shortDescription = newsData[i].description.substring(0,150);
             } else {
                 shortDescription = newsData[i].description;
             }
@@ -115,6 +118,15 @@ angular.module('homeCtrl', ['contentService', 'newsService', 'logService'])
         
         Log.logEntry('newsitemid ' + newsItemId);
         $location.path('/news/' + newsItemId);
+    }
+
+    /*************************************************************************/
+    /* Return n characters but do not chop a word in half                    */
+    /*************************************************************************/
+    function cutString(s, n){
+        var cut= s.indexOf(' ', n);
+        if(cut== -1) return s;
+        return s.substring(0, cut)
     }
 
 }]);
