@@ -93,6 +93,10 @@ router.put('/:news_id', authMiddle.isAuthenticated, function(req, res) {
             logger.info('snippet is populated');
             news.snippet = req.body.snippet;
         }
+
+        if (req.body.picture){
+            news.picture = req.body.picture;
+        }
         
         logger.info('About to save the news schema');
         // save the news
@@ -137,6 +141,11 @@ router.post('/', authMiddle.isAuthenticated, function(req, res) {
     
     if (req.body.snippet){
         news.snippet = req.body.snippet;
+    }
+
+    if (req.body.picture){
+        logger.info('picture is populated %s', req.body.picture);
+        news.picture = req.body.picture;
     }
       
     news.description = req.body.description; 

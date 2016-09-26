@@ -2,6 +2,41 @@ angular.module('newsCtrl', ['newsService','logService'])
 .controller('newsController', ['$rootScope', '$location', '$routeParams', '$window', 'News', 'Log',  function($rootScope, $location, $routeParams, $window, News, Log) {  
     
     var vm = this;
+    vm.newsData = [];
+    var newsItem = {};
+
+    Log.logEntry('Inside the newsController');
+
+    News.all()
+    .success(function(data) {
+
+        Log.logEntry('news count ' + data.length);
+
+        for (i=0; i < data.length; i++) {
+
+            vm.picturePresent = false;
+
+            if (data[i].picture) {
+                vm.picturePresent = true;
+            }
+
+            newsItem = {
+                    id: data[i]._id,
+                    title: data[i].title,
+                    description: data[i].description,
+                    picture: data[i].picture,
+                    picturePresent: vm.picturePresent,
+                    articleDate: {value: new Date(data[i].articleDate)} 
+            };
+
+            vm.newsData.push(newsItem);
+            
+        }
+
+    });
+
+    /*
+    var vm = this;
 
     Log.logEntry('Inside the newsController. Routeparam = ' + $routeParams.newsId);
 
@@ -49,5 +84,6 @@ angular.module('newsCtrl', ['newsService','logService'])
         });
         
     }
+    */
 
 }]);

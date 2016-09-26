@@ -101,19 +101,38 @@
                     
                     <div class="collapse navbar-collapse" id="mvNavbar">
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="active"><a href="/home">Home</a></li>
-                            <!--li><a href="/join">About Us</a></li-->
-                            <!--li><a href="/login">Services</a></li-->
-                            <li><a href="/news/x">News</a></li>
-                            <li><a href="/success">Success</a></li>              
-                            <li><a href="/testimonial">Testimonials</a></li>
-                            <li ng-if="!main.loggedIn"><a href="/login">Login</a></li>
+                            <li class="active">
+                                <a href="/home" class="hidden-xs">Home</a>
+                                <a href="/home" class="visible-xs" data-toggle="collapse" data-target="#mvNavbar">Home</a>
+                            </li>
+                            <li>
+                                <a href="/news/x" class="hidden-xs">News</a>
+                                <a href="/news/x" class="visible-xs" data-toggle="collapse" data-target="#mvNavbar">News</a>
+                            </li>
+                            <li>
+                                <a href="/success" class="hidden-xs">Success</a>
+                                <a href="/success" class="visible-xs" data-toggle="collapse" data-target="#mvNavbar">Success</a>
+                            </li>              
+                            <li>
+                                <a href="/testimonial" class="hidden-xs">Testimonials</a>
+                                <a href="/testimonial" class="visible-xs" data-toggle="collapse" data-target="#mvNavbar">Testimonials</a>
+                            </li>
+                            <li ng-if="!main.loggedIn">
+                                <a href="/login" class="hidden-xs">Login</a>
+                                <a href="/login" class="visible-xs" data-toggle="collapse" data-target="#mvNavbar">Login</a>
+                            </li>
 
                             <li ng-if="main.loggedIn" class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administration <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/maintContent/x">Maintain Content</a></li>
-                                    <li ng-if="main.loggedIn"><a href="/" ng-click="main.doLogout()">Logout</a></li>
+                                    <li>
+                                        <a href="/maintContent/x" class="hidden-xs">Maintain Content</a>
+                                        <a href="/maintContent/x" class="visible-xs" data-toggle="collapse" data-target="#mvNavbar">Maintain Content</a>
+                                    </li>
+                                    <li ng-if="main.loggedIn">
+                                        <a href="/" class="hidden-xs" ng-click="main.doLogout()">Logout</a>
+                                        <a href="/" class="visible-xs" data-toggle="collapse" data-target="#mvNavbar" ng-click="main.doLogout()">Logout</a>
+                                    </li>
                                 </ul>
                             </li>
                             
@@ -132,8 +151,10 @@
                 <div class="row">
                     <div class="col-md-4 box">
                         <h3>Whatton Manor Stud</h3>
-                        <p>Edward Player</br>Mobile: 0773 3261757</br>Office: 01949 850221</br>Fax: 01949 850993</br></p>
-                        <p>email: player.edward@gmail.com</p>
+                        <p>Peter Player</br>Mobile: 0786 032232</br>email: peter.player@rocketmail.com</p></br>
+
+                        <p class="ed">Edward Player</br>Mobile: 0773 3261757</br>Office: 01949 850221</br>Fax: 01949 850993</br>email: player.edward@gmail.com</p>
+                        <!--p>email: player.edward@gmail.com</p-->
                     </div>
                     <div class="col-md-4 box address">
                         <h3>Address</h3>

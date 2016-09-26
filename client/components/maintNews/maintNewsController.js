@@ -81,12 +81,16 @@ function($rootScope, $location, $routeParams, $window, Auth, News, Log) {
             vm.error = 'A article description must be supplied';
             return;        
         }
-        
+
         var articletData = {
             articleDate: vm.articleDate.value,
             title: vm.article.title,
             description: vm.article.description
         };
+
+        if (vm.article.picture) {
+            articletData.picture = vm.article.picture;
+        }
               
         News.create(articletData)
         .success(function(data) {
@@ -132,6 +136,10 @@ function($rootScope, $location, $routeParams, $window, Auth, News, Log) {
             description: vm.article.description
             //snippet: vm.article.snippet
         };
+
+        if (vm.article.picture) {
+            articletData.picture = vm.article.picture;
+        }
         
         News.update(vm.newsId, articletData)
         .success(function(data) {
@@ -218,5 +226,27 @@ function($rootScope, $location, $routeParams, $window, Auth, News, Log) {
 
         $location.path('/maintContent/news');    
     }
+
+    /*************************************************************************/
+    /* Image upload to filepicer */
+    /*************************************************************************/
+    vm.imageUpload = function(){
+            
+        filepicker.pick(
+            {
+                mimetype: 'image/*',
+                language: 'en',
+                services: ['COMPUTER','DROPBOX','GOOGLE_DRIVE','IMAGE_SEARCH', 'FACEBOOK', 'INSTAGRAM'],
+                openTo: 'IMAGE_SEARCH',
+                imageMax: [800, 800]
+            },
+            function(Blob){
+                vm.article.picture = Blob.url;
+            },
+            function(error){
+                Log.logEntry('failure from pick'); 
+            }
+        );
+    };
 
 }]);

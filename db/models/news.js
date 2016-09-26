@@ -9,7 +9,8 @@ var NewsSchema = new Schema({
     title: {type: String},
     articleDate: {type: Date, required: true},
     snippet: {type: String},
-    description: {type: String, required: true}
+    description: {type: String, required: true},
+    picture: {type: Schema.Types.Mixed}
 });
 
 module.exports.News = mongoose.model('News',NewsSchema);

@@ -25,15 +25,21 @@
                                 <input type="text" name="newsTitle" ng-model="news.article.title" autofocus class="form-control bg-white">
                             </div>
 
-                            <!--div class="input-group">
-                                <div class="field-title">Snippet</div>
-                                <input type="text" name="newsSnippet" ng-model="news.article.snippet" autofocus class="form-control bg-white">
-                            </div-->
-                            
                             <div class="input-group newsDescription">
                                 <div class="field-title">Description</div>
                                     <textarea type="text" name="newsDescription" ng-model="news.article.description" autofocus class="form-control bg-white"></textarea>
                             </div>
+
+                            <!--div class="input-group imageUpload" >
+                                <div class="field-title">Choose Image</div>
+                                <button type="button" class="btn btn-default" ng-click="news.imageUpload()">
+                                    Upload <span class="caret"></span>
+                                </button>    
+
+                                <div class="mainImage">
+                                    <img ng-src="{{news.article.picture | fpConvert: {filter:'sharpen'} }}">
+                                </div>
+                            </div-->
                            
                             <div class="alert alert-danger fade in validationPanel" ng-if="news.error">
                                 <strong>{{news.errorType}} </strong>{{ news.error }}
