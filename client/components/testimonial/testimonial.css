@@ -79,8 +79,6 @@
     font-weight: 500;
 }
 
-
-
 .mainTestBy:after {
     display: block;
     height: 1px;
@@ -88,7 +86,8 @@
     content: " ";
     width: 20%;
     margin: 0 auto;
-    margin-top: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 /* -------  Big tablets to 1200px (widths smaller than the 1140px row)  -------*/
@@ -108,7 +107,9 @@
 
     h2 { font-size: 150%;  }
 
-    .testPanel {width: 95%;}
+    .testPanel {width: 100%;}
+    .testDescCol {padding: 0;}
+    .testByCol {padding: 0;}
 
     /*.maintSuccessForm { width: 95%; }*/
 }

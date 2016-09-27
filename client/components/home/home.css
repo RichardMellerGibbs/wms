@@ -46,6 +46,13 @@
 
     /* reduced the padding between images on mobile to better balance the vertical gap between images */
     .firstImgCol {padding-top: 0;}
+    /*.firstImgCol {padding-left: 0;}
+    .firstImgCol {padding-right: 0;}
+    
+
+    .colDesc {padding-left: 0;}
+    .colDesc {padding-right: 0;}
+    */
 
     /* reduced the padding between last image and the main about us paragraph */
     .img3 {padding-bottom: 0;}

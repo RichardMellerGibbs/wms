@@ -50,8 +50,8 @@
                                 </div>
                             </div>
 
-                             <div class="row successImageRow" ng-if="successItem.picturePresent">
-                                <div class="col-md-12 successImageCol">
+                             <div class="row successImageRow" >
+                                <div class="col-md-12 successImageCol" ng-if="successItem.picturePresent">
                                     <div class="successImage">
                                         <img ng-src="{{successItem.picture | fpConvert: {filter:'sharpen'} }}">
                                     </div>

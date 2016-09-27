@@ -94,5 +94,8 @@
 
     /*.body { font-size: 7px; }*/
     /*h2 { font-size: 150%;  }*/
-    .newsPanel {width: 95%;}
+    .newsPanel {width: 100%;}
+    .newsDescCol,
+    .newsHeaderCol {padding: 0;}
+    /*.newsDescRow {margin: 0;}*/
 }

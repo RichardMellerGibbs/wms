@@ -255,8 +255,6 @@ function($rootScope, $location, $routeParams, $window, Auth, Success, Log) {
     /* Image upload to filepicer */
     /*************************************************************************/
     vm.imageUpload = function(){
-        
-       //console.log('Trying to pick an image');
             
         //filepicker.pick(picker_options, onSuccess(Blob){}, onError(FPError){}, onProgress(FPProgress){})
         filepicker.pick(
@@ -268,16 +266,10 @@ function($rootScope, $location, $routeParams, $window, Auth, Success, Log) {
                 imageMax: [800, 800]
             },
             function(Blob){
-                //console.log(JSON.stringify(Blob));
-                //console.log('success from pick');
-                //console.log(JSON.stringify(Blob));
                 vm.article.picture = Blob.url;
-                //console.log('vm.event.picture ' + vm.event.picture);
-                //vm.$apply();
             },
             function(error){
-                Log.logEntry('failure from pick');
-                //console.log(error.toString()); 
+                Log.logEntry('failure from filerpick'); 
             }
         );
     };
