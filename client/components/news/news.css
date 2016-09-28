@@ -28,7 +28,7 @@
 /* --------------------------------------------------------------*/
 
 .newsPanel { 
-    width: 60%;
+    width: 50%;
     margin: 0 auto;
     min-width: 290px;
     background-color: #f2f2f2;
@@ -68,7 +68,7 @@
     padding-top: 10px;
 }
 
-.mainNewsDesc:after {
+/*.mainNewsDesc:after {
     display: block;
     height: 1px;
     background-color: #888;
@@ -76,6 +76,23 @@
     width: 20%;
     margin: 0 auto;
     margin-top: 30px;
+}*/
+
+.newsImage img {
+    width: 100%;
+    margin-top: 30px;
+    border: 2px solid #6a6a6a;
+    margin-bottom: 40px;
+}
+
+.newsImageRow:after {
+    display: block;
+    height: 1px;
+    background-color: #888;
+    content: " ";
+    width: 20%;
+    margin: 0 auto;
+    margin-top: 40px;
 }
 
 
@@ -97,5 +114,9 @@
     .newsPanel {width: 100%;}
     .newsDescCol,
     .newsHeaderCol {padding: 0;}
+    .newsImageCol {padding: 0;}
     /*.newsDescRow {margin: 0;}*/
+
+    .newsImageRow:after {margin-top: 20px;}
+    .newsImage img {margin-bottom: 10px;}
 }

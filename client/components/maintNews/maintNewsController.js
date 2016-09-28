@@ -242,6 +242,12 @@ function($rootScope, $location, $routeParams, $window, Auth, News, Log) {
             },
             function(Blob){
                 vm.article.picture = Blob.url;
+                //$scope.article.picture = Blob.url;
+
+                //var random = (new Date()).toString();
+                //$scope.article.picture = Blob.url + "?cb=" + random;
+                //$scope.$apply();
+                //Log.logEntry('uploaded url is ' + vm.article.picture);
             },
             function(error){
                 Log.logEntry('failure from pick'); 

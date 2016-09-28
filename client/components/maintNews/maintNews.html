@@ -30,7 +30,7 @@
                                     <textarea type="text" name="newsDescription" ng-model="news.article.description" autofocus class="form-control bg-white"></textarea>
                             </div>
 
-                            <!--div class="input-group imageUpload" >
+                            <div class="input-group imageUpload" >
                                 <div class="field-title">Choose Image</div>
                                 <button type="button" class="btn btn-default" ng-click="news.imageUpload()">
                                     Upload <span class="caret"></span>
@@ -39,7 +39,7 @@
                                 <div class="mainImage">
                                     <img ng-src="{{news.article.picture | fpConvert: {filter:'sharpen'} }}">
                                 </div>
-                            </div-->
+                            </div>
                            
                             <div class="alert alert-danger fade in validationPanel" ng-if="news.error">
                                 <strong>{{news.errorType}} </strong>{{ news.error }}

@@ -48,6 +48,14 @@
                                 </div>
                             </div>
 
+                            <div class="row newsImageRow" >
+                                <div class="col-md-12 newsImageCol" ng-if="newItem.picturePresent">
+                                    <div class="newsImage">
+                                        <img ng-src="{{newItem.picture | fpConvert: {filter:'sharpen'} }}">
+                                    </div>
+                                </div>
+                            </div>
+
                         </li>
                     </ul>    
                 </div>    
