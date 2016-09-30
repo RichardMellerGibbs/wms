@@ -1,5 +1,6 @@
 angular.module('newsCtrl', ['newsService','logService'])
-.controller('newsController', ['$rootScope', '$location', '$routeParams', '$window', 'News', 'Log',  function($rootScope, $location, $routeParams, $window, News, Log) {  
+.controller('newsController', ['$rootScope', '$location', '$sce', '$routeParams', '$window', 'News', 'Log',  
+function($rootScope, $location, $sce, $routeParams, $window, News, Log) {  
         
     var vm = this;
     vm.newsData = [];
@@ -27,13 +28,38 @@ angular.module('newsCtrl', ['newsService','logService'])
                     vm.picturePresent = true;
                 }
 
+                //Make sure the URL starts with http://
+                var urlText = data[i].articleUrl;
+                var urlStart = '';
+                var urlLink = '';
+
+                if (urlText != undefined) {
+
+                    urlStart = urlText.substring(0, 3);    
+                
+                    var urlValue = '';
+
+                    if (urlStart == 'www') {
+                        urlValue = 'http://' + data[i].articleUrl;
+                    } else {
+                        urlValue = data[i].articleUrl;
+                    }
+
+                    //Prepare the url string
+                    var linkText = "<a href=" + urlValue + ">" + data[i].articleUrlDescription + "</a>";
+
+                    //Mark the string as guaranteed html for angular
+                    urlLink = $sce.trustAsHtml(linkText);
+                }
+
                 newsItem = {
                         id: data._id,
                         title: data.title,
                         description: data.description,
                         picture: data.picture,
                         picturePresent: vm.picturePresent,
-                        articleDate: {value: new Date(data.articleDate)} 
+                        articleDate: {value: new Date(data.articleDate)},
+                        urlLink: urlLink 
                 };
 
                 vm.newsData.push(newsItem);
@@ -58,13 +84,38 @@ angular.module('newsCtrl', ['newsService','logService'])
                     vm.picturePresent = true;
                 }
 
+                //Make sure the URL starts with http://
+                var urlText = data[i].articleUrl;
+                var urlStart = '';
+                var urlLink = '';
+                
+                if (urlText != undefined) {
+
+                    urlStart = urlText.substring(0, 3);    
+                
+                    var urlValue = '';
+
+                    if (urlStart == 'www') {
+                        urlValue = 'http://' + data[i].articleUrl;
+                    } else {
+                        urlValue = data[i].articleUrl;
+                    }
+
+                    //Prepare the url string
+                    var linkText = "<a href=" + urlValue + ">" + data[i].articleUrlDescription + "</a>";
+
+                    //Mark the string as guaranteed html for angular
+                    urlLink = $sce.trustAsHtml(linkText);
+                }
+
                 newsItem = {
                         id: data[i]._id,
                         title: data[i].title,
                         description: data[i].description,
                         picture: data[i].picture,
                         picturePresent: vm.picturePresent,
-                        articleDate: {value: new Date(data[i].articleDate)} 
+                        articleDate: {value: new Date(data[i].articleDate)},
+                        urlLink: urlLink  
                 };
 
                 vm.newsData.push(newsItem);

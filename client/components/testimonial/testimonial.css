@@ -73,13 +73,18 @@
     padding-top: 10px;
 }
 
-.mainTestBy {
+.mainTestBy,
+.mainTestLink {
     margin-top: 10px;
     font-size: 80%;
     font-weight: 500;
 }
 
-.mainTestBy:after {
+.mainTestBy span {
+    margin-left: 10px; 
+}
+
+.testByCol:after {
     display: block;
     height: 1px;
     background-color: #888;

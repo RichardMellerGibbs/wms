@@ -94,20 +94,27 @@ function($rootScope, $location, $routeParams, $window, Auth, Success, Log) {
             return;        
         }
 
+        if (!vm.article.articleUrl && vm.article.articleUrlDescription) {
+            vm.error = 'A article URL must be supplied if a URL description is present';
+            return;        
+        }
+
         var articletData = {
             type: 'success',
             title: vm.article.title,
             articleDate: vm.articleDate.value,
-            description: vm.article.description
+            description: vm.article.description,
+            articleUrl: vm.article.articleUrl,
+            articleUrlDescription: vm.article.articleUrlDescription
         };
         
-        if (vm.articleTypeChosen === 'success') {
+        /*if (vm.articleTypeChosen === 'success') {
             articletData.title = vm.article.title;    
         }
 
         if (vm.articleTypeChosen === 'testimonial') {
             articletData.by = vm.article.by;    
-        }
+        }*/
 
         if (vm.article.picture) {
             articletData.picture = vm.article.picture;
@@ -155,11 +162,18 @@ function($rootScope, $location, $routeParams, $window, Auth, Success, Log) {
             return;        
         }
 
+        if (!vm.article.articleUrl && vm.article.articleUrlDescription) {
+            vm.error = 'A article URL must be supplied if a URL description is present';
+            return;        
+        }
+
         // LOAD UP THE OBJECT
         var articletData = {
             articleDate: vm.articleDate.value,
             description: vm.article.description,
-            title: vm.article.title
+            title: vm.article.title,
+            articleUrl: vm.article.articleUrl,
+            articleUrlDescription: vm.article.articleUrlDescription
         };
             
         if (vm.article.picture) {

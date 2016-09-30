@@ -29,6 +29,15 @@
                                 <div class="field-title">By</div>
                                 <input type="text" name="successBy" ng-model="maintTestimonial.article.by" autofocus class="form-control bg-white">
                             </div>
+
+                            <div class="input-group">
+                                <div class="field-title">URL</div>
+                                <input type="text" name="articleUrl" ng-model="maintTestimonial.article.articleUrl" autofocus class="form-control bg-white">
+                            </div>
+                            <div class="input-group">
+                                <div class="field-title">URL Description</div>
+                                <input type="text" name="articleUrlDescription" ng-model="maintTestimonial.article.articleUrlDescription" autofocus class="form-control bg-white">
+                            </div>
                            
                             <div class="alert alert-danger fade in validationPanel" ng-if="maintTestimonial.error">
                                 <strong>{{maintTestimonial.errorType}} </strong>{{ maintTestimonial.error }}

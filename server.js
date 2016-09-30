@@ -55,6 +55,10 @@ app.all('/maintTestimonial/:testimonialId', function(req, res, next) {
   res.sendFile('client/index.html', { root: __dirname });
 });
 
+app.all('/findUs', function(req, res, next) {
+  res.sendFile('client/index.html', { root: __dirname });
+});
+
 // =============================================================================
 // CONNECT TO MONGO
 mongoose.Promise = global.Promise;

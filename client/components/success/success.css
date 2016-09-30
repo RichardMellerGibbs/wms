@@ -70,6 +70,13 @@
     padding-top: 10px;
 }
 
+.successDesc span a {
+    margin-left: 5px;
+    color: #060050;
+    font-size: 90%;
+    font-weight: 500;
+}
+
 .successImage img {
     width: 100%;
     margin-top: 20px;

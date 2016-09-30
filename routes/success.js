@@ -76,7 +76,14 @@ router.post('/', authMiddle.isAuthenticated,  function(req, res) {
     if (!req.body.description) {
         return res.json({ success: false, message: 'No description specified'});
     }
+
+    if (req.body.articleUrlDescription) {
+        if (!req.body.articleUrl) {
+            return res.json({ success: false, message: 'An articleUrl must be specified if a URL description is present'});
+        }    
+    }
     
+    //PREPARE THE SCHEMA
     var success = new models.Success();      // create a new instance of the success model
     
     if (req.body.title){
@@ -91,6 +98,17 @@ router.post('/', authMiddle.isAuthenticated,  function(req, res) {
         success.picture = req.body.picture;
     }
 
+    //Only populate the model with the url if one is specified 
+    if (req.body.articleUrl) {
+        if (req.body.articleUrlDescription) {
+            success.articleUrlDescription = req.body.articleUrlDescription;
+        } else {
+            success.articleUrlDescription = req.body.articleUrl;
+        }
+
+        success.articleUrl = req.body.articleUrl;
+    }
+
     success.type = req.body.type;  
     success.description = req.body.description; 
     success.articleDate = new Date(req.body.articleDate).toISOString();
@@ -98,6 +116,8 @@ router.post('/', authMiddle.isAuthenticated,  function(req, res) {
     logger.info('req.body.name %s', req.body.type);
     logger.info('req.body.description %s', req.body.description);
     logger.info('req.body.picture %s', req.body.picture);
+    logger.info('req.body.articleUrl %s', req.body.articleUrl);
+    logger.info('req.body.articleUrlDescription %s', req.body.articleUrlDescription);
     
     // save the success and check for errors
     success.save(function(err) {
@@ -138,7 +158,15 @@ router.put('/:success_id', authMiddle.isAuthenticated, function(req, res) {
         logger.info('Description %s', req.body.description);
         logger.info('Title %s', req.body.title);
         logger.info('Type %s', req.body.type);
+
+        // VALIDATION
+        if (req.body.articleUrlDescription) {
+            if (!req.body.articleUrl) {
+                return res.json({ success: false, message: 'An articleUrl must be specified if a URL description is present'});
+            }    
+        }
         
+        // PREPARE THE SCHEMA
         if (req.body.description){
             logger.info('description is populated');
             success.description = req.body.description;
@@ -167,6 +195,17 @@ router.put('/:success_id', authMiddle.isAuthenticated, function(req, res) {
         if (req.body.picture){
             logger.info('picture is populated %s', req.body.picture);
             success.picture = req.body.picture;
+        }
+
+        //Only populate the model with the url if one is specified 
+        if (req.body.articleUrl) {
+            if (req.body.articleUrlDescription) {
+                success.articleUrlDescription = req.body.articleUrlDescription;
+            } else {
+                success.articleUrlDescription = req.body.articleUrl;
+            }
+
+            success.articleUrl = req.body.articleUrl;
         }
         
         logger.info('About to save the success schema');

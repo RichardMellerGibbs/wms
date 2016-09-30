@@ -65,6 +65,12 @@ router.put('/:news_id', authMiddle.isAuthenticated, function(req, res) {
  
     logger.info('Processing request to update news article');
 
+    if (req.body.articleUrlDescription) {
+        if (!req.body.articleUrl) {
+            return res.json({ success: false, message: 'An articleUrl must be specified if a URL description is present'});
+        }    
+    }
+
     models.News.findById(req.params.news_id , function(err, news) {
 
         if (err) {
@@ -96,6 +102,17 @@ router.put('/:news_id', authMiddle.isAuthenticated, function(req, res) {
 
         if (req.body.picture){
             news.picture = req.body.picture;
+        }
+
+        //Only populate the model with the url if one is specified 
+        if (req.body.articleUrl) {
+            if (req.body.articleUrlDescription) {
+                news.articleUrlDescription = req.body.articleUrlDescription;
+            } else {
+                news.articleUrlDescription = req.body.articleUrl;
+            }
+
+            news.articleUrl = req.body.articleUrl;
         }
         
         logger.info('About to save the news schema');
@@ -136,7 +153,14 @@ router.post('/', authMiddle.isAuthenticated, function(req, res) {
     if (!req.body.title) {
         return res.json({ success: false, message: 'No title specified'});
     }
-    
+
+    if (req.body.articleUrlDescription) {
+        if (!req.body.articleUrl) {
+            return res.json({ success: false, message: 'An articleUrl must be specified if a URL description is present'});
+        }    
+    }
+
+    // PREPARE THE SCHEMA
     var news = new models.News();      // create a new instance of the news model
     
     if (req.body.snippet){
@@ -146,6 +170,17 @@ router.post('/', authMiddle.isAuthenticated, function(req, res) {
     if (req.body.picture){
         logger.info('picture is populated %s', req.body.picture);
         news.picture = req.body.picture;
+    }
+
+    //Only populate the model with the url if one is specified 
+    if (req.body.articleUrl) {
+        if (req.body.articleUrlDescription) {
+            news.articleUrlDescription = req.body.articleUrlDescription;
+        } else {
+            news.articleUrlDescription = req.body.articleUrl;
+        }
+
+        news.articleUrl = req.body.articleUrl;
     }
       
     news.description = req.body.description; 

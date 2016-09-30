@@ -30,6 +30,15 @@
                                     <textarea type="text" name="newsDescription" ng-model="news.article.description" autofocus class="form-control bg-white"></textarea>
                             </div>
 
+                            <div class="input-group">
+                                <div class="field-title">URL</div>
+                                <input type="text" name="articleUrl" ng-model="news.article.articleUrl" autofocus class="form-control bg-white">
+                            </div>
+                            <div class="input-group">
+                                <div class="field-title">URL Description</div>
+                                <input type="text" name="articleUrlDescription" ng-model="news.article.articleUrlDescription" autofocus class="form-control bg-white">
+                            </div>
+
                             <div class="input-group imageUpload" >
                                 <div class="field-title">Choose Image</div>
                                 <button type="button" class="btn btn-default" ng-click="news.imageUpload()">

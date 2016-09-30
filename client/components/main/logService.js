@@ -10,7 +10,7 @@ angular.module('logService', [])
     
     // get all the success data
     logFactory.logEntry = function(item) {
-        //console.log('Special logservice entry ' + item);
+        //console.log(item);
     };
     
     // return our entire logFactory object

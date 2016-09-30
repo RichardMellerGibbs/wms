@@ -15,7 +15,8 @@
 		'maintSuccessCtrl',
 		'maintTestCtrl',
 		'angular-filepicker',
-		'testimonialCtrl'
+		'testimonialCtrl',
+		'findUsCtrl'
 		])
 
 	// application configuration to integrate token into requests
@@ -94,6 +95,12 @@
 				templateUrl: 'components/testimonial/testimonial.html',
 				controller: 'testimonialController',
 				controllerAs: 'testimonial'
+			})
+
+			.when('/findUs', {
+				templateUrl: 'components/findUs/findUs.html',
+				controller: 'findUsController',
+				controllerAs: 'findUs'
 			})
 			
 			.otherwise({redirectTo: '/home'

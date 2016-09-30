@@ -12,7 +12,9 @@ var SuccessSchema = new Schema({
     description: {type: String, required: true},
     by: {type: String},
     picture: {type: Schema.Types.Mixed},
-    createdAt: {type: Date, default: Date.now}
+    createdAt: {type: Date, default: Date.now},
+    articleUrl: String,
+    articleUrlDescription: String
 });
 
 // Sets the createdAt parameter equal to the current time

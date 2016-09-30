@@ -82,10 +82,17 @@ function($rootScope, $location, $routeParams, $window, Auth, News, Log) {
             return;        
         }
 
+        if (!vm.article.articleUrl && vm.article.articleUrlDescription) {
+            vm.error = 'A article URL must be supplied if a URL description is present';
+            return;        
+        }
+
         var articletData = {
             articleDate: vm.articleDate.value,
             title: vm.article.title,
-            description: vm.article.description
+            description: vm.article.description,
+            articleUrl: vm.article.articleUrl,
+            articleUrlDescription: vm.article.articleUrlDescription
         };
 
         if (vm.article.picture) {
@@ -129,12 +136,18 @@ function($rootScope, $location, $routeParams, $window, Auth, News, Log) {
             return;        
         }
 
+        if (!vm.article.articleUrl && vm.article.articleUrlDescription) {
+            vm.error = 'A article URL must be supplied if a URL description is present';
+            return;        
+        }
+
         
         var articletData = {
             articleDate: vm.articleDate.value,
             title: vm.article.title,
-            description: vm.article.description
-            //snippet: vm.article.snippet
+            description: vm.article.description,
+            articleUrl: vm.article.articleUrl,
+            articleUrlDescription: vm.article.articleUrlDescription
         };
 
         if (vm.article.picture) {

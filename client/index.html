@@ -26,7 +26,6 @@
             <!-- Filepicker for saving images to the cloud -->
             <script type="text/javascript" src="//api.filepicker.io/v2/filepicker.js"></script>
             <script src="../js/angular-filepicker.js"></script>
-            <!--script src="https://api.filestackapi.com/filestack_debug.js"></script-->
 
             <!-- Main App and Controllers -->
             <script src="../js/app.js"></script>
@@ -40,6 +39,7 @@
             <script src="../components/maintNews/maintNewsController.js"></script>
             <script src="../components/news/newsController.js"></script>
             <script src="../components/maintTestimonial/maintTestController.js"></script>
+            <script src="../components/findUs/findUsController.js"></script>
 
             <!-- Services -->
             <script src="../components/login/authService.js"></script>
@@ -53,6 +53,7 @@
             <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
             <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
             <link href='https://fonts.googleapis.com/css?family=Lato:400,300italic,300,100' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
             <!--Custom CSS-->
             <link rel="stylesheet" href="components/main/main.css">
@@ -65,6 +66,7 @@
             <link rel="stylesheet" href="components/maintNews/maintNews.css">
             <link rel="stylesheet" href="components/news/news.css">
             <link rel="stylesheet" href="components/maintTestimonial/maintTest.css">
+            <link rel="stylesheet" href="components/findUs/findUs.css">
 
             <!--h2>Header Section</h2-->
             
@@ -91,7 +93,6 @@
                         </button>
 
                         <div class="logo">
-                            <!--div><a class="navbar-brand" href="#/home"><img src="images/logo.png"/></a></div-->
                             <div class="image"><a href="home"><img src="images/logo.png"/></a></div>
                             <div class="sitename">Whatton Manor Stud</div>
                             <!--div class="established">Est 1933</div-->
@@ -152,7 +153,7 @@
                     <div class="col-md-4 box">
                         <h3>Whatton Manor Stud</h3>
                         <p>Whatton in the Vale</br>Nottinghamshire</br>NG13 9EX</p>
-                        <p>Office: 01949 850221</br>Fax: 01949 850993</br>email: player@whattonmanorstud.fsnet.co.uk</p>    
+                        <p>Office: 01949 850221</br>Fax: 01949 850993</br>email: player@whattonmanorstud.fsnet.co.uk</p>   
                     </div>
 
                     <div class="col-md-4 box address">
@@ -162,8 +163,15 @@
                         <p>Whatton Manor Stud</br>Whatton in the Vale</br>Nottinghamshire</br>NG13 9EX</p-->
                     </div>
                     <div class="col-md-4 box">
-                        <!--a href="https://www.google.co.uk/maps/place/Nottingham+NG13+9EX/@52.9482481,-0.8981431,11.94z/data=!4m5!3m4!1s0x4879cc1fe7ae8327:0x12106d16467da62b!8m2!3d52.936347!4d-0.8962071">Find Us</a-->
-                        <!--iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d80102.53568621249!2d-0.8981430843912872!3d52.94824811597402!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4879cc1fe7ae8327%3A0x12106d16467da62b!2sNottingham+NG13+9EX!5e0!3m2!1sen!2suk!4v1474979162413" width="600" height="450" frameborder="0" style="border:0" allowfullscreen>Find Us</iframe-->    
+                        <ul class="social-nav">
+                            <li>
+                                <a href="https://twitter.com/whattonmanor"><i class="ion-social-twitter"></i></a> 
+                            </li>    
+                            
+                        </ul>
+                        <!--div class="findUsLink">
+                            <a href="/findUs">Find Us</a>
+                        </div-->
                     </div>    
                 </div>    
             </div>            

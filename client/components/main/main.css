@@ -304,6 +304,39 @@ footer h3 {
     color: #ddd;
 }
 
+/* --------------------------------------------------------------*/
+/* Social Nav */
+/* --------------------------------------------------------------*/
+
+ul.social-nav {
+    padding-left: 0;
+}
+
+.social-nav {
+    list-style: none;
+}
+
+.social-nav li{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.social-nav li a:link {
+    font-size: 180%;
+}
+
+.ion-social-twitter {
+    color: #888;
+}
+
+.findUsLink {
+    margin-bottom: 30px;
+}
+
+.findUsLink a {
+    font-size: 120%;
+}
+
 
 /* -------  Small phones to small tablets 481px to 767px  -------*/
 @media only screen and (max-width: 1023px) {
@@ -318,10 +351,11 @@ footer h3 {
 /* -------  Small phones to small tablets 481px to 767px  -------*/
 @media only screen and (max-width: 767px) {
 
-    /* Turn off the nav for phones */
-    .footer-nav {
-        display: none;
-    }    
+    /* Makes the foorer columns stack closer together vertically */ 
+    footer .box {
+        margin-top: 30px;
+    }
+       
 }
 
 

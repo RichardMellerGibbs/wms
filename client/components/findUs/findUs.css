@@ -1,0 +1,16 @@
+.findUsView{
+    min-height: 720px;              /* Forces footer to the bottom of the page */  
+    background-color: #f2f2f2; 
+}
+
+.findUsSection {
+    padding-top: 0;
+}
+
+.findUsPanel { 
+    width: 33%;
+    margin: 30px auto;
+    min-width: 290px;
+    background-color: #f2f2f2;
+    /*border: 1px solid blue;*/
+}

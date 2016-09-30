@@ -44,7 +44,7 @@
 
                             <div class="row newsDescRow">
                                 <div class="col-md-12 newsDescCol">
-                                    <div class="mainNewsDesc"> {{ newItem.description }}</div>
+                                    <div class="mainNewsDesc"> {{ newItem.description }} <span ng-bind-html="newItem.urlLink"></span></div>
                                 </div>
                             </div>
 

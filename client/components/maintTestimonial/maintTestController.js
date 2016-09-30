@@ -88,12 +88,19 @@ function($rootScope, $location, $routeParams, $window, Auth, Success, Log) {
             vm.error = 'A article author must be supplied';
             return;        
         }
+
+        if (!vm.article.articleUrl && vm.article.articleUrlDescription) {
+            vm.error = 'A article URL must be supplied if a URL description is present';
+            return;        
+        }
         
         var articletData = {
             type: 'testimonial',
             articleDate: vm.articleDate.value,
             description: vm.article.description,
-            by: vm.article.by
+            by: vm.article.by,
+            articleUrl: vm.article.articleUrl,
+            articleUrlDescription: vm.article.articleUrlDescription
         };
               
         Success.create(articletData)
@@ -133,12 +140,19 @@ function($rootScope, $location, $routeParams, $window, Auth, Success, Log) {
             vm.error = 'A article author must be supplied';
             return;        
         }
+
+        if (!vm.article.articleUrl && vm.article.articleUrlDescription) {
+            vm.error = 'A article URL must be supplied if a URL description is present';
+            return;        
+        }
         
         // LOAD UP THE OBJECT
         var articletData = {
             articleDate: vm.articleDate.value,
             description: vm.article.description,
-            by: vm.article.by
+            by: vm.article.by,
+            articleUrl: vm.article.articleUrl,
+            articleUrlDescription: vm.article.articleUrlDescription
         };
 
         Success.update(vm.testimonialId, articletData)
