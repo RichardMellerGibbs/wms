@@ -24,45 +24,49 @@ function($rootScope, $location, $sce, $routeParams, $window, News, Log) {
 
             vm.picturePresent = false;
 
-                if (data.picture) {
-                    vm.picturePresent = true;
+            if (data.picture) {
+                vm.picturePresent = true;
+            }
+
+            Log.logEntry('About to check the article url');
+
+            //Make sure the URL starts with http://
+            var urlText = data.articleUrl;
+            var urlLink = '';
+            var urlStart = '';
+            
+            Log.logEntry('About to run the url section');
+
+            if (urlText != undefined) {
+
+                urlStart = urlText.substring(0, 3);    
+            
+                var urlValue = '';
+
+                if (urlStart == 'www') {
+                    urlValue = 'http://' + data.articleUrl;
+                } else {
+                    urlValue = data.articleUrl;
                 }
 
-                //Make sure the URL starts with http://
-                var urlText = data[i].articleUrl;
-                var urlStart = '';
-                var urlLink = '';
+                //Prepare the url string
+                var linkText = "<a href=" + urlValue + ">" + data.articleUrlDescription + "</a>";
 
-                if (urlText != undefined) {
+                //Mark the string as guaranteed html for angular
+                urlLink = $sce.trustAsHtml(linkText);
+            }
 
-                    urlStart = urlText.substring(0, 3);    
-                
-                    var urlValue = '';
+            newsItem = {
+                    id: data._id,
+                    title: data.title,
+                    description: data.description,
+                    picture: data.picture,
+                    picturePresent: vm.picturePresent,
+                    articleDate: {value: new Date(data.articleDate)},
+                    urlLink: urlLink 
+            };
 
-                    if (urlStart == 'www') {
-                        urlValue = 'http://' + data[i].articleUrl;
-                    } else {
-                        urlValue = data[i].articleUrl;
-                    }
-
-                    //Prepare the url string
-                    var linkText = "<a href=" + urlValue + ">" + data[i].articleUrlDescription + "</a>";
-
-                    //Mark the string as guaranteed html for angular
-                    urlLink = $sce.trustAsHtml(linkText);
-                }
-
-                newsItem = {
-                        id: data._id,
-                        title: data.title,
-                        description: data.description,
-                        picture: data.picture,
-                        picturePresent: vm.picturePresent,
-                        articleDate: {value: new Date(data.articleDate)},
-                        urlLink: urlLink 
-                };
-
-                vm.newsData.push(newsItem);
+            vm.newsData.push(newsItem);
             
         })
         .error(function() {
