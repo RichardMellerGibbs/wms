@@ -255,6 +255,9 @@ function($rootScope, $location, $routeParams, $window, Auth, News, Log) {
             },
             function(Blob){
                 vm.article.picture = Blob.url;
+
+                //var random = (new Date()).toString();
+                //vm.article.picture = Blob.url + "?cb=" + random;
                 //$scope.article.picture = Blob.url;
 
                 //var random = (new Date()).toString();

@@ -8,9 +8,14 @@
 }
 
 .findUsPanel { 
-    width: 33%;
+    width: 50%;
     margin: 30px auto;
     min-width: 290px;
     background-color: #f2f2f2;
     /*border: 1px solid blue;*/
+}
+
+.map img {
+    width: 500px;
+    height: 500px;
 }

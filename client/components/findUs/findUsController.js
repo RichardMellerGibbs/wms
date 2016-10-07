@@ -4,6 +4,9 @@ angular.module('findUsCtrl', ['logService'])
     var vm = this;
 
     Log.logEntry('Inside the findUsController');
+
+    /* js api key AIzaSyBy2n74lgzqtJ7edDhel0thDNh9I5bRyac
+    */
     
 
 }]);
