@@ -42,9 +42,11 @@
                                 </div>
                             </div>
 
+
                             <div class="row newsDescRow">
                                 <div class="col-md-12 newsDescCol">
-                                    <div class="mainNewsDesc"> {{ newItem.description }} <span ng-bind-html="newItem.urlLink"></span></div>
+                                    <!--div class="mainNewsDesc"> {{ newItem.description | newlines }} <span ng-bind-html="newItem.urlLink"></span></div-->
+                                    <div class="mainNewsDesc" ng-bind-html="newItem.description | newlines | unsafe"> <span ng-bind-html="newItem.urlLink"></span></div>
                                 </div>
                             </div>
 

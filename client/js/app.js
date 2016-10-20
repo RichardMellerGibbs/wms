@@ -16,7 +16,7 @@
 		'maintTestCtrl',
 		'angular-filepicker',
 		'testimonialCtrl',
-		'findUsCtrl'
+		'findUsCtrl'		
 		])
 
 	// application configuration to integrate token into requests
@@ -114,5 +114,23 @@
 			//This lets Angular change the routing and URLs of our pages without refreshing the page
 	    	$locationProvider.html5Mode(true); 
 	}])
+
+
+	/* Filter to conver newlines added in test to <br> tags */
+	.filter('newlines', function () {
+		return function (item) {
+			//return item.toUpperCase();
+			return item.replace(/\n/g, '<br/>');
+		}
+
+	})
+
+	/* This filter is used in conjunction with newlines above to allow the <br> to be interpreted */
+	.filter('unsafe', function($sce) {
+		return function(val) {
+			return $sce.trustAsHtml(val);
+		};
+	})
+
 
 })();	

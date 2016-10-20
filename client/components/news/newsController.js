@@ -56,6 +56,13 @@ function($rootScope, $location, $sce, $routeParams, $window, News, Log) {
                 urlLink = $sce.trustAsHtml(linkText);
             }
 
+            /*
+            angular.filter('newlines', function(text){
+  return text.replace(/\n/g, '<br/>');
+});*/
+
+/*{{ foo.something | newline | html }}*/
+
             newsItem = {
                     id: data._id,
                     title: data.title,
