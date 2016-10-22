@@ -43,7 +43,8 @@
 
                             <div class="row successDescRow">
                                 <div class="col-md-12 successDescCol">
-                                    <div class="successDesc"> {{ successItem.description }} <span ng-bind-html="successItem.urlLink"></span></div>
+                                    <!--div class="successDesc"> {{ successItem.description }} <span ng-bind-html="successItem.urlLink"></span></div-->
+                                    <div class="successDesc" ng-bind-html="successItem.description | newlines | unsafe"> <span ng-bind-html="successItem.urlLink"></span></div>
                                     <div class="successDate">
                                         {{ successItem.articleDate.value | amDateFormat: 'Do MMM YYYY' }}
                                     </div>

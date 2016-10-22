@@ -119,7 +119,6 @@
 	/* Filter to conver newlines added in test to <br> tags */
 	.filter('newlines', function () {
 		return function (item) {
-			//return item.toUpperCase();
 			return item.replace(/\n/g, '<br/>');
 		}
 

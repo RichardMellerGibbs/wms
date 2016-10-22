@@ -61,7 +61,7 @@
                                     <tr ng-repeat="newsItem in content.newsData" ng-click="content.newsDetail(newsItem)">
                                         <td>{{ newsItem.articleDate | amDateFormat: 'Do MMM YYYY' }}</td>
                                         <td>{{ newsItem.title }}</td>
-                                        <td class="newsDesc">{{ newsItem.description }}</td>
+                                        <td class="newsDesc"ng-bind-html="newsItem.description | newlines | unsafe"></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -88,7 +88,7 @@
                                         <!--td>{{ successItem.type }}</td-->
                                         <td>{{ successItem.articleDate.value | amDateFormat: 'Do MMM YYYY' }}</td>
                                         <td>{{ successItem.title }}</td>
-                                        <td class="newsDesc">{{ successItem.description }}</td>
+                                        <td class="newsDesc"ng-bind-html="successItem.description | newlines | unsafe"></td>
                                         <!--td class="by">{{ successItem.by }}</td-->
                                     </tr>
                                 </tbody>
@@ -112,7 +112,7 @@
                                     
                                     <tr ng-repeat="testItem in content.testData" ng-click="content.testimonialDetail(testItem)">
                                         <td>{{ testItem.articleDate.value | amDateFormat: 'Do MMM YYYY' }}</td>
-                                        <td class="newsDesc">{{ testItem.description }}</td>
+                                        <td class="newsDesc"ng-bind-html="testItem.description | newlines | unsafe"></td>
                                         <td class="by">{{ testItem.by }}</td>
                                     </tr>
                                 </tbody>

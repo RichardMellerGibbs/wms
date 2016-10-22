@@ -30,7 +30,8 @@
 
                             <div class="row testDescRow">
                                 <div class="col-md-12 testDescCol">
-                                    <div class="mainTestDesc"> {{ testItem.description }}</div>
+                                    <!--div class="mainTestDesc"> {{ testItem.description }}</div-->
+                                    <div class="mainTestDesc" ng-bind-html="testItem.description | newlines | unsafe"></div>
                                 </div>
                             </div>
 
