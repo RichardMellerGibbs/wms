@@ -1,0 +1,67 @@
+<!-- Maintain success -->
+<div class="maintSuccess">
+    
+    <div class="container-fluid">
+            
+        <section class="sectionMaintSuccess">
+            
+            <div class="row">
+                <h2>Gallery Entry</h2>
+            </div>
+            
+            <div class="row">
+                <div class="maintSuccessPanel">
+                    <div class="col">
+                        
+                        <form name="maintSuccessForm" class="maintSuccessForm">
+
+                            <div class="input-group">
+                                <div class="field-title">Item Date</div>
+                                <input type="date" name="articleDate" ng-model="maintGallery.articleDate.value" autofocus class="form-control bg-white">
+                            </div>
+                            
+                            <div class="input-group imageUpload">
+                                <!--input type="filepicker" data-fp-apikey="A7HBT1yxTq6R5H69OP5WMz" onchange="console.log(event.fpfile.url)"-->
+                                <div class="field-title">Choose Image</div>
+                                <button type="button" class="btn btn-default" ng-click="maintGallery.imageUpload()">
+                                    Upload <span class="caret"></span>
+                                </button>    
+
+                                <div class="mainImage">
+                                    <!-- Show the thumbnail only when the picture is uploaded -->
+                                    <!--ng-if="maintEvent.event.picture"-->
+                                    <img ng-src="{{maintGallery.article.picture | fpConvert: {filter:'sharpen'} }}">
+                                    <!--a href="{{maintEvent.event.picture}}" class="thumbnail" ng-if="maintEvent.event.picture"                                                                                <!-- the picture is rendered with width: 500 and sharpened -->
+                                </div>
+                            </div>
+                           
+
+
+                            <div class="alert alert-danger fade in validationPanel" ng-if="maintGallery.error">
+                                <strong>{{maintGallery.errorType}} </strong>{{ maintGallery.error }}
+                            </div>
+                            
+                            <div class="alert alert-success fade in warningPanel" ng-if="maintGallery.feedback">
+                                <a class="close" data-dismiss="alert">&times;</a> 
+                                <strong>Success!</strong>{{ maintGallery.feedback }}
+                            </div>
+                            
+                            
+                            <div class="buttonSection">
+                                <button type="submit" ng-click="maintGallery.addGallery()" class="btn btn-primary" ng-if="maintGallery.addButton">Add</button>
+                                <button type="submit" ng-click="maintGallery.updateGallery()" class="btn btn-primary" ng-if="maintGallery.updateButton">Update</button>
+                                <button type="submit" ng-click="maintGallery.confirmDelete()" class="btn btn-primary" ng-if="maintGallery.deleteButton">Delete</button>
+                                <button type="submit" ng-click="maintGallery.closeForm()" class="btn btn-primary" ng-if="maintGallery.closeButton">Close</button>
+                                
+                                <!--Are you sure buttons for deleting event -->
+                                <button type="" class="btn btn-danger btn-upd" ng-click="maintGallery.deleteGallery(maintGallery.galleryId)" ng-if="maintGallery.showDeleteSection">Confirm Delete</button>
+                                <button type="" class="btn btn-primary btn-upd" ng-click="maintGallery.closeDeleteSection()" ng-if="maintGallery.showDeleteSection">Cancel Delete</button>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

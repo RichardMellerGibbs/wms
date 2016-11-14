@@ -73,8 +73,10 @@ router.post('/', authMiddle.isAuthenticated,  function(req, res) {
         return res.json({ success: false, message: 'No articleDate specified'});
     }
 
-    if (!req.body.description) {
-        return res.json({ success: false, message: 'No description specified'});
+    if (req.body.type !== 'gallery') {
+        if (!req.body.description) {
+            return res.json({ success: false, message: 'No description specified'});
+        }
     }
 
     if (req.body.articleUrlDescription) {

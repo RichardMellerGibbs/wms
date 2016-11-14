@@ -16,6 +16,9 @@ function($rootScope, $location, $routeParams, $window, Auth, Content, News, Succ
 
     vm.testData = [];
     var testItem = {};
+
+    vm.galleryData = [];
+    var galleryItem = {};
     
 
     Log.logEntry('Inside the maintContentController.');
@@ -31,6 +34,7 @@ function($rootScope, $location, $routeParams, $window, Auth, Content, News, Succ
         vm.newsForm = false;
         vm.successForm = false;
         vm.testimonialForm = false;
+        vm.galleryForm = false;
 
         vm.tab = $routeParams.tab;
 
@@ -41,6 +45,7 @@ function($rootScope, $location, $routeParams, $window, Auth, Content, News, Succ
             vm.homeForm = false;
             vm.successForm = false;
             vm.testimonialForm = false;
+            vm.galleryForm = false;
         }
 
         if (vm.tab == 'success') {
@@ -48,6 +53,7 @@ function($rootScope, $location, $routeParams, $window, Auth, Content, News, Succ
             vm.homeForm = false;
             vm.successForm = true;
             vm.testimonialForm = false;
+            vm.galleryForm = false;
         }
 
         if (vm.tab == 'testimonial') {
@@ -55,6 +61,15 @@ function($rootScope, $location, $routeParams, $window, Auth, Content, News, Succ
             vm.homeForm = false;
             vm.successForm = false;
             vm.testimonialForm = true;
+            vm.galleryForm = false;
+        }
+
+        if (vm.tab == 'gallery') {
+            vm.newsForm = false;
+            vm.homeForm = false;
+            vm.successForm = false;
+            vm.testimonialForm = false;
+            vm.galleryForm = true;
         }
 
         /*************************************************************************/
@@ -124,9 +139,19 @@ function($rootScope, $location, $routeParams, $window, Auth, Content, News, Succ
 
                     vm.testData.push(testItem);
                 }
+
+                if (data[i].type === 'gallery') {
+
+                    galleryItem = {
+                            _id: data[i]._id,
+                            type: data[i].type,
+                            picture: data[i].picture,
+                            articleDate: {value: new Date(data[i].articleDate)} 
+                    };
+
+                    vm.galleryData.push(galleryItem);
+                }
             }
-        
-            //vm.successData = successData;
             
         });
     }
@@ -138,6 +163,7 @@ function($rootScope, $location, $routeParams, $window, Auth, Content, News, Succ
         vm.newsForm = false;
         vm.successForm = false;
         vm.testimonialForm = false;
+        vm.galleryForm = false;
     }
 
     //Setup the content maintenance for the news articles
@@ -147,6 +173,7 @@ function($rootScope, $location, $routeParams, $window, Auth, Content, News, Succ
         vm.newsForm = true;
         vm.successForm = false;   
         vm.testimonialForm = false;
+        vm.galleryForm = false;
     }
 
     //Setup the content maintenance for the success articles
@@ -156,6 +183,7 @@ function($rootScope, $location, $routeParams, $window, Auth, Content, News, Succ
         vm.newsForm = false;
         vm.successForm = true;
         vm.testimonialForm = false;
+        vm.galleryForm = false;
     }
 
     //Setup the content maintenance for the testimonials articles
@@ -165,8 +193,18 @@ function($rootScope, $location, $routeParams, $window, Auth, Content, News, Succ
         vm.newsForm = false;
         vm.successForm = false;
         vm.testimonialForm = true;
+        vm.galleryForm = false;
     }
 
+    //Setup the content maintenance for the gallery
+    vm.displayGallery = function() {
+        
+        vm.homeForm = false;
+        vm.newsForm = false;
+        vm.successForm = false;
+        vm.testimonialForm = false;
+        vm.galleryForm = true;
+    }
 
 
 
@@ -263,6 +301,17 @@ function($rootScope, $location, $routeParams, $window, Auth, Content, News, Succ
 
     vm.addtestimonialItem = function() {
         $location.path('/maintTestimonial/x');
+    }
+
+    vm.galleryDetail = function(galleryItem) {
+                
+        Log.logEntry('Called galleryDetail ' + galleryItem.type);
+        vm.galleryItem = galleryItem;
+        $location.path('/maintGallery/' + galleryItem._id);
+    }
+
+    vm.addgalleryItem = function() {
+        $location.path('/maintGallery/x');
     }
         
 }]);

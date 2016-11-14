@@ -43,6 +43,10 @@ app.all('/success', function(req, res, next) {
   res.sendFile('client/index.html', { root: __dirname });
 });
 
+app.all('/gallery', function(req, res, next) {
+  res.sendFile('client/index.html', { root: __dirname });
+});
+
 app.all('/maintSuccess/:newsId', function(req, res, next) {
   res.sendFile('client/index.html', { root: __dirname });
 });
@@ -52,6 +56,10 @@ app.all('/testimonial', function(req, res, next) {
 });
 
 app.all('/maintTestimonial/:testimonialId', function(req, res, next) {
+  res.sendFile('client/index.html', { root: __dirname });
+});
+
+app.all('/maintGallery/:galleryId', function(req, res, next) {
   res.sendFile('client/index.html', { root: __dirname });
 });
 

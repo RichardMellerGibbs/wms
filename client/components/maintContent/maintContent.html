@@ -11,22 +11,13 @@
                 <div class="col">
                     <form name="maintHomeForm" class="maintHomeForm">
 
-                        <!--div class="buttonSection control">
-                            <button type="submit" ng-click="content.displayHome()" class="btn btn-primary" >Home Page</button>
-                        </div>
-                        <div class="buttonSection control">
-                            <button type="submit" ng-click="content.displayNews()" class="btn btn-primary" >News</button>
-                        </div>
-                        <div class="buttonSection control">
-                            <button type="submit" ng-click="content.displayTestimonials()" class="btn btn-primary" >Testimonials</button>
-                        </div-->
-
                         <!--nav nav-tabs -->
                         <ul class="tabrow">
                             <li ng-class="{'selected': content.homeForm}" ng-click="content.displayHome()">Home</li>
                             <li ng-class="{'selected': content.newsForm}" ng-click="content.displayNews()">News</li>
                             <li ng-class="{'selected': content.successForm}" ng-click="content.displaySuccess()">Success</li>
                             <li ng-class="{'selected': content.testimonialForm}" ng-click="content.displayTestimonial()">Testimonials</li>
+                            <li ng-class="{'selected': content.galleryForm}" ng-click="content.displayGallery()">Gallery</li>
                         </ul>
 
                         <!-- Home Form -->
@@ -119,6 +110,34 @@
                             </table>
                         </div>
 
+                        <!-- Gallery Form -->
+                        <button type="submit" ng-if="content.galleryForm" ng-click="content.addgalleryItem()" class="btn btn-block btn-primary add-btn galleryButton">Add Gallery Image</button>
+
+                        <div class="table-responsive showHover galleryItems" ng-if="content.galleryForm">
+                            <table class="table table-bordered" >
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Image</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    <tr ng-repeat="galleryItem in content.galleryData" ng-click="content.galleryDetail(galleryItem)">
+                                        <td>{{ galleryItem.articleDate.value | amDateFormat: 'Do MMM YYYY' }}</td>
+                                        <td>
+                                            <div class="mainImage">
+                                                <!-- Show the thumbnail only when the picture is uploaded -->
+                                                <!--ng-if="maintEvent.event.picture"-->
+                                                <img ng-src="{{galleryItem.picture | fpConvert: {filter:'sharpen'} }}">
+                                                <!--a href="{{maintEvent.event.picture}}" class="thumbnail" ng-if="maintEvent.event.picture"                                                                                <!-- the picture is rendered with width: 500 and sharpened -->
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
 
 
                         <!-- Generic items -->
@@ -140,6 +159,5 @@
             </div>
         </div>
     </section>
-
 
 </div>

@@ -9,7 +9,7 @@ var SuccessSchema = new Schema({
     type: {type: String, required: true},
     title: {type: String},
     articleDate: {type: Date},
-    description: {type: String, required: true},
+    description: {type: String},
     by: {type: String},
     picture: {type: Schema.Types.Mixed},
     createdAt: {type: Date, default: Date.now},

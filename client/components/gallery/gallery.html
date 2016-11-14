@@ -1,0 +1,31 @@
+<div class="mainGallery">
+    <section class="gallerySection">
+
+        <div class="row">
+            <div class="galleryPanel">
+                <div class="col">
+
+                    <div class="row galleryHeadingRow">
+                        <div class="col-md-12 galleryHeadingCol">
+                            <div class="galleryPanelTitle">
+                                <h2>Gallery</h2>                        
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notice the classes associated with the li. They instruct bootstap to arrange the ul into
+                    columns dependant upon the viewport size -->
+                    <ul class="list-group row galleryList">
+                        <li class="list-group-item col-xs-12 col-sm-4 col-md-3 galleryItem" ng-repeat="galleryItem in gallery.galleryData">
+                            <div class="galleryImage">
+                                <img ng-src="{{galleryItem.picture | fpConvert: {filter:'sharpen'} }}">
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>

@@ -16,7 +16,9 @@
 		'maintTestCtrl',
 		'angular-filepicker',
 		'testimonialCtrl',
-		'findUsCtrl'		
+		'findUsCtrl',
+		'maintGalleryCtrl',
+		'galleryCtrl'
 		])
 
 	// application configuration to integrate token into requests
@@ -79,6 +81,12 @@
 				controllerAs: 'maintTestimonial'
 			})
 
+			.when('/maintGallery/:galleryId', {
+				templateUrl: 'components/maintGallery/maintGallery.html',
+				controller: 'maintGalleryController',
+				controllerAs: 'maintGallery'
+			})
+
 			.when('/news/:newsId', {
 				templateUrl: 'components/news/news.html',
 				controller: 'newsController',
@@ -89,6 +97,12 @@
 				templateUrl: 'components/success/success.html',
 				controller: 'successController',
 				controllerAs: 'success'
+			})
+
+			.when('/gallery', {
+				templateUrl: 'components/gallery/gallery.html',
+				controller: 'galleryController',
+				controllerAs: 'gallery'
 			})
 
 			.when('/testimonial', {

@@ -55,20 +55,24 @@ section.sectionMaintHome h2 {
 .successItems th,
 .successItems td,
 .testimonialItems th,
-.testimonialItems td {
+.testimonialItems td,
+.galleryItems th,
+.galleryItems td {
     min-width: 120px;
 }
 
 .newsItems th,
 .successItems th,
-.testimonialItems th {
+.testimonialItems th,
+.galleryItems th {
     font-size: 80%;
     font-weight: 500;
 }
 
 .newsItems td,
 .successItems td,
-.testimonialItems td {
+.testimonialItems td,
+.galleryItems td {
     font-size: 70%;
     font-weight: 400;
 }
@@ -94,7 +98,8 @@ section.sectionMaintHome h2 {
 
 button.newsButton,
 button.successButton,
-button.testimonialButton {
+button.testimonialButton,
+button.galleryButton {
     width: 40%;
     min-width: 150px;
     margin: 20px auto;
@@ -125,6 +130,8 @@ button.testimonialButton {
 }
 
 
+/***************************************************************/
+/* Styling for the tabs */
 /***************************************************************/
 
 .tabrow {

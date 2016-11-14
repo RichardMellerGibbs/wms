@@ -13,17 +13,19 @@ var logger      = require('../utils/logger.js');
 var superSecret = config.secret;
 
 //Adding a user entry (accessed at POST http://localhost:8082/api/user)
-router.post('/',function(req, res) {
+/*router.post('/',function(req, res) {
   
     logger.info('Received a request to add a user');
     
     var user = new models.User();      // create a new instance of the User model
-    
-    if (!req.body.admin) {
-        user.admin = false;
-    } else {
-        user.admin = req.body.admin;
-    }
+
+    user.admin = false;
+
+    //if (!req.body.admin) {
+    //    user.admin = false;
+    //} else {
+    //    user.admin = req.body.admin;
+    //}
     
     if (!req.body.username) {
         return res.json({ success: false, message: 'No username specified'});
@@ -77,13 +79,13 @@ router.post('/',function(req, res) {
         logger.info('Finisahed create user');
     });        
 });
+*/
 
 
 //To find a user that has a specified email address
 //http://localhost:8082/api/users/checkname/bob@hotmail.com
 router.get('/checkname/:username', function(req, res) {
-//router.get('/', function(req, res) {
-	//res.json({ message: 'received a request to get the contacts' });   
+   
 	logger.info('Processing api request to get username %s', req.params.username);
     
     if (!req.params.username) {
@@ -112,7 +114,7 @@ router.get('/checkname/:username', function(req, res) {
 
 // get all the Users (accessed at GET http://localhost:8082/api/users)
 //authMiddle.isAuthenticated,
-router.get('/',  function(req, res) {
+router.get('/', authMiddle.isAuthenticated,  function(req, res) {
 //router.get('/', function(req, res) {
 	//res.json({ message: 'received a request to get the contacts' });   
 	logger.info('Processing api request to get all the users');
@@ -136,12 +138,7 @@ router.get('/',  function(req, res) {
 
 
 // get the user with that id (accessed at GET http://localhost:xxxx/api/users/:user_id)
-//http://localhost:8082/api/users/569b965f352607cc1ea053b6 gets lilly's id
-
-//To get bob@hotmail.com use    password time
-//and pass in a sessionDate to search for use
-//http://localhost:8082/api/users/56cf706d53ce3e0c1c8fdc03?sessionDate=2016-02-23T00:34:39.446Z 
-//This allows the server to send back just the required session and not all of them.
+//http://localhost:8082/api/users/569b965f352607cc1ea053b6
 router.get('/:user_id', authMiddle.isAuthenticated, function(req, res) {
 
     logger.info('Processing request to get a single user specified by id %s', req.params.user_id);
@@ -162,11 +159,7 @@ router.get('/:user_id', authMiddle.isAuthenticated, function(req, res) {
 });
 
 
-
 // update the user with this id (accessed at PUT http://localhost:8080/api/users/:user_id)
-//If sessionID is supplied then this session, if found, will be updated by the session body //paramters. sessionDate is not requiored and will be ignored.
-//If sessionID is not supplied or cannot be found then a new session will be added providing
-//sessionDate and one of shoot, run or swim have been provided in the parameters
 router.put('/:user_id', authMiddle.isAuthenticated, function(req, res, next) {
  
     logger.info('Processing request to update a single user specified by id %s', req.params.user_id);
