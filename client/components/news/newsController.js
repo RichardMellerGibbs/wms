@@ -112,6 +112,9 @@ function($rootScope, $location, $sce, $routeParams, $window, News, Log) {
                     urlLink = $sce.trustAsHtml(linkText);
                 }
 
+                //Log.logEntry('news article date ' + data[i].articleDate);
+                
+
                 newsItem = {
                         id: data[i]._id,
                         title: data[i].title,
@@ -121,6 +124,8 @@ function($rootScope, $location, $sce, $routeParams, $window, News, Log) {
                         articleDate: {value: new Date(data[i].articleDate)},
                         urlLink: urlLink  
                 };
+
+                Log.logEntry('news article date ' + newsItem.articleDate.value);
 
                 vm.newsData.push(newsItem);
                 

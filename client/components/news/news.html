@@ -34,7 +34,8 @@
                             <div class="row newsHeaderRow">
                                 <div class="col-md-12 newsHeaderCol">
                                     <div class="newsDate">
-                                        {{ newItem.articleDate | amDateFormat: 'Do MMM YYYY' }}
+                                        {{ newItem.articleDate.value | amDateFormat: 'Do MMM YYYY' }}
+                                        <!--{{ newItem.articleDate }}-->
                                     </div>
                                     <div class="newsTitle">
                                         {{ newItem.title }}        
