@@ -174,6 +174,74 @@ ul.dropdown-menu li a:active {
     }
 }
 
+
+
+/* Make the menu collapse at 1000 rather than the defult smaller mobile. This allows for more menu items */ 
+@media only screen and (max-width: 1000px) {
+    
+    .navbar-header {
+        float: none;
+    }
+    .navbar-left,.navbar-right {
+        float: none !important;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-fixed-top {
+        top: 0;
+        border-width: 0 0 1px;
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin-top: 7.5px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .collapse.in{
+        display:block !important;
+    }
+
+    /* new */
+
+    /* Makes the dropdown ul pull to the left side of the screen. Otherwise it hangs on the right */
+    .navbar-right .dropdown-menu {
+        left: 0;
+    }
+
+    /* The dropdown panel gets the normal blue */
+    /* Also turns off up the ul box styling and shadowing */
+    ul.dropdown-menu {
+        background-color: #060050;
+        border: none;
+        box-shadow: none;
+    }
+
+    /* Nice link background and text color */
+    .navbar li a:hover,
+    .navbar li a:active,
+    ul.dropdown-menu li a:hover,
+    ul.dropdown-menu li a:active,
+    .dropdown a.dropdown-toggle:hover,
+    .dropdown a.dropdown-toggle:active {
+        color: #fff;
+        background-color: #888;;
+    }
+    
+}
+
 /* -------  Small phones to small tablets 481px to 767px  -------*/
 @media only screen and (max-width: 767px) {
 
@@ -210,6 +278,7 @@ ul.dropdown-menu li a:active {
     }
 
     /* Removes the little horizontal line drawn by bootstrap. Went straight through the logo */
+    /* Also turns off up the ul box styling and shadowing */
     .navbar-collapse {
         -webkit-box-shadow: none;
 	    -moz-box-shadow: none;
@@ -223,45 +292,7 @@ ul.dropdown-menu li a:active {
 
     .logo .sitename {
         color: #888;
-    }
-}
-
-/* Make the menu collapse at 1200px rather than the defult smaller mobile. This allows for more menu items */ 
-@media (max-width: 1000px) {
-    .navbar-header {
-        float: none;
-    }
-    .navbar-left,.navbar-right {
-        float: none !important;
-    }
-    .navbar-toggle {
-        display: block;
-    }
-    .navbar-collapse {
-        border-top: 1px solid transparent;
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
-    }
-    .navbar-fixed-top {
-        top: 0;
-        border-width: 0 0 1px;
-    }
-    .navbar-collapse.collapse {
-        display: none!important;
-    }
-    .navbar-nav {
-        float: none!important;
-        margin-top: 7.5px;
-    }
-    .navbar-nav>li {
-        float: none;
-    }
-    .navbar-nav>li>a {
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    .collapse.in{
-        display:block !important;
-    }
+    }   
 }
 
 /* --------------------------------------------------------------*/
