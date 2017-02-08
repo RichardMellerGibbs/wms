@@ -18,12 +18,18 @@ console.log('env is ' + config.node_env);
 //Expose the client static files. This includes index.html landing page which gets everything going
 app.use(express.static(__dirname + '/client'));
 
-//Added to enable correct routing without hash when urls typed directly into the address bar
-app.all('/login', function(req, res, next) {
+// This will ensure that all routing is handed over to AngularJS 
+/*app.get('/*', function(req, res, next) { 
+  res.sendFile(__dirname + '/client/index.html');
+});*/
+
+
+app.all('/home', function(req, res, next) {
   res.sendFile('client/index.html', { root: __dirname });
 });
 
-app.all('/home', function(req, res, next) {
+//Added to enable correct routing without hash when urls typed directly into the address bar
+app.all('/login', function(req, res, next) {
   res.sendFile('client/index.html', { root: __dirname });
 });
 
@@ -66,6 +72,7 @@ app.all('/maintGallery/:galleryId', function(req, res, next) {
 app.all('/findUs', function(req, res, next) {
   res.sendFile('client/index.html', { root: __dirname });
 });
+
 
 // =============================================================================
 // CONNECT TO MONGO

@@ -103,7 +103,7 @@
                                     
                                     <tr ng-repeat="testItem in content.testData" ng-click="content.testimonialDetail(testItem)">
                                         <td>{{ testItem.articleDate.value | amDateFormat: 'Do MMM YYYY' }}</td>
-                                        <td class="newsDesc"ng-bind-html="testItem.description | newlines | unsafe"></td>
+                                        <td class="testDesc"ng-bind-html="testItem.description | newlines | unsafe"></td>
                                         <td class="by">{{ testItem.by }}</td>
                                     </tr>
                                 </tbody>

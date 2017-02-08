@@ -8,6 +8,34 @@ angular.module('mainCtrl', ['authService','logService'])
     // check to see if a user is logged in on every request
     $rootScope.$on('$routeChangeStart', function() {
         
+        /*var isMobile = {
+            Android: function() {
+                return navigator.userAgent.match(/Android/i);
+            },
+            BlackBerry: function() {
+                return navigator.userAgent.match(/BlackBerry/i);
+            },
+            iOS: function() {
+                return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+            },
+            Opera: function() {
+                return navigator.userAgent.match(/Opera Mini/i);
+            },
+            Windows: function() {
+                return navigator.userAgent.match(/IEMobile/i);
+            },
+            any: function() {
+                return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+            }
+        };
+
+        if (isMobile.any()) {
+            Log.logEntry('This is a mobile device');    
+        } else {
+            Log.logEntry('This is NOT a mobile device. calling add to home screen');
+            //addToHomescreen();    
+        }*/
+
         vm.loggedIn = Auth.isLoggedIn();
 
         vm.path = $location.path();
@@ -18,7 +46,7 @@ angular.module('mainCtrl', ['authService','logService'])
         }
     });
 
-    // function to handle login form
+     // function to handle login form
     vm.doLogin = function() {
 
         Log.logEntry('Maincontroller - attempting login');

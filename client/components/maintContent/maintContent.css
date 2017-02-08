@@ -141,7 +141,7 @@ button.galleryButton {
   padding: 0;
   line-height: 35px;
   height: 37px;
-  overflow: hidden;
+  overflow: hidden;        
   font-size: 14px;
   position: relative;
 }
@@ -154,9 +154,7 @@ button.galleryButton {
 .tabrow li {
   border: 1px solid #AAA;
   background: #D1D1D1;
-  /*background: #f4f4f4;*/
-  /*background: linear-gradient(top, #ECECEC 50%, #D1D1D1 100%);*/
-  display: inline-block;
+  display: inline-block;       
   position:relative;
   z-index: 0;
   border-bottom-left-radius: 6px;
@@ -216,4 +214,17 @@ button.galleryButton {
 
 .tabrow li.selected:after {
   box-shadow: -2px 0px 0 #FFF;
+}
+
+
+/* -------  Small phones to small tablets 481px to 767px  -------*/
+@media only screen and (max-width: 767px) {
+
+    /* Make the tabs responsive */
+    .tabrow {
+        overflow: scroll;
+        overflow-y:hidden;
+        overflow-x:hidden;
+        height: 100px;
+    }
 }
