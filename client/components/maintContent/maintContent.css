@@ -111,9 +111,10 @@ button.galleryButton {
   .maintHomePanel {      
     width: 90%;
   }
-    .maintHomeForm {
+
+  .maintHomeForm {
         width: 80%;
-    }
+  }
 }
 
 /* -------  Small phones to small tablets 481px to 767px  -------*/
@@ -225,6 +226,6 @@ button.galleryButton {
         overflow: scroll;
         overflow-y:hidden;
         overflow-x:hidden;
-        height: 100px;
+        height: 120px;
     }
 }
