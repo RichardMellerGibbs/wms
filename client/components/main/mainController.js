@@ -8,34 +8,6 @@ angular.module('mainCtrl', ['authService','logService'])
     // check to see if a user is logged in on every request
     $rootScope.$on('$routeChangeStart', function() {
         
-        /*var isMobile = {
-            Android: function() {
-                return navigator.userAgent.match(/Android/i);
-            },
-            BlackBerry: function() {
-                return navigator.userAgent.match(/BlackBerry/i);
-            },
-            iOS: function() {
-                return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-            },
-            Opera: function() {
-                return navigator.userAgent.match(/Opera Mini/i);
-            },
-            Windows: function() {
-                return navigator.userAgent.match(/IEMobile/i);
-            },
-            any: function() {
-                return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-            }
-        };
-
-        if (isMobile.any()) {
-            Log.logEntry('This is a mobile device');    
-        } else {
-            Log.logEntry('This is NOT a mobile device. calling add to home screen');
-            //addToHomescreen();    
-        }*/
-
         vm.loggedIn = Auth.isLoggedIn();
 
         vm.path = $location.path();
@@ -76,8 +48,15 @@ angular.module('mainCtrl', ['authService','logService'])
                 $location.path('/home');
             }
             else {
+                if (mobileCheck()) {
+                    vm.deviceType = 'Mobile';
+                } else {
+                    vm.deviceType = 'Not Mobile';
+                }
+                
                 Log.logEntry('Maincontroller - failed to log in data ' + data.message);
-                vm.error = data.message;
+                vm.error = data.message + ' Browswer ' + vm.deviceType;
+                
             }
         })
         .error(function() {
@@ -135,6 +114,38 @@ angular.module('mainCtrl', ['authService','logService'])
             vm.error = data.message;
         });
         
+    };
+
+    function mobileCheck() {
+
+        var isMobile = {
+                Android: function() {
+                    return navigator.userAgent.match(/Android/i);
+                },
+                BlackBerry: function() {
+                    return navigator.userAgent.match(/BlackBerry/i);
+                },
+                iOS: function() {
+                    return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+                },
+                Opera: function() {
+                    return navigator.userAgent.match(/Opera Mini/i);
+                },
+                Windows: function() {
+                    return navigator.userAgent.match(/IEMobile/i);
+                },
+                any: function() {
+                    return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+                }
+            };
+
+        if (isMobile.any()) {
+            Log.logEntry('This is a mobile device');    
+            return true;
+        } else {
+            Log.logEntry('This is NOT a mobile device. calling add to home screen');
+            return false;
+        }
     };
         
 }]);
