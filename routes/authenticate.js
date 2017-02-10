@@ -18,6 +18,8 @@ router.post('/', function(req, res) {
  // select the name username and password explicitly
     logger.info('received a request to authenticate');
 
+    var expiresIn = 18000; //5 Hors
+
     models.User.findOne({
         username: req.body.username
     })
@@ -51,8 +53,13 @@ router.post('/', function(req, res) {
                 });
             } else {
 
+                if (req.body.browser   === 'M') {
+                    expiresIn = 5184000; //1 month - seconds
+                } 
+
                 logger.info('Password valid - generate token userid %s', user._id);
                 logger.info('user.admin = %s', user.admin);
+                logger.info('Token duration %s', expiresIn);
                 // if user is found and password is right
                 // create a token
                 var token = jwt.sign({
@@ -61,7 +68,7 @@ router.post('/', function(req, res) {
                     userid: user._id,
                     admin: user.admin
                     }, superSecret, {
-                        expiresIn: 18000 //5 hours //3600 // Seconds. Expires in 1 hour
+                        expiresIn: expiresIn 
                     });
 
                 // return the information including token as JSON

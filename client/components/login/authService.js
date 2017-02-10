@@ -63,13 +63,14 @@ angular.module('authService', ['storeageFallback'])
 
     // log a user in
     //console.log('Inside auth factory');
-    authFactory.login = function(username, password) {
+    authFactory.login = function(username, password, browser) {
 
         //console.log('Auth factory - about to post authenticate request');
         // return the promise object and its data
         return $http.post('/api/authenticate', {
             username: username,
-            password: password
+            password: password,
+            browser: browser
         })
         .success(function(data) {
             //console.log('Auth factory - ' + data.message + ' and success = ' + data.success);

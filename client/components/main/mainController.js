@@ -36,8 +36,14 @@ angular.module('mainCtrl', ['authService','logService'])
             return;
         }
 
+        if (mobileCheck()) {
+            vm.deviceType = 'M';
+        } else {
+            vm.deviceType = 'D';
+        }
+
         // call the Auth.login() function
-        Auth.login(vm.username, vm.password)
+        Auth.login(vm.username, vm.password, vm.deviceType)
         .success(function(data) {
 
             vm.processing = false;
@@ -48,15 +54,9 @@ angular.module('mainCtrl', ['authService','logService'])
                 $location.path('/home');
             }
             else {
-                if (mobileCheck()) {
-                    vm.deviceType = 'Mobile';
-                } else {
-                    vm.deviceType = 'Not Mobile';
-                }
-                
                 Log.logEntry('Maincontroller - failed to log in data ' + data.message);
-                vm.error = data.message + ' Browswer ' + vm.deviceType;
-                
+                //vm.error = data.message + ' Browser ' + vm.deviceType;
+                vm.error = data.message
             }
         })
         .error(function() {
@@ -116,6 +116,7 @@ angular.module('mainCtrl', ['authService','logService'])
         
     };
 
+    // Find out the browser type
     function mobileCheck() {
 
         var isMobile = {
