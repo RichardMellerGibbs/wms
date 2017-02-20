@@ -85,6 +85,11 @@ router.put('/:news_id', authMiddle.isAuthenticated, function(req, res) {
         logger.info('Title %s', req.body.title);
         logger.info('Snippet %s', req.body.snippet);
         
+        if (req.body.articleDate) {
+            logger.info('articleDate is populated');
+            news.articleDate = req.body.articleDate;
+        }
+
         if (req.body.description){
             logger.info('description is populated');
             news.description = req.body.description;

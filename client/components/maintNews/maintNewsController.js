@@ -140,8 +140,7 @@ function($rootScope, $location, $routeParams, $window, Auth, News, Log) {
             vm.error = 'A article URL must be supplied if a URL description is present';
             return;        
         }
-
-        
+               
         var articletData = {
             articleDate: vm.articleDate.value,
             title: vm.article.title,
