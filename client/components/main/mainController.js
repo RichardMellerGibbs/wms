@@ -1,6 +1,6 @@
 //MAIN CONTROLLER - THE OUTER SHELL OF THE APPLICATION. THE SINGLE PAGE CONTROLLER
 angular.module('mainCtrl', ['authService','logService'])
-.controller('mainController', ['$rootScope', '$location', '$window', 'Auth', 'Log',  function($rootScope, $location, $window, Auth, Log) {
+.controller('mainController', ['$rootScope', '$location', '$window', 'Auth', 'Log', 'Browser',  function($rootScope, $location, $window, Auth, Log, Browser) {
 
     var vm = this;
     Log.logEntry('Inside the main controller');
@@ -36,11 +36,15 @@ angular.module('mainCtrl', ['authService','logService'])
             return;
         }
 
-        if (mobileCheck()) {
+        Log.logEntry('Getting the browser type');
+
+        if (Browser.mobileCheck()) {
             vm.deviceType = 'M';
         } else {
             vm.deviceType = 'D';
         }
+
+        Log.logEntry('Getting the browser type = ' + vm.deviceType);
 
         // call the Auth.login() function
         Auth.login(vm.username, vm.password, vm.deviceType)
@@ -114,39 +118,6 @@ angular.module('mainCtrl', ['authService','logService'])
             vm.error = data.message;
         });
         
-    };
-
-    // Find out the browser type
-    function mobileCheck() {
-
-        var isMobile = {
-                Android: function() {
-                    return navigator.userAgent.match(/Android/i);
-                },
-                BlackBerry: function() {
-                    return navigator.userAgent.match(/BlackBerry/i);
-                },
-                iOS: function() {
-                    return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-                },
-                Opera: function() {
-                    return navigator.userAgent.match(/Opera Mini/i);
-                },
-                Windows: function() {
-                    return navigator.userAgent.match(/IEMobile/i);
-                },
-                any: function() {
-                    return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-                }
-            };
-
-        if (isMobile.any()) {
-            Log.logEntry('This is a mobile device');    
-            return true;
-        } else {
-            Log.logEntry('This is NOT a mobile device. calling add to home screen');
-            return false;
-        }
     };
         
 }]);

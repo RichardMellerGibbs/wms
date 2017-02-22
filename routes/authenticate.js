@@ -54,7 +54,7 @@ router.post('/', function(req, res) {
             } else {
 
                 if (req.body.browser   === 'M') {
-                    expiresIn = 5184000; //1 month - seconds
+                    expiresIn = 5184000; //2 months - seconds
                 } 
 
                 logger.info('Password valid - generate token userid %s', user._id);

@@ -1,4 +1,4 @@
-angular.module('authService', ['storeageFallback'])
+angular.module('authService', ['storeageFallback','logService'])
 
 // ===================================================
 // Factory to login and get information
@@ -7,7 +7,7 @@ angular.module('authService', ['storeageFallback'])
 // inject $q to return promise objects
 // inject AuthToken to manage tokens
 // ===================================================
-.factory('Auth', function($http, $q, AuthToken) {
+.factory('Auth', function($http, $q, AuthToken, Browser) {
 
     // create auth factory object
     var authFactory = {};
@@ -119,14 +119,18 @@ angular.module('authService', ['storeageFallback'])
             var diff = now - tokenDateTime;
             var tokenAgeSeconds = Math.floor(diff / 1e3);
             
+            var tokenExpiry = 18000;
+
             //console.log('tokenAge in seconds = ' + tokenAgeSeconds);
+            //Check if the browser is a mobile type
+            if (Browser.mobileCheck()) {
+                tokenExpiry = 5184000 //2 months in seconds. 60 X 60 X 24 x 60
+            } 
             
-            if (tokenAgeSeconds > 18000) {
-                
+            if (tokenAgeSeconds > tokenExpiry) {
                 // clear the token to logout
                 AuthToken.setToken();      
             }
-            
             
         } else {
             return false;
@@ -147,12 +151,90 @@ angular.module('authService', ['storeageFallback'])
         else
             return $q.reject({ message: 'User has no token.' });
     };
+
+
+    // Find out the browser type
+    /*authFactory.mobileCheck = function() {
+
+        var isMobile = {
+                Android: function() {
+                    return navigator.userAgent.match(/Android/i);
+                },
+                BlackBerry: function() {
+                    return navigator.userAgent.match(/BlackBerry/i);
+                },
+                iOS: function() {
+                    return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+                },
+                Opera: function() {
+                    return navigator.userAgent.match(/Opera Mini/i);
+                },
+                Windows: function() {
+                    return navigator.userAgent.match(/IEMobile/i);
+                },
+                any: function() {
+                    return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+                }
+            };
+
+        if (isMobile.any()) {
+            Log.logEntry('This is a mobile device');    
+            return true;
+        } else {
+            Log.logEntry('This is NOT a mobile device. calling add to home screen');
+            return false;
+        }
+    };
+    */
     
     // return auth factory object
     return authFactory;
 
 })
 
+
+// ===================================================
+// factory for handling obtaining browser type
+// ===================================================
+.factory('Browser', function($window, $localstorage, Log) {
+    
+    var browserFactory = {};
+
+    browserFactory.mobileCheck = function() {
+        
+        var isMobile = {
+                Android: function() {
+                    return navigator.userAgent.match(/Android/i);
+                },
+                BlackBerry: function() {
+                    return navigator.userAgent.match(/BlackBerry/i);
+                },
+                iOS: function() {
+                    return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+                },
+                Opera: function() {
+                    return navigator.userAgent.match(/Opera Mini/i);
+                },
+                Windows: function() {
+                    return navigator.userAgent.match(/IEMobile/i);
+                },
+                any: function() {
+                    return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+                }
+            };
+
+        if (isMobile.any()) {
+            Log.logEntry('This is a mobile device');    
+            return true;
+        } else {
+            Log.logEntry('This is NOT a mobile device. calling add to home screen');
+            return false;
+        }
+        
+    };
+        
+    return browserFactory;
+})
 
 // ===================================================
 // factory for handling tokens
