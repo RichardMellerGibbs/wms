@@ -1,9 +1,71 @@
 //MAIN CONTROLLER - THE OUTER SHELL OF THE APPLICATION. THE SINGLE PAGE CONTROLLER
-angular.module('mainCtrl', ['authService','logService'])
-.controller('mainController', ['$rootScope', '$location', '$window', 'Auth', 'Log', 'Browser',  function($rootScope, $location, $window, Auth, Log, Browser) {
+angular.module('mainCtrl', ['authService','logService','spaContentService'])
+.controller('mainController', ['$rootScope', '$location', '$window', 'Auth', 'Log', 'Browser', 'SpaContent',  function($rootScope, $location, $window, Auth, Log, Browser, SpaContent) {
 
     var vm = this;
     Log.logEntry('Inside the main controller');
+
+    SpaContent.all('Footer')
+    .success(function(footerData) {
+
+        Log.logEntry('mainController - success from SpaContent.all number of entries ' + footerData.length);
+        Log.logEntry('mainController - SpaContent[0] ' + footerData[0].subject + ' ' + footerData[0].description);
+
+        for (i=0; i<footerData.length; i++) {
+            
+            if (footerData[i].subject === 'Footer Address Line 1') {
+                vm.addressLine1 = footerData[i].description;
+            }
+
+            if (footerData[i].subject === 'Footer Address Line 2') {
+                vm.addressLine2 = footerData[i].description;
+            }
+
+            if (footerData[i].subject === 'Footer Address Line 3') {
+                vm.addressLine3 = footerData[i].description;
+            }
+
+            if (footerData[i].subject === 'Footer Address Line 4') {
+                vm.addressLine4 = footerData[i].description;
+            }
+
+            if (footerData[i].subject === 'Footer Office Phone') {
+                vm.officePhone = footerData[i].description;
+            }
+
+            if (footerData[i].subject === 'Footer Fax') {
+                vm.officeFax = footerData[i].description;
+            }
+
+            if (footerData[i].subject === 'Footer Office Email') {
+                vm.officeEmail = footerData[i].description;
+            }
+
+            if (footerData[i].subject === 'Footer First Contact Name') {
+                vm.firstContactName = footerData[i].description;
+            }
+
+            if (footerData[i].subject === 'Footer First Contact Phone') {
+                vm.firstContactPhone = footerData[i].description;
+            }
+
+            if (footerData[i].subject === 'Footer First Contact Email') {
+                vm.firstContactEmail = footerData[i].description;
+            }
+
+            if (footerData[i].subject === 'Footer Second Contact Name') {
+                vm.secondContactName = footerData[i].description;
+            }
+
+            if (footerData[i].subject === 'Footer Second Contact Phone') {
+                vm.secondContactPhone = footerData[i].description;
+            }
+
+            if (footerData[i].subject === 'Footer Second Contact Email') {
+                vm.secondContactEmail = footerData[i].description;
+            }
+        }
+    });
 
     // check to see if a user is logged in on every request
     $rootScope.$on('$routeChangeStart', function() {

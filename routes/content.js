@@ -1,3 +1,4 @@
+// =============================================================================
 // ROUTES FOR OUR CONTENT API
 // =============================================================================
 var express    = require('express');
@@ -24,13 +25,25 @@ router.get('/', function(req, res) {
             responses.handleError(err,req,res);   
             return res.json({ success: false, message: 'Internal server error'});
         }
+
+        var footerContentFound = false;
+
+        for (i=0; i<content.length; i++ ){
+            if (content[i].subject === 'Footer Address Line 1') {
+                footerContentFound = true;
+                logger.info('Footer address line1 found');
+            }
+        }
+
         
-        if (content.length === 0) {
+
+        if (content.length === 0 || footerContentFound === false) {
+        //if (content.length === 0) {
             logger.info('no content data found');
             //No data found. Populate base data for a new instance of the database.
             
             var homeData = [
-                {
+                /*{
                     subject: 'Section 1 Column 1 Paragraph 1',
                     description: 'Located in the heart of the Nottinghamshire countryside just over an hour from Newmarket, Whatton Manor Stud resides in the famous Vale of Belvoir. Renowned for its professionalism and high standards of care, Whatton Manor Stud achieves consistently impressive results at the sales and on the racetrack.'
                 },
@@ -85,8 +98,63 @@ router.get('/', function(req, res) {
                 {
                     subject: 'Section 2 Column 3 Paragraph 3',
                     description: ''
+                }*/
+                //Footer
+                //,
+                {
+                    subject: 'Footer Address Line 1',
+                    description: 'WHATTON MANOR STUD'
+                },
+                {
+                    subject: 'Footer Address Line 2',
+                    description: 'Whatton in the Vale'
+                },
+                {
+                    subject: 'Footer Address Line 3',
+                    description: 'Nottinghamshire'
+                },
+                {
+                    subject: 'Footer Address Line 4',
+                    description: 'NG13 9EX'
+                },
+                {
+                    subject: 'Footer Office Phone',
+                    description: 'Office: 01949 850221'
+                },
+                {
+                    subject: 'Footer Fax',
+                    description: 'Fax: 01949 850993'
+                },
+                {
+                    subject: 'Footer Office Email',
+                    description: 'email: player@whattonmanorstud.fsnet.co.uk'
+                },
+                {
+                    subject: 'Footer First Contact Name',
+                    description: 'Peter Player'
+                },
+                {
+                    subject: 'Footer First Contact Phone',
+                    description: 'Mobile: 0786 0322322'
+                },
+                {
+                    subject: 'Footer First Contact Email',
+                    description: 'email: peterplayer@rocketmail.com'
+                },
+                {
+                    subject: 'Footer Second Contact Name',
+                    description: 'Edward Player'
+                },
+                {
+                    subject: 'Footer Second Contact Phone',
+                    description: 'Mobile: 0773 3261757'
+                },
+                {
+                    subject: 'Footer Second Contact Email',
+                    description: 'email: player.edward@gmail.com'
                 }
             ];
+
             
             var content = new models.Content();
             
@@ -104,7 +172,7 @@ router.get('/', function(req, res) {
                 // return the information including token as JSON
                 res.json(homeData);
             });
-
+            
             
         } else {
             res.json(content);
@@ -159,8 +227,7 @@ router.put('/:content_id', authMiddle.isAuthenticated,  function(req, res) {
 });
 
 //Adding an entry (accessed at POST http://localhost:8082/api/content)
-//authMiddle.isAuthenticated,
-router.post('/', function(req, res) {
+router.post('/', authMiddle.isAuthenticated, function(req, res) {
   
     logger.info('Received a request to add a content entry');
     

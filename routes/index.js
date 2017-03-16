@@ -11,4 +11,5 @@ module.exports = function(app) {
     app.use('/api/news', require('./news.js'));
     app.use('/api/success', require('./success.js'));
     app.use('/reset', require('./reset.js'));
+    app.use('/api/spaContent', require('./spaContent.js'));
 };
