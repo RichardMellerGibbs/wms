@@ -36,14 +36,14 @@ function($rootScope, $location, $routeParams, $window, Auth, Log, User) {
             vm.me = data;
             Log.logEntry('logged in user is ' + vm.me.username);
             
-            //if (vm.me.admin === true) {
+            if (vm.me.admin === true) {
                 //This is an admin user
                 vm.showAdmin = true;
                 vm.deleteButton = true;
-            //} else {
+            } else {
                 //ordinary users cannot delete other users or themselves
-            //    vm.deleteButton = false;
-            //}
+                vm.deleteButton = false;
+            }
 
             //Ensures only the logged in user can change their password and noone elses
             if (vm.me.userid === $routeParams.userId) {
