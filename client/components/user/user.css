@@ -1,0 +1,37 @@
+.user {
+    min-height: 720px;              /* Forces footer to the bottom of the page */ 
+    background-color: #f2f2f2;
+    color: #000;
+    font-weight: 350;
+}
+
+.userSection { 
+    width: 100%;
+    margin: 0 auto;        /* This centers the display */
+    min-width: 290px;
+    max-width: 800px;
+    background-color: #f2f2f2;
+    padding: 0;
+}
+
+.table-responsive {  
+    /* limit the size of the table and add scrollbars */
+    font-size: 80%;
+    /*height:500px;
+    overflow:scroll;*/
+}
+
+.tableClass {
+    padding: 0;
+}
+
+.add-btn {
+    margin-bottom: 20px;
+}
+
+
+/* -------  Small phones to small tablets 481px to 767px  -------*/
+@media only screen and (max-width: 767px) {
+
+    /*.userSection { width: 90%; }*/
+}

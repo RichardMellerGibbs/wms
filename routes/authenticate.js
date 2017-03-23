@@ -12,6 +12,7 @@ var logger      = require('../utils/logger.js');
 
 var superSecret = config.secret;
 
+//Called by client. Authenticate request for user login.
 router.post('/', function(req, res) {
 
  // find the user

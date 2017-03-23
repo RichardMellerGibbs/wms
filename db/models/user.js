@@ -6,12 +6,16 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     bcrypt = require('bcrypt-nodejs');
 
-
 var UserSchema = new Schema({
-	name: { type: String, required: true },
+	//name: { type: String, required: true },
+    firstName: { type: String, required: true },
+    surname: { type: String, required: true },
+    mobile: { type: String },
+    office: { type: String },
+    customer: { type:Boolean, required: true },
     username: { type: String, required: true, index: { unique: true }},
 	password: { type: String, required: true, select: false },
-	admin: Boolean,
+	admin: { type:Boolean, required: true },
     resetPasswordToken: String,
     resetPasswordExpires: Date
 });
@@ -37,9 +41,8 @@ UserSchema.pre('save', function(next) {
 
 // Method to compare a given password with the database hash
 UserSchema.methods.comparePassword = function (password) {
-    
-    var user = this;
 
+    var user = this;
     return bcrypt.compareSync(password, user.password);
 };
 

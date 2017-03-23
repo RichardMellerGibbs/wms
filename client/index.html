@@ -42,6 +42,8 @@
             <script src="../components/findUs/findUsController.js"></script>
             <script src="../components/maintGallery/maintGalleryController.js"></script>
             <script src="../components/gallery/galleryController.js"></script>
+            <script src="../components/user/userController.js"></script>
+            <script src="../components/maintUser/maintUserController.js"></script>
 
             <!-- Services -->
             <script src="../components/login/authService.js"></script>
@@ -51,6 +53,7 @@
             <script src="../components/success/successService.js"></script>
             <script src="../components/main/logService.js"></script>
             <script src="../components/main/spaContentService.js"></script>
+            <script src="../components/user/userService.js"></script>
 
             <!-- CSS -->
             <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -72,6 +75,8 @@
             <link rel="stylesheet" href="components/findUs/findUs.css">
             <link rel="stylesheet" href="components/maintGallery/maintGallery.css">
             <link rel="stylesheet" href="components/gallery/gallery.css">
+            <link rel="stylesheet" href="components/user/user.css">
+            <link rel="stylesheet" href="components/maintUser/maintUser.css">
 
             <!--h2>Header Section</h2-->
            
@@ -142,6 +147,8 @@
                                     <li>
                                         <a href="/maintContent/x" class="hidden-xs">Maintain Content</a>
                                         <a href="/maintContent/x" class="visible-xs" data-toggle="collapse" data-target="#mvNavbar">Maintain Content</a>
+                                        <a href="/user" class="hidden-xs">Users</a>
+                                        <a href="/user" class="visible-xs" data-toggle="collapse" data-target="#mvNavbar">Users</a>
                                     </li>
                                     <li ng-if="main.loggedIn">
                                         <a href="/" class="hidden-xs" ng-click="main.doLogout()">Logout</a>

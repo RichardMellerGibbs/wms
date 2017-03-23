@@ -13,24 +13,42 @@ var logger      = require('../utils/logger.js');
 var superSecret = config.secret;
 
 //Adding a user entry (accessed at POST http://localhost:8082/api/user)
-/*router.post('/',function(req, res) {
+router.post('/', authMiddle.isAuthenticated, function(req, res) {
   
     logger.info('Received a request to add a user');
     
     var user = new models.User();      // create a new instance of the User model
-
-    user.admin = false;
-
-    //if (!req.body.admin) {
-    //    user.admin = false;
-    //} else {
-    //    user.admin = req.body.admin;
-    //}
     
     if (!req.body.username) {
         return res.json({ success: false, message: 'No username specified'});
     } else {
         user.username = req.body.username;
+    }
+
+    if (!req.body.firstName) {
+        return res.json({ success: false, message: 'No First name specified'});
+    } else {
+        user.firstName = req.body.firstName;
+    }
+
+    if (!req.body.surname) {
+        return res.json({ success: false, message: 'No surname specified'});
+    } else {
+        user.surname = req.body.surname;
+    }
+
+    logger.info('req.body.customer = ' + req.body.customer);
+    if (req.body.customer !== true && req.body.customer !== false) {
+        return res.json({ success: false, message: 'No customer identifer specified'});
+    } else {
+        user.customer = req.body.customer;
+    }
+
+    //Admin section. Cannot allow this for normal users.
+    if (req.body.admin !== true && req.body.admin !== false) {
+        return res.json({ success: false, message: 'No admin identifier specified'});
+    } else {
+        user.admin = req.body.admin;
     }
     
     if (!req.body.password) {
@@ -39,12 +57,6 @@ var superSecret = config.secret;
         user.password = req.body.password; 
     }
     
-    if (!req.body.name) {
-        return res.json({ success: false, message: 'No name specified'});
-    } else {
-       user.name = req.body.name;
-    }
-       
     // save the user and check for errors
     user.save(function(err) {
         
@@ -79,12 +91,90 @@ var superSecret = config.secret;
         logger.info('Finisahed create user');
     });        
 });
-*/
 
+// update the user with this id (accessed at PUT http://localhost:8080/api/users/:user_id)
+router.put('/:user_id', authMiddle.isAuthenticated, function(req, res, next) {
+ 
+    logger.info('Processing request to update a single user specified by id %s', req.params.user_id);
+    // use our user model to find the user we want
+    models.User.findById(req.params.user_id, function(err, user) {
+
+        if (err) res.send(err);
+        
+        logger.info('Found the user. firstName = ' + req.body.firstName);
+        
+        // update the users info only if its new
+        if (req.body.firstName) {
+            user.firstName = req.body.firstName;
+        };
+
+        logger.info('Dealing with surname');
+
+        if (req.body.surname) {
+            user.surname = req.body.surname;
+        };
+        
+        if (req.body.username){
+            user.username = req.body.username;
+        };
+        
+        if (req.body.password){ 
+            user.password = req.body.password;
+        }
+
+        if (req.body.mobile){ 
+            user.mobile = req.body.mobile;
+        }
+
+        if (req.body.office){ 
+            user.office = req.body.office;
+        }
+        
+        logger.info('req.body.admin = ' + req.body.admin);
+
+        if (req.body.admin !== true && req.body.admin !== false) {
+            return res.json({ success: false, message: 'No admin identifier specified'});
+        } else {
+            user.admin = req.body.admin;
+        }
+
+        if (req.body.customer !== true && req.body.customer !== false) {
+            return res.json({ success: false, message: 'No customer identifer specified'});
+        } else {
+            user.customer = req.body.customer;
+        }
+        
+        if (req.body.customer) {
+            user.customer = req.body.customer;
+        }    
+        
+        logger.info('About to save the user schema');
+        logger.info('firstname = ' + user.firstName + ' surname ' + user.surname + ' email ' + user.username + ' admin ' + user.admin + ' customer ' + user.customer);
+        // save the user
+        user.save(function(err) {
+            
+            if (err) {
+                
+                if (err.code == 11000) {
+                    logger.info('A user with that email address already exists');
+                    return res.json({ success: false, message: 'A user with that email address already exists. '});
+                }
+        
+                logger.error('Error saving the user schema');
+                responses.handleError(err,req,res);   
+                return res.json({ success: false, message: 'Internal server error'});
+            }
+            
+            res.json({ success: true, message: 'User updated!' });        
+            
+        });
+        
+    });
+});
 
 //To find a user that has a specified email address
 //http://localhost:8082/api/users/checkname/bob@hotmail.com
-router.get('/checkname/:username', function(req, res) {
+router.get('/checkname/:username', authMiddle.isAuthenticated, function(req, res) {
    
 	logger.info('Processing api request to get username %s', req.params.username);
     
@@ -159,57 +249,6 @@ router.get('/:user_id', authMiddle.isAuthenticated, function(req, res) {
 });
 
 
-// update the user with this id (accessed at PUT http://localhost:8080/api/users/:user_id)
-router.put('/:user_id', authMiddle.isAuthenticated, function(req, res, next) {
- 
-    logger.info('Processing request to update a single user specified by id %s', req.params.user_id);
-    // use our user model to find the user we want
-    models.User.findById(req.params.user_id, function(err, user) {
-
-        if (err) res.send(err);
-        
-        logger.info('Found the user');
-        
-        // update the users info only if its new
-        if (req.body.name) {
-            user.name = req.body.name;
-        };
-        
-        if (req.body.username){
-            user.username = req.body.username;
-        };
-        
-        if (req.body.password){ 
-            user.password = req.body.password;
-        }
-        
-        if (req.body.admin){ 
-            user.admin = req.body.admin;
-        }
-            
-        
-        logger.info('About to save the user schema');
-        // save the user
-        user.save(function(err) {
-            
-            if (err) {
-                
-                if (err.code == 11000) {
-                    logger.info('A user with that email address already exists');
-                    return res.json({ success: false, message: 'A user with that email address already exists. '});
-                }
-        
-                logger.error('Error saving the user schema');
-                responses.handleError(err,req,res);   
-                return res.json({ success: false, message: 'Internal server error'});
-            }
-            
-            res.json({ success: true, message: 'User updated!' });        
-            
-        });
-        
-    });
-});
 
 
 
@@ -227,10 +266,8 @@ router.delete('/:user_id', authMiddle.isAuthenticated, function(req, res) {
             return res.json({ success: false, message: 'Internal server error'});
         }
         
-        res.json({ message: 'Successfully deleted' });
+        res.json({ success: true, message: 'Successfully deleted' });
     });
 });
-
-
 
 module.exports = router;

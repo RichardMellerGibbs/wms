@@ -1,0 +1,53 @@
+<div class="user">
+    <section class="userSection">
+
+        <div class="row ">
+            <div class="col-md-12 ">
+                <div class="newsPanelTitle">
+                    <h2>Users</h2>                        
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="searchPanel">
+                <div class="col-md-12 searchCol">
+                    
+                    <form class="searchForm">
+                        
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                            <input type="text" class="form-control" placeholder="Search Users" ng-model="searchName">
+                        </div>      
+                    </form>
+
+                    <button type="submit" ng-click="user.addUser()" class="btn btn-block btn-primary add-btn">Add User</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 tableClass">
+                <div class="table-responsive showHover">
+                                    
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>email</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr ng-repeat="person in user.users | filter:searchName" ng-click="user.userDetail(person)">
+                                <td>{{ person.firstName + ' ' + person.surname }}</td>
+                                <td>{{ person.username }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>

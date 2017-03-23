@@ -1,0 +1,75 @@
+<div class="maintUser">
+    <section class="maintUserSection">
+
+        <div class="row ">
+            <div class="col-md-12 ">
+                <div class="newsPanelTitle">
+                    <h2>Maintain User</h2>                        
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <form name="maintUserForm" class="maintSuccessForm">
+
+                    <div class="input-group">
+                        <div class="field-title">First name</div>
+                        <input type="text" name="firstName" ng-model="maintUser.firstName" autofocus class="form-control bg-white">
+                    </div>
+
+                    <div class="input-group">
+                        <div class="field-title">Surname</div>
+                        <input type="text" name="surname" ng-model="maintUser.surname" autofocus class="form-control bg-white">
+                    </div>
+
+                    <div class="input-group">
+                        <div class="field-title">Email</div>
+                        <input type="text" name="name" ng-model="maintUser.username" autofocus class="form-control bg-white">
+                    </div>
+
+                    <div class="changePassword" ng-if="maintUser.showPasswordLink">
+                        <a ng-click="maintUser.changePassword()">Change Password?</a>
+                    </div>
+
+                    <div class="input-group" ng-if="maintUser.enablePassword">
+                        <div class="field-title">Password</div>
+                        <input type="password" name="password" ng-model="maintUser.password" class="form-control bg-white">
+                    </div>
+                    <div class="input-group" ng-if="maintUser.enablePassword">
+                        <div class="field-title">Password again</div>
+                        <input type="password" name="passwordAgain" ng-model="maintUser.passwordAgain" class="form-control bg-white">
+                    </div>
+
+                    <div class="input-group" ng-if="maintUser.showAdmin">
+                        <div class="field-title">Admin User</div>
+                        <input type="checkbox" name="admin" ng-model="maintUser.admin">
+                    </div>
+
+
+                    <div class="alert alert-danger fade in validationPanel" ng-if="maintUser.error">
+                        <strong>{{maintUser.errorType}} </strong>{{ maintUser.error }}
+                    </div>
+                    
+                    <div class="alert alert-success fade in warningPanel" ng-if="maintUser.feedback">
+                        <a class="close" data-dismiss="alert">&times;</a> 
+                        <strong>Success!</strong>{{ maintUser.feedback }}
+                    </div>
+
+                    <div class="buttonSection">
+                        <button type="submit" ng-click="maintUser.addUser()" class="btn btn-primary" ng-if="maintUser.addButton">Add</button>
+                        <button type="submit" ng-click="maintUser.updateUser()" class="btn btn-primary" ng-if="maintUser.updateButton">Update</button>
+                        <button type="submit" ng-click="maintUser.confirmDelete()" class="btn btn-primary" ng-if="maintUser.deleteButton">Delete</button>
+                        <button type="submit" ng-click="maintUser.closeForm()" class="btn btn-primary" ng-if="maintUser.closeButton">Close</button>
+                        
+                        <!--Are you sure buttons for deleting event -->
+                        <button type="" class="btn btn-danger btn-upd" ng-click="maintUser.deleteUser(maintUser.userId)" ng-if="maintUser.showDeleteSection">Confirm Delete</button>
+                        <button type="" class="btn btn-primary btn-upd" ng-click="maintUser.closeDeleteSection()" ng-if="maintUser.showDeleteSection">Cancel Delete</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </section>
+</div>

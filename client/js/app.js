@@ -18,7 +18,9 @@
 		'testimonialCtrl',
 		'findUsCtrl',
 		'maintGalleryCtrl',
-		'galleryCtrl'
+		'galleryCtrl',
+		'userCtrl',
+		'maintUserCtrl'
 		])
 
 	// application configuration to integrate token into requests
@@ -115,6 +117,18 @@
 				templateUrl: 'components/findUs/findUs.html',
 				controller: 'findUsController',
 				controllerAs: 'findUs'
+			})
+
+			.when('/user', {
+				templateUrl: 'components/user/user.html',
+				controller: 'userController',
+				controllerAs: 'user'
+			})
+
+			.when('/maintUser/:userId', {
+				templateUrl: 'components/maintUser/maintUser.html',
+				controller: 'maintUserController',
+				controllerAs: 'maintUser'
 			})
 			
 			.otherwise({redirectTo: '/home'

@@ -73,6 +73,13 @@ app.all('/findUs', function(req, res, next) {
   res.sendFile('client/index.html', { root: __dirname });
 });
 
+app.all('/user', function(req, res, next) {
+  res.sendFile('client/index.html', { root: __dirname });
+});
+
+app.all('/maintUser/:userId', function(req, res, next) {
+  res.sendFile('client/index.html', { root: __dirname });
+});
 
 // =============================================================================
 // CONNECT TO MONGO

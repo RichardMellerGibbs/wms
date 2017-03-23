@@ -43,7 +43,7 @@ router.get('/', function(req, res) {
             //No data found. Populate base data for a new instance of the database.
             
             var homeData = [
-                /*{
+                {
                     subject: 'Section 1 Column 1 Paragraph 1',
                     description: 'Located in the heart of the Nottinghamshire countryside just over an hour from Newmarket, Whatton Manor Stud resides in the famous Vale of Belvoir. Renowned for its professionalism and high standards of care, Whatton Manor Stud achieves consistently impressive results at the sales and on the racetrack.'
                 },
@@ -98,9 +98,8 @@ router.get('/', function(req, res) {
                 {
                     subject: 'Section 2 Column 3 Paragraph 3',
                     description: ''
-                }*/
+                },
                 //Footer
-                //,
                 {
                     subject: 'Footer Address Line 1',
                     description: 'WHATTON MANOR STUD'
