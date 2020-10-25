@@ -1,0 +1,199 @@
+<!-- Maintain horse -->
+<div class="maintHorse">
+  <div class="container-fluid">
+    <section class="sectionMaintHorse">
+      <div class="row">
+        <h2>horse Article</h2>
+      </div>
+
+      <div class="row">
+        <div class="MaintHorsePanel">
+          <div class="col">
+            <form name="MaintHorseForm" class="MaintHorseForm">
+              <div class="input-group">
+                <div class="field-title">Article Date</div>
+                <input
+                  type="date"
+                  name="articleDate"
+                  ng-model="maintHorse.articleDate.value"
+                  autofocus
+                  class="form-control bg-white"
+                />
+              </div>
+
+              <div class="input-group">
+                <div class="field-title">Title</div>
+                <input
+                  type="text"
+                  name="horseTitle"
+                  ng-model="maintHorse.article.title"
+                  autofocus
+                  class="form-control bg-white"
+                />
+              </div>
+
+              <div class="input-group">
+                <div class="field-title">Lot</div>
+                <input
+                  type="text"
+                  name="lot"
+                  ng-model="maintHorse.article.lot"
+                  autofocus
+                  class="form-control bg-white"
+                />
+              </div>
+
+              <div class="input-group">
+                <div class="field-title">Line2</div>
+                <input
+                  type="text"
+                  name="line2"
+                  ng-model="maintHorse.article.line2"
+                  autofocus
+                  class="form-control bg-white"
+                />
+              </div>
+
+              <div class="input-group">
+                <div class="field-title">Line3</div>
+                <input
+                  type="text"
+                  name="line3"
+                  ng-model="maintHorse.article.line3"
+                  autofocus
+                  class="form-control bg-white"
+                />
+              </div>
+
+              <div class="input-group">
+                <div class="field-title">Video Location</div>
+                <input
+                  type="text"
+                  name="videolocation"
+                  ng-model="maintHorse.article.videolocation"
+                  autofocus
+                  class="form-control bg-white"
+                />
+              </div>
+
+              <div class="input-group horseDescription">
+                <div class="field-title">Description</div>
+                <textarea
+                  type="text"
+                  name="horseDescription"
+                  ng-model="maintHorse.article.description"
+                  autofocus
+                  class="form-control bg-white"
+                ></textarea>
+              </div>
+
+              <div class="input-group">
+                <div class="field-title">Document</div>
+                {{maintHorse.article.documentlocation}}
+              </div>
+
+              <div class="input-group imageUpload">
+                <div class="spinner" ng-show="horse.loading"></div>
+                <div class="field-title">Choose PDF</div>
+                <input
+                  type="file"
+                  ngf-select
+                  ng-model="maintHorse.article.file"
+                  name="file"
+                  ngf-pattern="'.pdf'"
+                  accept=".pdf"
+                  ngf-max-size="20MB"
+                  ng-change="maintHorse.fileUpload()"
+                />
+              </div>
+
+              <!-- <embed
+                src="http://localhost:8083/api/horse/5f8ad6e6a06df39551c2fc84/streamvideo"
+                width="1000"
+                height="800"
+                frameborder="0"
+                allowfullscreen
+              /> -->
+
+              <!-- src="http://localhost:8083/api/horse/5f8ad6e6a06df39551c2fc84/streamvideo" -->
+
+              <iframe
+                ng-if="maintHorse.article.horseDocAvailable"
+                ng-src="{{maintHorse.streamdocument}}"
+                style="width: 100%; height: 100%; border: none"
+              ></iframe>
+
+              <div
+                class="alert alert-danger fade in validationPanel"
+                ng-if="maintHorse.error"
+              >
+                <strong>{{maintHorse.errorType}} </strong>{{ maintHorse.error }}
+              </div>
+
+              <div
+                class="alert alert-success fade in warningPanel"
+                ng-if="maintHorse.feedback"
+              >
+                <a class="close" data-dismiss="alert">&times;</a>
+                <strong>Success!</strong>{{ maintHorse.feedback }}
+              </div>
+
+              <div class="buttonSection">
+                <button
+                  type="submit"
+                  ng-click="maintHorse.addHorse()"
+                  class="btn btn-primary"
+                  ng-if="maintHorse.addButton"
+                >
+                  Add
+                </button>
+                <button
+                  type="submit"
+                  ng-click="maintHorse.updateHorse()"
+                  class="btn btn-primary"
+                  ng-if="maintHorse.updateButton"
+                >
+                  Update
+                </button>
+                <button
+                  type="submit"
+                  ng-click="maintHorse.confirmDelete()"
+                  class="btn btn-primary"
+                  ng-if="maintHorse.deleteButton"
+                >
+                  Delete
+                </button>
+                <button
+                  type="submit"
+                  ng-click="maintHorse.closeForm()"
+                  class="btn btn-primary"
+                  ng-if="maintHorse.closeButton"
+                >
+                  Close
+                </button>
+
+                <!--Are you sure buttons for deleting event -->
+                <button
+                  type=""
+                  class="btn btn-danger btn-upd"
+                  ng-click="maintHorse.deleteHorse(maintHorse.horseId)"
+                  ng-if="maintHorse.showDeleteSection"
+                >
+                  Confirm Delete
+                </button>
+                <button
+                  type=""
+                  class="btn btn-primary btn-upd"
+                  ng-click="maintHorse.closeDeleteSection()"
+                  ng-if="maintHorse.showDeleteSection"
+                >
+                  Cancel Delete
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

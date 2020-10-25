@@ -1,53 +1,53 @@
-.maintContentView{
-    min-height: 720px;              /* Forces footer to the bottom of the page */ 
-    background-color: #060050;   
+.maintContentView {
+  min-height: 720px; /* Forces footer to the bottom of the page */
+  background-color: #060050;
 }
 
 section.sectionMaintHome {
-    padding: 20px 0px;
+  padding: 20px 0px;
 }
 
 section.sectionMaintHome h2 {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
-.maintHomePanel {      
-    width: 80%;
-    margin: 0 auto;
-    min-width: 290px;
+.maintHomePanel {
+  width: 80%;
+  margin: 0 auto;
+  min-width: 290px;
 }
 
 .maintHomeForm {
-    background-color: #f4f4f4;
-    width: 80%;
-    margin: 20px auto;
-    padding: 20px;
-    border: solid 1px #a6a6aa;
-    min-width: 280px;
-    max-width: 800px;
-    color: #000;
+  background-color: #f4f4f4;
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  border: solid 1px #a6a6aa;
+  min-width: 280px;
+  max-width: 800px;
+  color: #000;
 }
 
 .maintHomeForm .input-group {
-    width: 100%;
-    padding-bottom: 20px;
-    font-weight: 500;
-    font-size: 14px;
+  width: 100%;
+  padding-bottom: 20px;
+  font-weight: 500;
+  font-size: 14px;
 }
 
 .maintHomeForm .input-group .field-title {
-    font-size: 90%;
-    font-weight: 500;
+  font-size: 90%;
+  font-weight: 500;
 }
 
 .maintHomeForm .input-group select {
-    font-weight: 500;
-    font-size: 14px;
+  font-weight: 500;
+  font-size: 14px;
 }
 
 .itemDescription textarea {
-    height: 130px;
-    color: #000;
+  height: 130px;
+  color: #000;
 }
 
 .newsItems th,
@@ -56,80 +56,88 @@ section.sectionMaintHome h2 {
 .successItems td,
 .testimonialItems th,
 .testimonialItems td,
+.horseItems th,
+.horseItems td,
 .galleryItems th,
 .galleryItems td {
-    min-width: 120px;
+  min-width: 120px;
 }
 
 .newsItems th,
 .successItems th,
 .testimonialItems th,
+.horseItems th,
 .galleryItems th {
-    font-size: 80%;
-    font-weight: 500;
+  font-size: 80%;
+  font-weight: 500;
 }
 
 .newsItems td,
 .successItems td,
 .testimonialItems td,
+.horseItems td,
 .galleryItems td {
-    font-size: 70%;
-    font-weight: 400;
+  font-size: 70%;
+  font-weight: 400;
 }
 
 /* Deals with the scroll bar */
 .table-responsive {
-    max-height: 500px;
-    overflow-y:scroll; 
+  max-height: 500px;
+  overflow-y: scroll;
 }
 
 /* basically a white row background */
 .table-responsive .table tbody tr {
-    background-color: #fff;
+  background-color: #fff;
 }
 
 /* Turns bootstrap table row hover on if user is admin. Also enables the pointer*/
 .table-responsive.showHover .table tbody tr:hover td,
 .table tbody tr:hover th {
-    background-color: #f4f4f4;
-    cursor: pointer; 
-    cursor: hand; 
+  background-color: #f4f4f4;
+  cursor: pointer;
+  cursor: hand;
 }
 
 button.newsButton,
 button.successButton,
 button.testimonialButton,
+button.horseButton,
 button.galleryButton {
-    width: 40%;
-    min-width: 150px;
-    margin: 20px auto;
+  width: 40%;
+  min-width: 150px;
+  margin: 20px auto;
 }
 
 /* -------  Small tablets to big tablets 768px to 1023px  -------*/
 @media only screen and (max-width: 1023px) {
-
-  .maintHomePanel {      
+  .maintHomePanel {
     width: 90%;
   }
 
   .maintHomeForm {
-        width: 80%;
+    width: 80%;
   }
 }
 
 /* -------  Small phones to small tablets 481px to 767px  -------*/
 @media only screen and (max-width: 767px) {
+  .maintHomePanel {
+    width: 95%;
+  }
 
-    .maintHomePanel {width: 95%; }
+  .maintHomeForm {
+    width: 95%;
+  }
 
-    .maintHomeForm { width: 95%; }
-
-    .newsDesc,
-    .snippet,
-    .by,
-    .byTitle { display: none;}
+  .newsDesc,
+  .snippet,
+  .by,
+  .byTitle {
+    display: none;
+  }
 }
-
 
 /***************************************************************/
 /* Styling for the tabs */
@@ -142,90 +150,88 @@ button.galleryButton {
   padding: 0;
   line-height: 35px;
   height: 37px;
-  overflow: hidden;        
+  overflow: hidden;
   font-size: 14px;
   position: relative;
 }
 
-.tabrow li { 
-    cursor: pointer; 
-    cursor: hand; 
+.tabrow li {
+  cursor: pointer;
+  cursor: hand;
 }
 
 .tabrow li {
-  border: 1px solid #AAA;
-  background: #D1D1D1;
-  display: inline-block;       
-  position:relative;
+  border: 1px solid #aaa;
+  background: #d1d1d1;
+  display: inline-block;
+  position: relative;
   z-index: 0;
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), inset 0 1px 0 #FFF;
-  text-shadow: 0 1px #FFF;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), inset 0 1px 0 #fff;
+  text-shadow: 0 1px #fff;
   margin: 0 -5px;
   padding: 0 30px;
   color: #000;
 }
 
 .tabrow li.selected {
-  background: #FFF;
+  background: #fff;
   color: #000;
   font-weight: 400;
   z-index: 2;
-  border-top-color: #FFF;
+  border-top-color: #fff;
 }
 
 .tabrow:before {
   position: absolute;
-  content: "";
+  content: '';
   width: 100%;
   top: 0;
   left: 0;
-  border-top: 1px solid #AAA;
+  border-top: 1px solid #aaa;
   z-index: 1;
 }
 
 .tabrow li:before,
 .tabrow li:after {
-  border: 1px solid #AAA;
+  border: 1px solid #aaa;
   position: absolute;
   top: -1px;
   width: 6px;
   height: 6px;
-  content: "";
+  content: '';
 }
 
 .tabrow li:before {
   left: -7px;
   border-top-right-radius: 6px;
   border-width: 1px 1px 0px 0px;
-  box-shadow: 2px 0px 0 #ECECEC;
+  box-shadow: 2px 0px 0 #ececec;
 }
 
 .tabrow li:after {
   right: -7px;
   border-top-left-radius: 6px;
   border-width: 1px 0px 0px 1px;
-  box-shadow: -2px 0px 0 #ECECEC;
+  box-shadow: -2px 0px 0 #ececec;
 }
 
 .tabrow li.selected:before {
-  box-shadow: 2px 0px 0 #FFF;
+  box-shadow: 2px 0px 0 #fff;
 }
 
 .tabrow li.selected:after {
-  box-shadow: -2px 0px 0 #FFF;
+  box-shadow: -2px 0px 0 #fff;
 }
-
 
 /* -------  Small phones to small tablets 481px to 767px  -------*/
 @media only screen and (max-width: 767px) {
-
-    /* Make the tabs responsive */
-    .tabrow {
-        overflow: scroll;
-        overflow-y:hidden;
-        overflow-x:hidden;
-        height: 120px;
-    }
+  /* Make the tabs responsive */
+  .tabrow {
+    overflow: scroll;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    height: 120px;
+  }
 }

@@ -1,17 +1,17 @@
 angular
-  .module('maintNewsCtrl', [
+  .module('maintHorseCtrl', [
     'authService',
-    'newsService',
+    'horseService',
     'logService',
     'ngFileUpload',
   ])
-  .controller('maintNewsController', [
+  .controller('maintHorseController', [
     '$rootScope',
     '$location',
     '$routeParams',
     '$window',
     'Auth',
-    'News',
+    'Horse',
     'Upload',
     'Log',
     function (
@@ -20,12 +20,12 @@ angular
       $routeParams,
       $window,
       Auth,
-      News,
+      Horse,
       Upload,
       Log
     ) {
       var vm = this;
-      var newsId = '';
+      var horseId = '';
 
       vm.updateButton = true;
       vm.showDeleteSection = false;
@@ -39,39 +39,47 @@ angular
       vm.error = '';
       vm.feedback = '';
 
-      Log.logEntry('Inside the maintNewsController.');
+      Log.logEntry('Inside the maintHorseController');
 
       vm.loggedIn = Auth.isLoggedIn();
+
+      var absUrl = $location.absUrl();
+      const baseIdx = absUrl.indexOf('maintHorse');
+      const baseUrl = absUrl.slice(0, baseIdx);
 
       //Re-direct to login page if user no logged in
       if (vm.loggedIn === false) {
         $location.path('/login');
       } else {
-        //If a newstId is passed in the get the details of it
+        //If a horseId is passed in the get the details of it
 
-        if ($routeParams.newsId !== 'x') {
-          vm.newsId = $routeParams.newsId;
+        if ($routeParams.horseId !== 'x') {
+          vm.horseId = $routeParams.horseId;
 
-          //Now get the news details for this article
+          //Now get the horse details for this article
           Log.logEntry(
-            'Now get the news details for this article ' + vm.newsId
+            'Now get the horse details for this article ' + vm.horseId
           );
 
-          News.get(vm.newsId)
+          Horse.get(vm.horseId)
             .success(function (data) {
-              //console.log('maintEventController - success from Event.get ' + JSON.stringify(data));
-
               vm.article = data;
 
-              vm.articleDate = { value: new Date(data.articleDate) };
-              //console.log('event.picture = ' + vm.event.picture);
-            })
-            .error(function () {
-              //console.log('maintEventController - failure from Event.get');
-            });
-        } else {
-          //console.log('Called in add mode');
+              //'http://localhost:8083/api/horse/'
+              const urlPath = baseUrl + 'api/horse/';
 
+              if (data.horseDocAvailable) {
+                vm.streamdocument = urlPath + data._id + '/streamdocument';
+              }
+
+              if (data.documentlocation && !data.horseDocAvailable) {
+                vm.error = 'The document is missing';
+              }
+
+              vm.articleDate = { value: new Date(data.articleDate) };
+            })
+            .error(function () {});
+        } else {
           //Default new article date to today
           vm.articleDate = { value: new Date() };
 
@@ -83,11 +91,13 @@ angular
       }
 
       /*************************************************************************/
-      /* Add a news article */
+      /* Add a horse article */
       /*************************************************************************/
-      vm.addNews = function () {
+      vm.addHorse = function () {
         vm.error = '';
         vm.feedback = '';
+
+        Log.logEntry('trying to add a horse');
 
         //VALIDATE FORM
         if (!vm.article.title) {
@@ -95,33 +105,25 @@ angular
           return;
         }
 
-        if (!vm.article.description) {
-          vm.error = 'A article description must be supplied';
-          return;
-        }
-
-        if (!vm.article.articleUrl && vm.article.articleUrlDescription) {
-          vm.error =
-            'A article URL must be supplied if a URL description is present';
-          return;
-        }
-
         var articletData = {
           articleDate: vm.articleDate.value,
           title: vm.article.title,
+          lot: vm.article.lot,
+          line2: vm.article.line2,
+          line3: vm.article.line3,
+          videolocation: vm.article.videolocation,
+          documentlocation: vm.article.documentlocation,
           description: vm.article.description,
-          articleUrl: vm.article.articleUrl,
-          articleUrlDescription: vm.article.articleUrlDescription,
         };
 
         if (vm.article.picture) {
           articletData.picture = vm.article.picture;
         }
 
-        News.create(articletData).success(function (data) {
+        Horse.create(articletData).success(function (data) {
           if (data.success === true) {
             vm.feedback = 'Article added';
-            $location.path('/maintContent/news');
+            $location.path('/maintContent/horse');
           } else {
             vm.error = data.message;
           }
@@ -129,9 +131,9 @@ angular
       };
 
       /*************************************************************************/
-      /* Update a news article */
+      /* Update a horse article */
       /*************************************************************************/
-      vm.updateNews = function () {
+      vm.updateHorse = function () {
         vm.error = '';
         vm.feedback = '';
 
@@ -146,33 +148,27 @@ angular
           return;
         }
 
-        if (!vm.article.description) {
-          vm.error = 'A article description must be supplied';
-          return;
-        }
-
-        if (!vm.article.articleUrl && vm.article.articleUrlDescription) {
-          vm.error =
-            'A article URL must be supplied if a URL description is present';
-          return;
-        }
+        Log.logEntry(`updated description = ${vm.article.documentlocation}`);
 
         var articletData = {
           articleDate: vm.articleDate.value,
+          lot: vm.article.lot,
           title: vm.article.title,
+          line2: vm.article.line2,
+          line3: vm.article.line3,
+          videolocation: vm.article.videolocation,
+          documentlocation: vm.article.documentlocation,
           description: vm.article.description,
-          articleUrl: vm.article.articleUrl,
-          articleUrlDescription: vm.article.articleUrlDescription,
         };
 
         if (vm.article.picture) {
           articletData.picture = vm.article.picture;
         }
 
-        News.update(vm.newsId, articletData).success(function (data) {
+        Horse.update(vm.horseId, articletData).success(function (data) {
           if (data.success === true) {
             vm.feedback = 'Article updated';
-            $location.path('/maintContent/news');
+            $location.path('/maintContent/horse');
           } else {
             vm.error = data.message;
           }
@@ -193,7 +189,7 @@ angular
         vm.closeButton = false;
 
         //Show delete warning
-        vm.error = 'This will delete the news article. Please confirm';
+        vm.error = 'This will delete the horse article. Please confirm';
         vm.errorType = 'Warning!';
       };
 
@@ -216,25 +212,27 @@ angular
       };
 
       /*************************************************************************/
-      /* Delete a news article */
+      /* Delete a horse article */
       /*************************************************************************/
-      vm.deleteNews = function () {
+      vm.deleteHorse = function () {
         vm.error = '';
         vm.feedback = '';
 
-        if (!vm.newsId) {
+        if (!vm.horseId) {
           vm.error = 'No article specified';
           return;
         }
 
-        News.delete(vm.newsId).success(function (data) {
+        Log.logEntry('trying to delete a horse ', vm.horseId);
+
+        Horse.delete(vm.horseId).success(function (data) {
           if (data.success === true) {
-            vm.feedback = 'News article deleted';
+            vm.feedback = 'Horse article deleted';
           } else {
             vm.error = data.message;
           }
 
-          $location.path('/maintContent/news');
+          $location.path('/maintContent/horse');
         });
       };
 
@@ -242,84 +240,123 @@ angular
       /* Close the form and return back to the content management page */
       /*************************************************************************/
       vm.closeForm = function () {
-        $location.path('/maintContent/news');
+        $location.path('/maintContent/horse');
       };
 
       /*************************************************************************/
       /* Image upload to filepicker */
       /*************************************************************************/
-      vm.imageUpload = function () {
-        filepicker.pick(
-          {
-            mimetype: 'image/*',
-            language: 'en',
-            services: [
-              'COMPUTER',
-              'DROPBOX',
-              'GOOGLE_DRIVE',
-              'IMAGE_SEARCH',
-              'FACEBOOK',
-              'INSTAGRAM',
-            ],
-            openTo: 'IMAGE_SEARCH',
-            imageMax: [800, 800],
-          },
-          function (Blob) {
-            vm.article.picture = Blob.url;
-
-            //var random = (new Date()).toString();
-            //vm.article.picture = Blob.url + "?cb=" + random;
-            //$scope.article.picture = Blob.url;
-
-            //var random = (new Date()).toString();
-            //$scope.article.picture = Blob.url + "?cb=" + random;
-            //$scope.$apply();
-            //Log.logEntry('uploaded url is ' + vm.article.picture);
-          },
-          function (error) {
-            Log.logEntry('failure from pick');
-          }
-        );
-      };
+      // vm.imageUpload = function () {
+      //   filepicker.pick(
+      //     {
+      //       mimetype: 'image/*',
+      //       language: 'en',
+      //       services: [
+      //         'COMPUTER',
+      //         'DROPBOX',
+      //         'GOOGLE_DRIVE',
+      //         'IMAGE_SEARCH',
+      //         'FACEBOOK',
+      //         'INSTAGRAM',
+      //       ],
+      //       openTo: 'IMAGE_SEARCH',
+      //       imageMax: [800, 800],
+      //     },
+      //     function (Blob) {
+      //       vm.article.picture = Blob.url;
+      //     },
+      //     function (error) {
+      //       Log.logEntry('failure from pick');
+      //     }
+      //   );
+      // };
 
       // delay function
       const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
       /*************************************************************************/
-      /* Image upload to filepicker */
+      /* PDF upload to server */
       /*************************************************************************/
-      vm.videoUpload = async function () {
+      vm.fileUpload = async function () {
         if (!vm.article.file) {
           return;
         }
 
         vm.loading = true;
-        await delay(5000);
+        //await delay(5000);
+
+        const urlPath = baseUrl + 'api/upload/fileupload';
 
         Upload.upload({
-          url: 'http://localhost:8083/api/upload/fileupload',
+          url: urlPath,
+          //url: 'http://localhost:8083/api/upload/fileupload',
           data: { file: vm.article.file },
         }).then(
           function (resp) {
-            if (resp.data.error === 0) {
+            if (resp.data.success === true) {
+              vm.article.documentlocation = resp.data.message;
             } else {
+              Log.logEntry('file upload failed');
             }
           },
           function (resp) {
-            console.log('error status ', resp.status);
+            Log.logEntry('error status ', resp.status);
           },
           function (evt) {
-            var progressPercentage = parseInt((100.0 * evt.loaded) / evt.total);
-            // console.log(
+            //console.log(evt);
+            // var progressPercentage = parseInt((100.0 * evt.loaded) / evt.total);
+            // Log.logEntry(
             //   'progress: ' +
             //     progressPercentage +
             //     '% ' +
             //     evt.config.data.file.name
             // );
-            vm.uploadProgress = 'progress: ' + progressPercentage + '% '; // capture upload progress
+            // vm.uploadProgress = 'progress: ' + progressPercentage + '% '; // capture upload progress
             vm.loading = false;
           }
         );
       };
+
+      /*************************************************************************/
+      /* Image upload to filepicker */
+      /*************************************************************************/
+      // vm.videoUpload = async function () {
+      //   console.log('trying to upload video');
+
+      //   if (!vm.article.file) {
+      //     return;
+      //   }
+
+      //   vm.loading = true;
+      //   await delay(5000);
+
+      //   Upload.upload({
+      //     url: 'http://localhost:8083/api/upload/fileupload',
+      //     data: { file: vm.article.file },
+      //   }).then(
+      //     function (resp) {
+      //       if (resp.data.error === 0) {
+      //         console.log('success from upload');
+      //       } else {
+      //         console.log('file upload failed');
+      //       }
+      //     },
+      //     function (resp) {
+      //       console.log('error status ', resp.status);
+      //     },
+      //     function (evt) {
+      //       console.log(evt);
+      //       var progressPercentage = parseInt((100.0 * evt.loaded) / evt.total);
+      //       console.log(
+      //         'progress: ' +
+      //           progressPercentage +
+      //           '% ' +
+      //           evt.config.data.file.name
+      //       );
+      //       vm.uploadProgress = 'progress: ' + progressPercentage + '% '; // capture upload progress
+      //       vm.loading = false;
+      //     }
+      //   );
+      // };
     },
   ]);

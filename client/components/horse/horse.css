@@ -1,0 +1,187 @@
+.mainHorse {
+  min-height: 720px; /* Forces footer to the bottom of the page */
+  background-color: #f2f2f2;
+  color: #000;
+  font-weight: 350;
+}
+
+.horseSection {
+  padding-top: 0;
+}
+
+.mainSuccessList {
+  list-style: none;
+}
+
+.horsePanelTitle {
+  margin-top: 40px;
+}
+
+/* --------------------------------------------------------------*/
+/* SEARCH PANEL */
+/* --------------------------------------------------------------*/
+
+.searchPanel {
+  width: 30%;
+  margin: 0 auto;
+  min-width: 290px;
+}
+
+.searchForm {
+  margin-bottom: 30px;
+}
+
+/* --------------------------------------------------------------*/
+/* Horse Items */
+/* --------------------------------------------------------------*/
+
+.mainHorseList {
+  list-style: none;
+}
+
+.horsePanel {
+  width: 50%;
+  margin: 0 auto;
+  min-width: 290px;
+  background-color: #f2f2f2;
+}
+
+.horseHeaderRow {
+  padding-top: 20px;
+}
+
+.horseImageRow {
+  padding-bottom: 0px;
+}
+
+.horseImageRow.line2 {
+  padding-top: 3px;
+}
+
+.horseTitle {
+  color: #060050;
+  font-size: 110%;
+  font-weight: 500;
+  padding-top: 5px;
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.horseLot {
+  padding-left: 0;
+  padding-top: 8px;
+  font-weight: 300;
+  font-size: 90%;
+  text-align: left;
+}
+
+.horseLine2 {
+  padding-top: 8px;
+  padding-right: 0;
+  text-align: right;
+}
+
+/* .horseImageRow {
+  padding-bottom: 20px;
+} */
+
+.horseImageCol {
+  padding: 0;
+}
+
+.pdfbtn {
+  padding-left: 5px;
+}
+
+.fa {
+  font-size: 100%;
+  color: red"
+}
+
+.linetwo {
+  height: 35px;
+}
+
+.vcenter {
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}
+
+.horseHeaderRow {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.bottomLabel {
+  margin: 0;
+}
+
+/* --------------------------------------------------------------*/
+/* Horse Video */
+/* --------------------------------------------------------------*/
+
+.videoPlayer {
+  width: 100%;
+  height: 100%;
+}
+
+.horseImageRow.main {
+  margin-bottom: 60px;
+}
+
+/* --------------------------------------------------------------*/
+/* Horse PDF */
+/* --------------------------------------------------------------*/
+
+.pdf {
+  width: 100%;
+  height: 400px;
+}
+
+.modal-xl {
+  height: 900px;
+}
+
+.pdfIframe {
+  width: 100%;
+  height: 800px;
+}
+
+/* -------  Big tablets to 1200px (widths smaller than the 1140px row)  -------*/
+@media only screen and (max-width: 1200px) {
+  .horsePanel {
+    width: 90%;
+  }
+}
+
+/* -------  Small tablets to big tablets 768px to 1023px  -------*/
+@media only screen and (max-width: 1023px) {
+  .horsePanel {
+    width: 90%;
+  }
+}
+
+/* -------  Small phones to small tablets 481px to 767px  -------*/
+@media only screen and (max-width: 767px) {
+  /*.body { font-size: 7px; }*/
+  /*h2 { font-size: 150%;  }*/
+  .horsePanel {
+    width: 100%;
+  }
+  .mainHorseList,
+  .newsHeaderCol {
+    padding: 0;
+  }
+  .horseImageCol {
+    padding: 0;
+  }
+  /*.newsDescRow {margin: 0;}*/
+
+  .horseImageRow.main {
+    margin-bottom: 40px;
+  }
+  .newsImage img {
+    margin-bottom: 10px;
+  }
+}
