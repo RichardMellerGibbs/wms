@@ -1,0 +1,162 @@
+<div class="mainHorse">
+  <section class="horseSection">
+    <div class="row">
+      <div class="horsePanel">
+        <div class="col">
+          <div class="row horseHeadingRow">
+            <div class="col-md-12">
+              <div class="horsePanelTitle">
+                <h2>Horse Catalogue</h2>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="searchPanel">
+              <div class="col-md-12 searchCol">
+                <form class="searchForm">
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      <i class="fa fa-search"></i>
+                    </div>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Search Articles"
+                      ng-model="searchName"
+                    />
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <ul class="mainHorseList">
+            <li ng-repeat="horseItem in horse.horseData | filter:searchName">
+
+              <div class="row horseImageRow">
+                <div class="col-md-12 horseHeaderCol">
+                  <div class="horseTitle">{{ horseItem.title }}</div>
+                </div>
+              </div>
+
+              <div class="row horseImageRow line2">
+                <div class="bg-light clearfix ">
+                  <div class="pull-left linetwo vcenter">{{ horseItem.lot }}</div>
+                  <div class="pull-right linetwo vcenter">{{ horseItem.line2 }}
+                    <span class="pdfbtn vcenter">
+                      <button
+                        class="showPdfButton"
+                        type="submit"
+                        ng-click="horse.togglePdf(horseItem.id)"
+                        class="btn btn-primary"
+                        ng-if="horseItem.documentlocation"
+                        data-toggle="modal"
+                        data-target="#largeShoes{{$index}}"
+                      >
+                        <i class="fa fa-file-pdf-o" style="color:red"></i>
+                      </button>
+                    </span>
+                  </div>
+                  
+                </div>
+
+                <!-- <i class="fa fa-file-pdf-o" style="font-size:48px;color:red"></i> -->
+                <!-- <div class="col-md-6">
+                  {{ horseItem.lot }}
+                </div>
+                <div class="col-md-6 text-right">
+                  {{ horseItem.line2 }}
+                  <span>btn</span>
+                </div> -->
+                
+                  <!-- <div class="col-md-12 horseLot">{{ horseItem.lot }}</div> -->
+                  
+                  <!-- <div class="col-md-6 horseLine2 text-right">
+                    {{horseItem.line2}}
+                  </div> -->
+                
+              </div>
+
+              <div class="row horseImageRow main">
+                <div class="col-md-12 horseImageCol">
+                  <!-- <video class="videoPlayer" controls muted="muted">
+                    <source
+                      src="https://player.vimeo.com/video/465276991?title=0&byline=0&portrait=0"
+                    />
+                  </video> -->
+                  
+                  <div style="padding: 56.25% 0 0 0; position: relative">
+                    <iframe
+                      ng-src="{{horseItem.videolocation}}"
+                      style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                      "
+                      frameborder="0"
+                      allow="autoplay; fullscreen"
+                      allowfullscreen
+                    ></iframe>
+                  </div>
+
+                  <!-- <embed
+                    class="pdf"
+                    ng-if="horseItem.displayPdf"
+                    ng-src="{{horseItem.streamdocument}}"
+                    type="application/pdf"
+                    allowfullscreen
+                  /> -->
+                  <!-- The modal -->
+                  <div
+                    class="modal fade"
+                    ng-if="horseItem.documentlocation"
+                    id="largeShoes{{$index}}"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="exampleModalCenterTitle"
+                    aria-hidden="true"
+                  >
+                  
+                    <div
+                      class="modal-dialog modal-xl modal-dialog-centered"
+                      role="document"
+                    >
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title text-center id="exampleModalLongTitle">
+                            {{ horseItem.title }}
+                          </h5>
+                          <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                          >
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <!-- <embed
+                            class="pdf"
+                            ng-src="{{horseItem.streamdocument}}"
+                            type="application/pdf"
+                            allowfullscreen
+                          /> -->
+                          <iframe class="pdfIframe" ng-src="{{horseItem.streamdocument}}" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end of pdf -->
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

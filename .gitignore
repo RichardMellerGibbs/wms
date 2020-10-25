@@ -4,3 +4,4 @@
 launch_mongo.bat
 launch_server.bat
 config.js
+/logs

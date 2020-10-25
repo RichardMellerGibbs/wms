@@ -1,13 +1,13 @@
-.maintNews {
+.maintHorse {
   min-height: 720px; /* Forces footer to the bottom of the page */
   background-color: #060050;
 }
 
-section.sectionMaintNews {
+section.sectionMaintHorse {
   padding: 20px 0px;
 }
 
-section.sectionMaintNews h2 {
+section.sectionMaintHorse h2 {
   margin-bottom: 20px;
 }
 
@@ -15,13 +15,13 @@ section.sectionMaintNews h2 {
 /* The Panel */
 /* --------------------------------------------------------------*/
 
-.maintNewsPanel {
+.MaintHorsePanel {
   width: 80%;
   margin: 0 auto;
   min-width: 290px;
 }
 
-.maintNewsForm {
+.MaintHorseForm {
   background-color: #f4f4f4;
   width: 50%;
   margin: 20px auto;
@@ -30,7 +30,7 @@ section.sectionMaintNews h2 {
   min-width: 280px;
 }
 
-.maintNewsForm .input-group {
+.MaintHorseForm .input-group {
   width: 100%;
   padding-bottom: 20px;
   font-size: 80%;
@@ -38,7 +38,7 @@ section.sectionMaintNews h2 {
   font-weight: 400;
 }
 
-.maintNewsForm .input-group .form-control {
+.MaintHorseForm .input-group .form-control {
   font-size: 80%;
   font-weight: 400;
   color: #000;
@@ -65,11 +65,11 @@ section.sectionMaintNews h2 {
 
 /* -------  Small phones to small tablets 481px to 767px  -------*/
 @media only screen and (max-width: 767px) {
-  .maintNewsPanel {
+  .MaintHorsePanel {
     width: 95%;
   }
 
-  .maintNewsForm {
+  .MaintHorseForm {
     width: 95%;
   }
 }

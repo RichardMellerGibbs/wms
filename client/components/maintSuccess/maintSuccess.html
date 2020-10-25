@@ -1,21 +1,16 @@
 <!-- Maintain success -->
 <div class="maintSuccess">
-    
-    <div class="container-fluid">
-            
-        <section class="sectionMaintSuccess">
-            
-            <div class="row">
-                <h2>Success Article</h2>
-            </div>
-            
-            <div class="row">
-                <div class="maintSuccessPanel">
-                    <div class="col">
-                        
-                        <form name="maintSuccessForm" class="maintSuccessForm">
-                            
-                            <!--div class="input-group" ng-if="maintSuccess.showType">
+  <div class="container-fluid">
+    <section class="sectionMaintSuccess">
+      <div class="row">
+        <h2>Success Article</h2>
+      </div>
+
+      <div class="row">
+        <div class="maintSuccessPanel">
+          <div class="col">
+            <form name="maintSuccessForm" class="maintSuccessForm">
+              <!--div class="input-group" ng-if="maintSuccess.showType">
                                 <div class="field-title">Article Type</div>
                                 <select name="type" id="type" ng-model="maintSuccess.typeChosen" ng-click="maintSuccess.activateType()">
                                     <option ng-repeat="articleType in maintSuccess.articleTypes">{{articleType.title}}</option>
@@ -23,72 +18,156 @@
                                 
                             </div-->
 
-                            <div class="input-group">
-                                <div class="field-title">Article Date</div>
-                                <input type="date" name="articleDate" ng-model="maintSuccess.articleDate.value" autofocus class="form-control bg-white">
-                            </div>
-                            
-                            <div class="input-group">
-                                <div class="field-title">Title</div>
-                                <input type="text" name="successTitle" ng-model="maintSuccess.article.title" autofocus class="form-control bg-white">
-                            </div>
-                            
-                            <div class="input-group successDescription">
-                                <div class="field-title">Description</div>
-                                    <textarea type="text" name="successDescription" ng-model="maintSuccess.article.description" autofocus class="form-control bg-white"></textarea>
-                            </div>
+              <div class="input-group">
+                <div class="field-title">Article Date</div>
+                <input
+                  type="date"
+                  name="articleDate"
+                  ng-model="maintSuccess.articleDate.value"
+                  autofocus
+                  class="form-control bg-white"
+                />
+              </div>
 
-                            <div class="input-group">
-                                <div class="field-title">URL</div>
-                                <input type="text" name="articleUrl" ng-model="maintSuccess.article.articleUrl" autofocus class="form-control bg-white">
-                            </div>
-                            <div class="input-group">
-                                <div class="field-title">URL Description</div>
-                                <input type="text" name="articleUrlDescription" ng-model="maintSuccess.article.articleUrlDescription" autofocus class="form-control bg-white">
-                            </div>
+              <div class="input-group">
+                <div class="field-title">Title</div>
+                <input
+                  type="text"
+                  name="successTitle"
+                  ng-model="maintSuccess.article.title"
+                  autofocus
+                  class="form-control bg-white"
+                />
+              </div>
 
-                            <div class="input-group imageUpload" ng-if="maintSuccess.showTitle">
-                                <!--input type="filepicker" data-fp-apikey="A7HBT1yxTq6R5H69OP5WMz" onchange="console.log(event.fpfile.url)"-->
-                                <div class="field-title">Choose Image</div>
-                                <button type="button" class="btn btn-default" ng-click="maintSuccess.imageUpload()">
-                                    Upload <span class="caret"></span>
-                                </button>    
+              <div class="input-group successDescription">
+                <div class="field-title">Description</div>
+                <textarea
+                  type="text"
+                  name="successDescription"
+                  ng-model="maintSuccess.article.description"
+                  autofocus
+                  class="form-control bg-white"
+                ></textarea>
+              </div>
 
-                                <div class="mainImage">
-                                    <!-- Show the thumbnail only when the picture is uploaded -->
-                                    <!--ng-if="maintEvent.event.picture"-->
-                                    <img ng-src="{{maintSuccess.article.picture | fpConvert: {filter:'sharpen'} }}">
-                                    <!--a href="{{maintEvent.event.picture}}" class="thumbnail" ng-if="maintEvent.event.picture"                                                                                <!-- the picture is rendered with width: 500 and sharpened -->
-                                </div>
-                            </div>
-                           
-                            <div class="alert alert-danger fade in validationPanel" ng-if="maintSuccess.error">
-                                <strong>{{maintSuccess.errorType}} </strong>{{ maintSuccess.error }}
-                            </div>
-                            
-                            <div class="alert alert-success fade in warningPanel" ng-if="maintSuccess.feedback">
-                                <a class="close" data-dismiss="alert">&times;</a> 
-                                <strong>Success!</strong>{{ maintSuccess.feedback }}
-                            </div>
-                            
-                            
-                            
-                            
-                            <div class="buttonSection">
-                                <button type="submit" ng-click="maintSuccess.addSuccess()" class="btn btn-primary" ng-if="maintSuccess.addButton">Add</button>
-                                <button type="submit" ng-click="maintSuccess.updateSuccess()" class="btn btn-primary" ng-if="maintSuccess.updateButton">Update</button>
-                                <button type="submit" ng-click="maintSuccess.confirmDelete()" class="btn btn-primary" ng-if="maintSuccess.deleteButton">Delete</button>
-                                <button type="submit" ng-click="maintSuccess.closeForm()" class="btn btn-primary" ng-if="maintSuccess.closeButton">Close</button>
-                                
-                                <!--Are you sure buttons for deleting event -->
-                                <button type="" class="btn btn-danger btn-upd" ng-click="maintSuccess.deleteSuccess(maintSuccess.successId)" ng-if="maintSuccess.showDeleteSection">Confirm Delete</button>
-                                <button type="" class="btn btn-primary btn-upd" ng-click="maintSuccess.closeDeleteSection()" ng-if="maintSuccess.showDeleteSection">Cancel Delete</button>
-                            </div>
-                            
-                        </form>
-                    </div>
+              <div class="input-group">
+                <div class="field-title">URL</div>
+                <input
+                  type="text"
+                  name="articleUrl"
+                  ng-model="maintSuccess.article.articleUrl"
+                  autofocus
+                  class="form-control bg-white"
+                />
+              </div>
+              <div class="input-group">
+                <div class="field-title">URL Description</div>
+                <input
+                  type="text"
+                  name="articleUrlDescription"
+                  ng-model="maintSuccess.article.articleUrlDescription"
+                  autofocus
+                  class="form-control bg-white"
+                />
+              </div>
+
+              <div
+                class="input-group imageUpload"
+                ng-if="maintSuccess.showTitle"
+              >
+                <!--input type="filepicker" data-fp-apikey="A7HBT1yxTq6R5H69OP5WMz" onchange="console.log(event.fpfile.url)"-->
+                <div class="field-title">Choose Image</div>
+                <button
+                  type="button"
+                  class="btn btn-default"
+                  ng-click="maintSuccess.imageUpload()"
+                >
+                  Upload <span class="caret"></span>
+                </button>
+
+                <div class="mainImage">
+                  <!-- Show the thumbnail only when the picture is uploaded -->
+                  <!--ng-if="maintEvent.event.picture"-->
+                  <img
+                    ng-src="{{maintSuccess.article.picture | fpConvert: {filter:'sharpen'} }}"
+                  />
+                  <!--a href="{{maintEvent.event.picture}}" class="thumbnail" ng-if="maintEvent.event.picture"                                                                                <!-- the picture is rendered with width: 500 and sharpened -->
                 </div>
-            </div>
-        </section>
-    </div>
+              </div>
+
+              <div
+                class="alert alert-danger fade in validationPanel"
+                ng-if="maintSuccess.error"
+              >
+                <strong>{{maintSuccess.errorType}} </strong>{{
+                maintSuccess.error }}
+              </div>
+
+              <div
+                class="alert alert-success fade in warningPanel"
+                ng-if="maintSuccess.feedback"
+              >
+                <a class="close" data-dismiss="alert">&times;</a>
+                <strong>Success!</strong>{{ maintSuccess.feedback }}
+              </div>
+
+              <div class="buttonSection">
+                <button
+                  type="submit"
+                  ng-click="maintSuccess.addSuccess()"
+                  class="btn btn-primary"
+                  ng-if="maintSuccess.addButton"
+                >
+                  Add
+                </button>
+                <button
+                  type="submit"
+                  ng-click="maintSuccess.updateSuccess()"
+                  class="btn btn-primary"
+                  ng-if="maintSuccess.updateButton"
+                >
+                  Update
+                </button>
+                <button
+                  type="submit"
+                  ng-click="maintSuccess.confirmDelete()"
+                  class="btn btn-primary"
+                  ng-if="maintSuccess.deleteButton"
+                >
+                  Delete
+                </button>
+                <button
+                  type="submit"
+                  ng-click="maintSuccess.closeForm()"
+                  class="btn btn-primary"
+                  ng-if="maintSuccess.closeButton"
+                >
+                  Close
+                </button>
+
+                <!--Are you sure buttons for deleting event -->
+                <button
+                  type=""
+                  class="btn btn-danger btn-upd"
+                  ng-click="maintSuccess.deleteSuccess(maintSuccess.successId)"
+                  ng-if="maintSuccess.showDeleteSection"
+                >
+                  Confirm Delete
+                </button>
+                <button
+                  type=""
+                  class="btn btn-primary btn-upd"
+                  ng-click="maintSuccess.closeDeleteSection()"
+                  ng-if="maintSuccess.showDeleteSection"
+                >
+                  Cancel Delete
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </div>

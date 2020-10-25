@@ -27,6 +27,10 @@
             <script type="text/javascript" src="//api.filepicker.io/v2/filepicker.js"></script>
             <script src="../js/angular-filepicker.js"></script>
 
+            <!-- ng-upload for saving images to the cloud -->
+            <script src="../js/ng-file-upload-shim.min.js"></script> <!-- for no html5 browsers support -->
+            <script src="../js/ng-file-upload.min.js"></script>
+
             <!-- Main App and Controllers -->
             <script src="../js/app.js"></script>
             <script src="../components/main/mainController.js"></script>
@@ -41,9 +45,11 @@
             <script src="../components/maintTestimonial/maintTestController.js"></script>
             <script src="../components/findUs/findUsController.js"></script>
             <script src="../components/maintGallery/maintGalleryController.js"></script>
+            <script src="../components/maintHorse/maintHorseController.js"></script>
             <script src="../components/gallery/galleryController.js"></script>
             <script src="../components/user/userController.js"></script>
             <script src="../components/maintUser/maintUserController.js"></script>
+            <script src="../components/horse/horseController.js"></script>
 
             <!-- Services -->
             <script src="../components/login/authService.js"></script>
@@ -54,6 +60,7 @@
             <script src="../components/main/logService.js"></script>
             <script src="../components/main/spaContentService.js"></script>
             <script src="../components/user/userService.js"></script>
+            <script src="../components/horse/horseService.js"></script>
 
             <!-- CSS -->
             <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -74,9 +81,11 @@
             <link rel="stylesheet" href="components/maintTestimonial/maintTest.css">
             <link rel="stylesheet" href="components/findUs/findUs.css">
             <link rel="stylesheet" href="components/maintGallery/maintGallery.css">
+            <link rel="stylesheet" href="components/maintHorse/maintHorse.css">
             <link rel="stylesheet" href="components/gallery/gallery.css">
             <link rel="stylesheet" href="components/user/user.css">
             <link rel="stylesheet" href="components/maintUser/maintUser.css">
+            <link rel="stylesheet" href="components/horse/horse.css">
 
             <!--h2>Header Section</h2-->
            
@@ -136,10 +145,14 @@
                                 <a href="/findUs" class="hidden-xs">Find Us</a>
                                 <a href="/findUs" class="visible-xs" data-toggle="collapse" data-target="#mvNavbar">Find Us</a>
                             </li>
-                            <!--li ng-if="!main.loggedIn">
+                            <li ng-if="main.loggedIn">
+                                <a href="/horse" class="hidden-xs">Horses</a>
+                                <a href="/horse" class="visible-xs" data-toggle="collapse" data-target="#mvNavbar">Horses</a>
+                            </li>
+                            <!-- <li ng-if="!main.loggedIn">
                                 <a href="/login" class="hidden-xs">Login</a>
                                 <a href="/login" class="visible-xs" data-toggle="collapse" data-target="#mvNavbar">Login</a>
-                            </li>-->
+                            </li> -->
 
                             <li ng-if="main.loggedIn" class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administration <span class="caret"></span></a>

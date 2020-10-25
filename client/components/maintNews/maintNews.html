@@ -1,82 +1,173 @@
 <!-- Maintain news -->
 <div class="maintNews">
-    
-    <div class="container-fluid">
-            
-        <section class="sectionMaintNews">
-            
-            <div class="row">
-                <h2>News Article</h2>
-            </div>
-            
-            <div class="row">
-                <div class="maintNewsPanel">
-                    <div class="col">
-                        
-                        <form name="maintNewsForm" class="maintNewsForm">
-                            
-                            <div class="input-group">
-                                <div class="field-title">Article Date</div>
-                                <input type="date" name="articleDate" ng-model="news.articleDate.value" autofocus class="form-control bg-white">
-                            </div>
-                            
-                            <div class="input-group">
-                                <div class="field-title">Title</div>
-                                <input type="text" name="newsTitle" ng-model="news.article.title" autofocus class="form-control bg-white">
-                            </div>
+  <div class="container-fluid">
+    <section class="sectionMaintNews">
+      <div class="row">
+        <h2>News Article</h2>
+      </div>
 
-                            <div class="input-group newsDescription">
-                                <div class="field-title">Description</div>
-                                    <textarea type="text" name="newsDescription" ng-model="news.article.description" autofocus class="form-control bg-white"></textarea>
-                            </div>
+      <div class="row">
+        <div class="maintNewsPanel">
+          <div class="col">
+            <form name="maintNewsForm" class="maintNewsForm">
+              <div class="input-group">
+                <div class="field-title">Article Date</div>
+                <input
+                  type="date"
+                  name="articleDate"
+                  ng-model="news.articleDate.value"
+                  autofocus
+                  class="form-control bg-white"
+                />
+              </div>
 
-                            <div class="input-group">
-                                <div class="field-title">URL</div>
-                                <input type="text" name="articleUrl" ng-model="news.article.articleUrl" autofocus class="form-control bg-white">
-                            </div>
-                            <div class="input-group">
-                                <div class="field-title">URL Description</div>
-                                <input type="text" name="articleUrlDescription" ng-model="news.article.articleUrlDescription" autofocus class="form-control bg-white">
-                            </div>
+              <div class="input-group">
+                <div class="field-title">Title</div>
+                <input
+                  type="text"
+                  name="newsTitle"
+                  ng-model="news.article.title"
+                  autofocus
+                  class="form-control bg-white"
+                />
+              </div>
 
-                            <div class="input-group imageUpload" >
-                                <div class="field-title">Choose Image</div>
-                                <button type="button" class="btn btn-default" ng-click="news.imageUpload()">
-                                    Upload <span class="caret"></span>
-                                </button>    
+              <div class="input-group newsDescription">
+                <div class="field-title">Description</div>
+                <textarea
+                  type="text"
+                  name="newsDescription"
+                  ng-model="news.article.description"
+                  autofocus
+                  class="form-control bg-white"
+                ></textarea>
+              </div>
 
-                                <div class="mainImage">
-                                    <img ng-src="{{news.article.picture | fpConvert: {filter:'sharpen'} }}">
-                                </div>
-                            </div>
-                           
-                            <div class="alert alert-danger fade in validationPanel" ng-if="news.error">
-                                <strong>{{news.errorType}} </strong>{{ news.error }}
-                            </div>
-                            
-                            <div class="alert alert-success fade in warningPanel" ng-if="news.feedback">
-                                <a class="close" data-dismiss="alert">&times;</a> 
-                                <strong>Success!</strong>{{ news.feedback }}
-                            </div>
-                            
-                            
-                            
-                            
-                            <div class="buttonSection">
-                                <button type="submit" ng-click="news.addNews()" class="btn btn-primary" ng-if="news.addButton">Add</button>
-                                <button type="submit" ng-click="news.updateNews()" class="btn btn-primary" ng-if="news.updateButton">Update</button>
-                                <button type="submit" ng-click="news.confirmDelete()" class="btn btn-primary" ng-if="news.deleteButton">Delete</button>
-                                <button type="submit" ng-click="news.closeForm()" class="btn btn-primary" ng-if="news.closeButton">Close</button>
-                                
-                                <!--Are you sure buttons for deleting event -->
-                                <button type="" class="btn btn-danger btn-upd" ng-click="news.deleteNews(news.newsId)" ng-if="news.showDeleteSection">Confirm Delete</button>
-                                <button type="" class="btn btn-primary btn-upd" ng-click="news.closeDeleteSection()" ng-if="news.showDeleteSection">Cancel Delete</button>
-                            </div>
-                            
-                        </form>
-                    </div>
+              <div class="input-group">
+                <div class="field-title">URL</div>
+                <input
+                  type="text"
+                  name="articleUrl"
+                  ng-model="news.article.articleUrl"
+                  autofocus
+                  class="form-control bg-white"
+                />
+              </div>
+              <div class="input-group">
+                <div class="field-title">URL Description</div>
+                <input
+                  type="text"
+                  name="articleUrlDescription"
+                  ng-model="news.article.articleUrlDescription"
+                  autofocus
+                  class="form-control bg-white"
+                />
+              </div>
+
+              <div class="input-group imageUpload">
+                <div class="field-title">Choose Image</div>
+                <button
+                  type="button"
+                  class="btn btn-default"
+                  ng-click="news.imageUpload()"
+                >
+                  Upload <span class="caret"></span>
+                </button>
+
+                <div class="mainImage">
+                  <img
+                    ng-src="{{news.article.picture | fpConvert: {filter:'sharpen'} }}"
+                  />
                 </div>
-            </div>
-        </section>
-    </div>
+              </div>
+
+              <!-- <div ng-if="news.loading">Loading.</div> -->
+              <!-- <div class="input-group imageUpload">
+                <div class="spinner" ng-show="news.loading"></div>
+                <div class="field-title">Choose Video</div>
+                <input
+                  type="file"
+                  ngf-select
+                  ng-model="news.article.file"
+                  name="file"
+                  ngf-pattern="'video/*'"
+                  accept="video/*"
+                  ngf-max-size="800MB"
+                  ng-change="news.videoUpload()"
+                />
+              </div> -->
+
+              <div
+                class="alert alert-danger fade in validationPanel"
+                ng-if="news.error"
+              >
+                <strong>{{news.errorType}} </strong>{{ news.error }}
+              </div>
+
+              <div
+                class="alert alert-success fade in warningPanel"
+                ng-if="news.feedback"
+              >
+                <a class="close" data-dismiss="alert">&times;</a>
+                <strong>Success!</strong>{{ news.feedback }}
+              </div>
+
+              <div class="buttonSection">
+                <button
+                  type="submit"
+                  ng-click="news.addNews()"
+                  class="btn btn-primary"
+                  ng-if="news.addButton"
+                >
+                  Add
+                </button>
+                <button
+                  type="submit"
+                  ng-click="news.updateNews()"
+                  class="btn btn-primary"
+                  ng-if="news.updateButton"
+                >
+                  Update
+                </button>
+                <button
+                  type="submit"
+                  ng-click="news.confirmDelete()"
+                  class="btn btn-primary"
+                  ng-if="news.deleteButton"
+                >
+                  Delete
+                </button>
+                <button
+                  type="submit"
+                  ng-click="news.closeForm()"
+                  class="btn btn-primary"
+                  ng-if="news.closeButton"
+                >
+                  Close
+                </button>
+
+                <!--Are you sure buttons for deleting event -->
+                <button
+                  type=""
+                  class="btn btn-danger btn-upd"
+                  ng-click="news.deleteNews(news.newsId)"
+                  ng-if="news.showDeleteSection"
+                >
+                  Confirm Delete
+                </button>
+                <button
+                  type=""
+                  class="btn btn-primary btn-upd"
+                  ng-click="news.closeDeleteSection()"
+                  ng-if="news.showDeleteSection"
+                >
+                  Cancel Delete
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </div>
