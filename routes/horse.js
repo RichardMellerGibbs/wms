@@ -381,17 +381,35 @@ router.delete('/:horse_id', authMiddle.isAuthenticated, function (req, res) {
     req.params.horse_id
   );
 
-  models.Horse.remove({ _id: req.params.horse_id }, function (err, user) {
+  models.Horse.findById(req.params.horse_id, function (err, horse) {
     if (err) {
-      logger.error('Error deleting horse article');
+      logger.error('Error getting horse entry %s', req.params.horse_id);
 
       responses.handleError(err, req, res);
       return res.json({ success: false, message: 'Internal server error' });
     }
 
-    res.json({
-      success: true,
-      message: 'Horse article successfully deleted',
+    models.Horse.remove({ _id: req.params.horse_id }, function (err, user) {
+      if (err) {
+        logger.error('Error deleting horse article');
+
+        responses.handleError(err, req, res);
+        return res.json({ success: false, message: 'Internal server error' });
+      }
+
+      // Remove pdf if it exists from docDirectory
+      if (horse.documentlocation) {
+        const file = docDirectory + horse.documentlocation;
+
+        if (fileExists(file)) {
+          fs.unlinkSync(file);
+        }
+      }
+
+      res.json({
+        success: true,
+        message: 'Horse article successfully deleted',
+      });
     });
   });
 });

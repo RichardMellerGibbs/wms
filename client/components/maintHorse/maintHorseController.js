@@ -113,7 +113,7 @@ angular
           line3: vm.article.line3,
           videolocation: vm.article.videolocation,
           documentlocation: vm.article.documentlocation,
-          description: vm.article.description,
+          description: ' ', //vm.article.description,
         };
 
         if (vm.article.picture) {
