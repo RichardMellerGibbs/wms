@@ -9,9 +9,10 @@ var responses = require('../middleware/responses.js');
 var logger = require('../utils/logger.js');
 var fs = require('fs');
 var multer = require('multer');
+var config = require('../config');
 
 var newFilename = '';
-var location = '/Users/richardgibbs/Web/Ed/videos/';
+const location = config.docDirectory;
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
